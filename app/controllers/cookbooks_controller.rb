@@ -12,7 +12,11 @@ class CookbooksController < ApplicationController
   end
 
   def all_users
-    @all_users = User.all
+    if params[:query].present?
+      @all_users = User.search_by_first_name_last_name(params[:query])
+    else
+      @all_users = User.all
+    end
   end
 
   private

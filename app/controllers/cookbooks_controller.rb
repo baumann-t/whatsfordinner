@@ -11,6 +11,10 @@ class CookbooksController < ApplicationController
     @user_recipes = find_user_recipes(@user)
   end
 
+  def all_users
+    @all_users = User.all
+  end
+
   private
 
   def find_user_recipes(user)

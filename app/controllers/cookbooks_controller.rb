@@ -19,6 +19,12 @@ class CookbooksController < ApplicationController
     end
   end
 
+  def show
+    @user_recipe = UserRecipe.find(params[:user_recipe_id])
+    @user = @user_recipe.user
+    @recipe = @user_recipe.recipe
+  end
+
   private
 
   def find_user_recipes(user)

@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_28_211718) do
+ActiveRecord::Schema.define(version: 2022_03_01_153639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id", null: false
+    t.bigint "recipes_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipes_id"], name: "index_comments_on_recipes_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "recipes", force: :cascade do |t|
     t.string "title"
@@ -27,6 +37,15 @@ ActiveRecord::Schema.define(version: 2022_02_28_211718) do
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
+  create_table "upvotes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_upvotes_on_recipe_id"
+    t.index ["user_id"], name: "index_upvotes_on_user_id"
+  end
+
   create_table "user_recipes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "recipe_id", null: false
@@ -35,6 +54,7 @@ ActiveRecord::Schema.define(version: 2022_02_28_211718) do
     t.boolean "whishlisted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "user_comment"
     t.index ["recipe_id"], name: "index_user_recipes_on_recipe_id"
     t.index ["user_id"], name: "index_user_recipes_on_user_id"
   end
@@ -54,7 +74,11 @@ ActiveRecord::Schema.define(version: 2022_02_28_211718) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "recipes", column: "recipes_id"
+  add_foreign_key "comments", "users"
   add_foreign_key "recipes", "users"
+  add_foreign_key "upvotes", "recipes"
+  add_foreign_key "upvotes", "users"
   add_foreign_key "user_recipes", "recipes"
   add_foreign_key "user_recipes", "users"
 end

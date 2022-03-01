@@ -12,9 +12,7 @@
       <li> <%= link_to recipe.title, cookbook_recipe_path(user_recipe)%> </li>
         <%= render "shared/buttons/remove", recipe: recipe %>
       <% if !user_recipe.cooked  %>
-        <%= simple_form_for(recipe, method: :patch, url:mark_as_cooked_path(recipe)) do |f| %>
-          <%= f.submit "MARK AS COOKED"%>
-        <% end %>
+        <%= render "shared/buttons/mark_cooked", recipe: recipe %>
       <% end %>
     </div>
   <% end %>
@@ -26,11 +24,13 @@
   <% recipe_status = user_recipe.user_recipe_status(recipe, current_user) %>
     <div class="d-flex">
       <li> <%= link_to recipe.title, cookbook_recipe_path(user_recipe)%> </li>
-      <% if truevalue %>
-
-      <% end %>
-      <%= simple_form_for(recipe, method: :patch, url:mark_as_cooked_path(recipe)) do |f| %>
-          <%= f.submit "MARK AS COOKED"%>
+      <% if recipe_status == "cooked" || recipe_status == "cookbooked" %>
+          <%= render "shared/buttons/cooked", recipe: recipe, user: current_user %>
+      <% elsif recipe_status == "wishlisted" %>
+          <%# TO EDIT WHEN READY! %>
+          <%= render "shared/buttons/cooked", recipe: recipe, user: current_user %>
+      <% else %>
+          <%= render "shared/buttons/wishlist", recipe: recipe, user: current_user %>
       <% end %>
     </div>
   <% end %>

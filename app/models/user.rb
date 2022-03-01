@@ -8,4 +8,7 @@ class User < ApplicationRecord
   has_many :recipes, dependent: :destroy
   has_many :upvotes, dependent: :destroy
   has_many :comments, dependent: :destroy
+
+  validates :email, uniqueness: true, presence: true
+  validates :password, :first_name, :last_name, presence: true
 end

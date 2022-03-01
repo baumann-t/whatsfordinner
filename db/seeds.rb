@@ -1,3 +1,6 @@
+require "open-uri"
+require "nokogiri"
+
 User.destroy_all
 Recipe.destroy_all
 UserRecipe.destroy_all
@@ -28,7 +31,15 @@ puts "Creating recipes"
     instructions: "Cook the #{Faker::Food.ingredient} on #{["high", "low", "medium"].sample} for 10 minutes. Add the #{Faker::Food.spice}. Bake for #{Faker::Number.between(from: 1, to: 10)} hours. Then add #{Faker::Food.measurement} of #{Faker::Food.spice}. Prepare the #{Faker::Food.fruits} for dessert",
     category: Faker::Food.ethnic_category
   )
-  user = User.all.to_a.sample
+  url = "https://www.allrecipes.com/search/results/?search=#{recipe.title}"
+  html_file = URI.open(url).read
+  html_doc = Nokogiri::HTML(html_file)
+  image_url = html_doc.search(".lazy-image noscript > img").first.attribute("src").value
+  image_file = URI.open(image_url)
+
+  recipe.photo.attach(io: image_file, filename: recipe.title, content_type: 'image/png')
+
+  user = User.all.sample
   recipe.user = user
   recipe.save!
   puts recipe.title

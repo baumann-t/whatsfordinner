@@ -3,7 +3,36 @@
 <% else %>
   <h1><%="#{user.first_name.capitalize} #{user.last_name.capitalize}"%>'s Cookbook</h1>
 <% end %>
-<% user_recipes.each do |user_recipe| %>
+
+<% if current_user.id == user.id %>
+
+  <% user_recipes.each do |user_recipe| %>
+    <% recipe = user_recipe.recipe %>
+    <div class="d-flex">
+      <li> <%= link_to recipe.title, cookbook_recipe_path(user_recipe)%> </li>
+        <%= render "shared/buttons/remove", recipe: recipe %>
+      <% if !user_recipe.cooked  %>
+        <%= render "shared/buttons/mark_cooked", recipe: recipe %>
+      <% end %>
+    </div>
+  <% end %>
+
+<% else %>
+
+  <% user_recipes.each do |user_recipe| %>
   <% recipe = user_recipe.recipe %>
-  <li> <%= link_to recipe.title, cookbook_recipe_path(user_recipe)%> </li>
+  <% recipe_status = user_recipe.user_recipe_status(recipe, current_user) %>
+    <div class="d-flex">
+      <li> <%= link_to recipe.title, cookbook_recipe_path(user_recipe)%> </li>
+      <% if recipe_status == "cooked" || recipe_status == "cookbooked" %>
+          <%= render "shared/buttons/cooked", recipe: recipe, user: current_user %>
+      <% elsif recipe_status == "wishlisted" %>
+          <%# TO EDIT WHEN READY! %>
+          <%= render "shared/buttons/cooked", recipe: recipe, user: current_user %>
+      <% else %>
+          <%= render "shared/buttons/wishlist", recipe: recipe, user: current_user %>
+      <% end %>
+    </div>
+  <% end %>
+
 <% end %>

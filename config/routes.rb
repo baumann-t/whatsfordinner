@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   post '/recipes', to: 'recipes#create'
   get '/my-recipes', to: 'recipes#my_recipes'
   get '/my-cookbook', to: 'cookbooks#index'
-  post '/my-cookbook', to: 'cookbooks#create'
+  get '/my-cookbook/add/:recipe_id', to: 'cookbooks#add', as: "add_to_cookbook"
+  post '/my-cookbook', to: 'cookbooks#create', as: "create_cookbook"
   get '/users', to: 'cookbooks#all_users'
   get '/cookbook/:user_recipe_id', to: 'cookbooks#show', as: "cookbook_recipe"
   delete '/my-cookbook/:recipe_id', to: 'cookbooks#destroy'

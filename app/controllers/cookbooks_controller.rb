@@ -19,6 +19,22 @@ class CookbooksController < ApplicationController
     end
   end
 
+  def add
+    @user_recipe = UserRecipe.new
+  end
+
+  def create
+    @user_recipe = UserRecipe.new(user_recipe_params)
+    @user_recipe.recipe = Recipe.find(params[:recipe_id])
+    @user_recipe.user = current_user
+
+    if @user_recipe.save
+      redirect_to my_cookbook_path
+    else
+      render 'cookbooks/add'
+    end
+  end
+
   def show
     @user_recipe = UserRecipe.find(params[:user_recipe_id])
     @user = @user_recipe.user
@@ -30,4 +46,9 @@ class CookbooksController < ApplicationController
   def find_user_recipes(user)
     @user_recipes = UserRecipe.where(user_id: user.id)
   end
+
+  def user_recipe_params
+    params.require(:user_recipe).permit(:user_comment)
+  end
+
 end

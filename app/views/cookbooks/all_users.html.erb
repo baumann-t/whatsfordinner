@@ -1,0 +1,14 @@
+<h1>Search for a user!</h1>
+<%= form_tag users_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a user!"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+<h1>All users:</h1>
+<% @all_users.each do |user| %>
+  <li><%=link_to "#{user.first_name.capitalize} #{user.last_name.capitalize}", user_cookbook_path(user)%></li>
+<% end %>

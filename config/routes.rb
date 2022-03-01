@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   get '/my-cookbook', to: 'cookbooks#index'
   post '/my-cookbook', to: 'cookbooks#create'
   get '/users', to: 'cookbooks#all_users'
-  get '/my-cookbook/:recipe_id', to: 'cookbooks#show'
-  delete '/my-cookbook/:recipe_id', to: 'cookbooks#destroy', as: "mycookbook_recipe"
+  get '/cookbook/:user_recipe_id', to: 'cookbooks#show', as: "cookbook_recipe"
+  delete '/my-cookbook/:recipe_id', to: 'cookbooks#destroy'
   get '/cookbooks/users/:user_id', to: 'cookbooks#user_cookbook', as: "user_cookbook"
   get '/users/:user_id/recipes/:id', to: 'cookbooks#show'
   get '/recipes/:id', to: 'recipes#upvote'
@@ -17,6 +17,6 @@ Rails.application.routes.draw do
   patch '/my-cookbook/:recipe_id', to: 'cookbooks#mark_cooked'
   get '/recipes', to: 'recipes#index'
   get '/recipes/:id', to: 'recipes#index'
-  get '/recipes/:id', to: 'recipes#show'
+  get '/recipes/:id', to: 'recipes#show', as: 'recipe'
   get '/recipes/:id', to: 'recipes#details'
 end

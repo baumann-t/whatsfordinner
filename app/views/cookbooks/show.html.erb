@@ -1,0 +1,9 @@
+<h1><%= @recipe.title %></h1>
+<% user = @recipe.user %>
+<h4><strong>Original recipe from:</strong> <%= link_to "#{user.first_name}#{user.last_name}", user_cookbook_path(user) %></h4>
+
+<p><strong>Category:</strong> <%= @recipe.category %></p>
+<p><strong>Description:</strong> <%= @recipe.description %></p>
+<p><strong>Prep-time:</strong> <%= @recipe.prep_time %></p>
+<p><strong>Ingredients:</strong> <%= @recipe.ingredients %></p>
+<p><strong>Instructions:</strong> <%= @recipe.instructions %></p>

@@ -43,6 +43,14 @@ class CookbooksController < ApplicationController
     @recipe_author = @recipe.user
   end
 
+  def destroy
+    @user_recipe = UserRecipe.where(user_id: current_user.id, recipe_id: params[:recipe_id]).first
+    if UserRecipe.destroy(@user_recipe.id)
+      redirect_to(my_cookbook_path)
+    end
+
+  end
+
   private
 
   def find_user_recipes(user)

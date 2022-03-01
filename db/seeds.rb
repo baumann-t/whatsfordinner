@@ -1,5 +1,4 @@
-require "open-uri"
-require "nokogiri"
+require_relative 'scraper'
 
 User.destroy_all
 Recipe.destroy_all
@@ -9,7 +8,7 @@ puts "Creating users"
 
 15.times do
   user = User.new(
-    email: Faker::Internet.email,
+    email: Faker::Internet.unique.email,
     password: 123456,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -21,24 +20,17 @@ puts "Creating users"
 end
 
 puts "Creating recipes"
-
 50.times do
   recipe = Recipe.new(
-    title: Faker::Food.dish,
+    title: @foods.sample,
     description: Faker::Food.description,
     ingredients: "#{Faker::Food.ingredient},#{Faker::Food.measurement}, #{Faker::Food.ingredient}, #{Faker::Food.measurement}",
     prep_time: "#{Faker::Number.between(from: 1, to: 10)} hours",
     instructions: "Cook the #{Faker::Food.ingredient} on #{["high", "low", "medium"].sample} for 10 minutes. Add the #{Faker::Food.spice}. Bake for #{Faker::Number.between(from: 1, to: 10)} hours. Then add #{Faker::Food.measurement} of #{Faker::Food.spice}. Prepare the #{Faker::Food.fruits} for dessert",
     category: Faker::Food.ethnic_category
   )
-  url = "https://www.allrecipes.com/search/results/?search=#{recipe.title}"
-  html_file = URI.open(url).read
-  html_doc = Nokogiri::HTML(html_file)
-  image_url = html_doc.search(".lazy-image noscript > img").first.attribute("src").value
-  image_file = URI.open(image_url)
-
+  image_file = scraping(recipe)
   recipe.photo.attach(io: image_file, filename: recipe.title, content_type: 'image/png')
-
   user = User.all.sample
   recipe.user = user
   recipe.save!
@@ -46,7 +38,6 @@ puts "Creating recipes"
 end
 
 puts "Creating user_recipes"
-
 
 50.times do
   user = User.all.to_a.sample
@@ -56,7 +47,6 @@ puts "Creating user_recipes"
     date_cooked: Faker::Date.in_date_period(year: 2018, month: 2),
     whishlisted: [false, true].sample,
   )
-
   user_recipe.user = user
   user_recipe.recipe = recipe
   user_recipe.save!

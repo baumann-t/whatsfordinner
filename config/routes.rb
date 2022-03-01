@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   get '/my-recipes', to: 'recipes#my_recipes'
   get '/my-cookbook', to: 'cookbooks#index'
   post '/my-cookbook', to: 'cookbooks#create'
+  get '/users', to: 'cookbooks#all_users'
   get '/my-cookbook/:recipe_id', to: 'cookbooks#show'
   delete '/my-cookbook/:recipe_id', to: 'cookbooks#destroy', as: "mycookbook_recipe"
-  get '/cookbooks/users/:user_id', to: 'cookbooks#user_cookbook'
+  get '/cookbooks/users/:user_id', to: 'cookbooks#user_cookbook', as: "user_cookbook"
   get '/users/:user_id/recipes/:id', to: 'cookbooks#show'
   get '/recipes/:id', to: 'recipes#upvote'
   post '/recipes/:id/comments', to: 'comments#create'

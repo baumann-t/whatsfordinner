@@ -25,7 +25,7 @@ puts "Creating recipes"
     description: Faker::Food.description,
     ingredients: "#{Faker::Food.ingredient},#{Faker::Food.measurement}, #{Faker::Food.ingredient}, #{Faker::Food.measurement}",
     prep_time: "#{Faker::Number.between(from: 1, to: 10)} hours",
-    instructions: "Cook the #{Faker::Food.ingredient} on #{["high", "low", "medium"]} during 10 minutes. Add the #{Faker::Food.spice}. Bake for #{Faker::Number.between(from: 1, to: 10)} hours. Then add #{Faker::Food.measurement} of #{Faker::Food.spice}. Prepare the #{Faker::Food.fruits} for dessert"
+    instructions: "Cook the #{Faker::Food.ingredient} on #{["high", "low", "medium"].sample} for 10 minutes. Add the #{Faker::Food.spice}. Bake for #{Faker::Number.between(from: 1, to: 10)} hours. Then add #{Faker::Food.measurement} of #{Faker::Food.spice}. Prepare the #{Faker::Food.fruits} for dessert"
   )
   user = User.all.to_a.sample
   recipe.user = user

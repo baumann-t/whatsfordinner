@@ -4,6 +4,7 @@ class CookbooksController < ApplicationController
   def index
     @user = current_user
     @user_recipes = find_user_recipes(@user)
+
   end
 
   def user_cookbook
@@ -44,14 +45,25 @@ class CookbooksController < ApplicationController
   end
 
   def destroy
-    @user_recipe = UserRecipe.where(user_id: current_user.id, recipe_id: params[:recipe_id]).first
+    @user_recipe = find_user_recipe
     if UserRecipe.destroy(@user_recipe.id)
       redirect_to(my_cookbook_path)
     end
+  end
 
+  def mark_cooked
+    @user_recipe = find_user_recipe
+    @user_recipe.mark_as_cooked!
+    if @user_recipe.save!
+      redirect_to(my_cookbook_path)
+    end
   end
 
   private
+
+  def find_user_recipe
+    @user_recipe = UserRecipe.where(user_id: current_user.id, recipe_id: params[:recipe_id]).first
+  end
 
   def find_user_recipes(user)
     @user_recipes = UserRecipe.where(user_id: user.id)
@@ -60,5 +72,4 @@ class CookbooksController < ApplicationController
   def user_recipe_params
     params.require(:user_recipe).permit(:user_comment)
   end
-
 end

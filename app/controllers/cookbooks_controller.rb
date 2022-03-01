@@ -37,8 +37,10 @@ class CookbooksController < ApplicationController
 
   def show
     @user_recipe = UserRecipe.find(params[:user_recipe_id])
-    @user = @user_recipe.user
+    @cookbook_user = @user_recipe.user
+    @current_user = current_user
     @recipe = @user_recipe.recipe
+    @recipe_author = @recipe.user
   end
 
   private

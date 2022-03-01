@@ -1,8 +1,15 @@
 <h1><%= @recipe.title %></h1>
-<% user = @recipe.user %>
+<% if @current_user.id == @cookbook_user.id %>
+  <p>Your comment on the recipe:</strong> <%= @user_recipe.user_comment %></p>
+  <h4><strong>Original recipe from:</strong> <%= link_to "#{@recipe_author.first_name}#{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></h4>
+<% elsif @current_user.id ==  @cookbook_user.id && @recipe_author.id == @current_user.id %>
+  <p>Your comment on the recipe:</strong> <%= @user_recipe.user_comment %></p>
+  <h4>This is your recipe!</h4>
+<% else %>
+  <p><strong><%= @cookbook_user.first_name%> comment on :</strong> <%= @user_recipe.user_comment %></p>
+  <h4><strong>Original recipe from:</strong> <%= link_to "#{@recipe_author.first_name}#{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></h4>
+<% end %>
 
-<p><strong>Recipe comment:</strong> <%= @user_recipe.user_comment %></p>
-<h4><strong>Original recipe from:</strong> <%= link_to "#{user.first_name}#{user.last_name}", user_cookbook_path(user) %></h4>
 
 <p><strong>Category:</strong> <%= @recipe.category %></p>
 <p><strong>Description:</strong> <%= @recipe.description %></p>

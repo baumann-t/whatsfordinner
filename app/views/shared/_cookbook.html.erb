@@ -1,0 +1,5 @@
+<h1>My Cookbook - <%="#{user.first_name.capitalize} #{user.last_name.capitalize}"%></h1>
+<% user_recipes.each do |user_recipe| %>
+  <% recipe = user_recipe.recipe %>
+  <li> <%= link_to recipe.title, mycookbook_recipe_path(recipe) %> </li>
+<% end %>

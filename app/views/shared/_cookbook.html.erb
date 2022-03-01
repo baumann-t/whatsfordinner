@@ -5,5 +5,5 @@
 <% end %>
 <% user_recipes.each do |user_recipe| %>
   <% recipe = user_recipe.recipe %>
-  <li> <%= link_to recipe.title, mycookbook_recipe_path(recipe) %> </li>
+  <li> <%= link_to recipe.title, cookbook_recipe_path(user_recipe)%> </li>
 <% end %>

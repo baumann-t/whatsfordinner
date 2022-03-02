@@ -2,8 +2,8 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     # need to link to cookbook recipe, not individual recipe
-    @user_recipe = UserRecipe.where(user_id: @recipe.user, recipe_id: @recipe.id)
-    redirect_to cookbook_recipe(@user_recipe)
+    @user_recipe = UserRecipe.where(user_id: @recipe.user, recipe_id: @recipe.id).first
+    redirect_to cookbook_recipe_path(@user_recipe)
   end
 
   def index

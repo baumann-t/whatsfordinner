@@ -12,7 +12,11 @@ export default class extends Controller {
     event.preventDefault()
     const url = `/recipes/${this.recipeValue}/upvotes`
     fetch(url, {headers: { "Accept": "application/json", "X-CSRF-Token": csrfToken() }})
-    .then(response => console.log(response))
+    .then(response => response.json())
+    .then((data) => {
+      this.countTarget.innerHTML = `${data["upvote_count"]} upvotes`
+      this.submitTarget.style.visibility = 'hidden'
+    })
 
   }
 }

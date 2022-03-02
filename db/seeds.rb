@@ -40,7 +40,7 @@ puts "Creating recipes"
     prep_time: "#{Faker::Number.between(from: 1, to: 10)} hours",
     instructions: "Cook the #{Faker::Food.ingredient} on #{["high", "low", "medium"].sample} for 10 minutes. Add the #{Faker::Food.spice}. Bake for #{Faker::Number.between(from: 1, to: 10)} hours. Then add #{Faker::Food.measurement} of #{Faker::Food.spice}. Prepare the #{Faker::Food.fruits} for dessert",
     category: Faker::Food.ethnic_category,
-    serving_size: "#{Faker::Number.between(from: 1, to: 10)} servings"
+    serving_size: "#{Faker::Number.between(from: 2, to: 10)} servings"
   )
   image_file = scraping(recipe)
   recipe.photo.attach(io: image_file, filename: recipe.title, content_type: 'image/png')

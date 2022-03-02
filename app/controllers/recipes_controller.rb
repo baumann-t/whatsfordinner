@@ -1,10 +1,15 @@
 class RecipesController < ApplicationController
   def show
-    @recipe = Recipe.find(params[:id])
+    # @recipe = Recipe.find(params[:id])
+    # need to link to cookbook recipe, not individual recipe
   end
 
   def index
-    @recipes = Recipe.all
+    if params[:query].present?
+      @recipes = Recipe.where(title: params[:query])
+    else
+      @recipes = Recipe.all
+    end
   end
 
   def my_recipes

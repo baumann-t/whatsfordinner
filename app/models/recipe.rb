@@ -6,11 +6,9 @@ class Recipe < ApplicationRecord
   has_one_attached :photo
 
   include PgSearch::Model
-  pg_search_scope :search,
-    against: [ :title, :description ],
-    using: {
-      tsearch: { prefix: true }
-    }
+  pg_search_scope :search_by_title,
+    against: [ :title],
+    using: { tsearch: { prefix: true } }
 
 
   validates :title, :description, :ingredients, :prep_time, :instructions, :category, presence: true

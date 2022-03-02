@@ -14,8 +14,9 @@ export default class extends Controller {
     fetch(url, {headers: { "Accept": "application/json", "X-CSRF-Token": csrfToken() }})
     .then(response => response.json())
     .then((data) => {
-      this.countTarget.innerHTML = `${data["upvote_count"]} upvotes`
-      this.submitTarget.style.visibility = 'hidden'
+      console.log(data);
+      // this.countTarget.innerHTML = `${data["upvote_count"]} upvotes`
+      // this.submitTarget.style.visibility = 'hidden'
     })
 
   }

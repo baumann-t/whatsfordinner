@@ -1,11 +1,17 @@
 <% if @recipe.comments.length == 0 %>
 <% else %>
-  <h4>Recipe comments</h4>
-  <% @recipe.comments.each do |comment| %>
-    <li> <%= comment.user.first_name %> - <%= comment.content %></li>
-  <% end %>
-  <div class="d-flex">
-    <input type="text">
-    <button>Submit</button>
+  <div data-controller="comments" data-comments-recipe-value=<%=@recipe.id%>>
+    <h4>Recipe comments</h4>
+    <div data-comments-target="list">
+      <% @recipe.comments.each do |comment| %>
+        <li> <%= comment.user.first_name %> - <%= comment.content %></li>
+      <% end %>
+    </div>
+    <div class="d-flex">
+      <form data-comments-target="input">
+        <input type="text" name="input">
+        <button data-action="click->comments#add">Submit</button>
+      </form>
+    </div>
   </div>
 <% end %>

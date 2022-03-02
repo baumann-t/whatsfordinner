@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   delete '/my-cookbook/:recipe_id', to: 'cookbooks#destroy', as: "cookbook-delete"
   get '/cookbooks/users/:user_id', to: 'cookbooks#user_cookbook', as: "user_cookbook"
   get '/users/:user_id/recipes/:id', to: 'cookbooks#show'
-  get '/recipes/:id', to: 'recipes#upvote'
-  post '/recipes/:id/comments', to: 'comments#create'
+  get '/recipes/:id/upvotes', to: 'upvotes#create', as: "upvote_recipe"
+  post '/recipes/:id/comments', to: 'comments#create', as: "comment_recipe"
   patch '/my-cookbook/:recipe_id', to: 'cookbooks#mark_cooked', as: "mark_as_cooked"
   get '/recipes', to: 'recipes#index'
   get '/recipes/:id', to: 'recipes#index'

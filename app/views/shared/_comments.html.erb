@@ -1,1 +1,11 @@
-<h4>Recipe comments</h4>
+<% if @recipe.comments.length == 0 %>
+<% else %>
+  <h4>Recipe comments</h4>
+  <% @recipe.comments.each do |comment| %>
+    <li> <%= comment.user.first_name %> - <%= comment.content %></li>
+  <% end %>
+  <div class="d-flex">
+    <input type="text">
+    <button>Submit</button>
+  </div>
+<% end %>

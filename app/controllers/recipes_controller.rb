@@ -3,6 +3,10 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
+  def my_recipes
+    @my_recipes = Recipe.where(user: current_user)
+  end
+
   def new
     @recipe = Recipe.new
   end

@@ -1,20 +1,13 @@
-<% if current_user.id == user.id %>
-  <h1>My Cookbook - <%="#{user.first_name.capitalize} #{user.last_name.capitalize}"%></h1>
-<% else %>
-  <h1><%="#{user.first_name.capitalize} #{user.last_name.capitalize}"%>'s Cookbook</h1>
-<% end %>
 
-<% if current_user.id == user.id %>
-  <% user_recipes.each do |user_recipe| %>
+  <div class="cookbook-card-container">
+    <% user_recipes.each do |user_recipe| %>
     <% recipe = user_recipe.recipe %>
-    <li> <%= link_to recipe.title, cookbook_recipe_path(user_recipe)%> </li>
-  <% end %>
-
-<% else %>
-  <% user_recipes.each do |user_recipe| %>
-    <% recipe = user_recipe.recipe %>
-    <% recipe_status = user_recipe.user_recipe_status(recipe, current_user) %>
-    <li> <%= link_to recipe.title, cookbook_recipe_path(user_recipe)%> </li>
-  <% end %>
-
-<% end %>
+      <div class="cookbook-recipe-card">
+        <%= link_to cookbook_recipe_path(user_recipe) do%>
+          <%= recipe.title %>
+        <% end %>
+          <%= cl_image_tag recipe.photo.key, height: 100, width: 200, crop: :fill  %>
+          <p><strong>Prep time: </strong><%= recipe.prep_time %></p>
+      </div>
+    <% end %>
+  </div>

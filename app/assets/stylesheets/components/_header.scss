@@ -1,0 +1,18 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  height: 120px;
+  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), image-url('pexels-lukas-616394.jpeg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner > h1 {
+  margin: 0;
+  color: black;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 24px;
+  font-weight: bold;
+
+}

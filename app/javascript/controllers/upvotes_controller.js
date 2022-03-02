@@ -17,6 +17,5 @@ export default class extends Controller {
       this.countTarget.innerHTML = `${data["upvote_count"]} upvotes`
       this.submitTarget.style.visibility = 'hidden'
     })
-
   }
 }

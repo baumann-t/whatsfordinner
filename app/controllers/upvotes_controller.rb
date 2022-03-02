@@ -8,7 +8,7 @@ class UpvotesController < ApplicationController
     respond_to do |format|
       if @upvote.save
         upvote = { upvote_count: @recipe.upvotes.count }
-        format.json  { render :json => upvote }
+        format.json { render :json => upvote }
       end
     end
   end

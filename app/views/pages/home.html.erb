@@ -1,2 +1,32 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+
+<div class="container">
+  <h2>Temporary Links</h2>
+  <h3>Some of them are not working yet</h3>
+  <br>
+  <div>
+    <p>TODO: Implement recipe and links</p>
+    <ul>
+      <li><%= link_to "Create a recipe", recipes_new_path %></li>
+      <li><%= link_to "My recipes", my_recipes_path %></li>
+      <li><%= link_to "All recipes (INDEX)", recipes_path %></li>
+    </ul>
+  </div>
+</div>
+
+<br>
+
+<div class="container">
+    <p>As a user I can see my cookbook</p>
+    <li> <%= link_to "My cookbook", my_cookbook_path %></li>
+
+    <br>
+    <p>All users</p>
+    <li><%= link_to "All users", users_path %></li>
+
+  <br>
+    <p>TODO: My wishlist NOT IMPLEMENTED YET </p>
+    <li> <p>TODO: add link</p><%#= link_to "Wishlist",  %></li>
+</div>

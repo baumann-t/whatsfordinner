@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = ["list", "form", "input", "field"]
+  static targets = ["list", "form", "input", "field", "intro"]
   static values = {recipe: Number}
 
   add(event) {
@@ -18,6 +18,7 @@ export default class extends Controller {
     .then((data) => {
       this.listTarget.insertAdjacentHTML('beforeend', data.comment)
       this.fieldTarget.value = ' '
+      this.introTarget.innerHTML = "Comments:"
     })
   }
 

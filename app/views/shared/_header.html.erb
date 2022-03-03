@@ -20,7 +20,8 @@
   </div>
 <% end %>
 
-
-<div class="banner">
-  <h1><%= "MY COOKBOOK" if request.path == "/my-cookbook" %></h1>
-</div>
+<% if request.path == "/my-cookbook" %>
+  <div class="banner">
+    <h1>MY COOKBOOK"</h1>
+  </div>
+<% end %>

@@ -1,4 +1,21 @@
-<h1>top 10</h1>
-<% @top_recipes.each do |recipe| %>
-  <li><%= recipe.title %> - <%= recipe.upvotes_tracker %></li>
+<% if @top_recipes.length > 0 %>
+  <div class="container container-bg-white">
+    <div class="cookbook-card-container">
+      <% @top_recipes.each_with_index do |recipe, index| %>
+        <div class="cookbook-recipe-card">
+          <div class="d-flex p-2 ">
+            <p><strong><%=index + 1%>. <%= recipe.title %></strong></p>
+            <p><strong>&nbsp- <%= pluralize recipe.upvotes_tracker, "upvote" %></strong></p>
+          </div>
+          <%= cl_image_tag recipe.photo.key, height: 100, width: 200, crop: :lfill  %>
+          <p> Prep time: <%= recipe.prep_time %></p>
+          <div class="container d-flex">
+            <p class="category"><%= recipe.category%></p>
+          </div>
+        </div>
+        <% end %>
+    </div>
+  </div>
+<% else %>
+  <h1>No recipes upvoted yet!</h1>
 <% end %>

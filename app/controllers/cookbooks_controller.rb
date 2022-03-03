@@ -3,8 +3,12 @@ class CookbooksController < ApplicationController
 
   def index
     @user = current_user
-    @user_recipes = find_user_recipes(@user)
+    @pagy, @user_recipes = pagy find_user_recipes(@user)
+  end
 
+  def top_ten
+    @user = params[:user_id] ? User.find(params[:user_id]) : current_user
+    @top_recipes = @user.recipes.where("upvotes_tracker > 0").order(upvotes_tracker: :desc)
   end
 
   def user_cookbook
@@ -57,6 +61,11 @@ class CookbooksController < ApplicationController
     if @user_recipe.save!
       redirect_to(my_cookbook_path)
     end
+  end
+
+  def my_history
+    @user = current_user
+    @cooking_history = @user.user_recipes.where(cooked: true)
   end
 
   private

@@ -5,45 +5,45 @@
       <div class="form-inputs">
         <%= f.input :title, label: "What is the name of your creation?" %>
       </div>
-      <a href="#desc" class="form-anchor" data-action="click->form#prevent">Next<a>
+      <a href="#desc" class="form-anchor" data-action="click->form#preventDesc">Next<a>
     </div>
 
-    <div class="form-space" id="desc">
-      <div class="form-inputs" data-form-target="desc">
+    <div class="form-space" id="desc" data-form-target="desc">
+      <div class="form-inputs">
         <%= f.input :description, label: 'Give us one or two sentences about your recipe!'%>
       </div>
-      <a href="#prep" class="form-anchor">Next<a>
+      <a href="#prep" class="form-anchor" data-action="click->form#preventPrep">Next<a>
     </div>
 
-    <div class="form-space" id="prep">
+    <div class="form-space" id="prep" data-form-target="prep">
       <div class="form-inputs">
         <%= f.input :prep_time, label: "How long does your dish take to prepare?"%>
       </div>
-      <a href="#instructions" class="form-anchor">Next<a>
+      <a href="#instructions" class="form-anchor" data-action="click->form#preventInstructions">Next<a>
     </div>
 
-    <div class="form-space"id="instructions">
+    <div class="form-space"id="instructions" data-form-target="instructions">
       <div class="form-inputs" id="instructions">
         <%= f.input :instructions, label: "Give us your best how-to guide for your masterpiece:"%>
       </div>
-      <a href="#ingredients" class="form-anchor">Next<a>
+      <a href="#ingredients" class="form-anchor" data-action="click->form#preventIngredients">Next<a>
     </div>
 
-    <div class="form-space" id="ingredients">
+    <div class="form-space" id="ingredients" data-form-target="ingredients">
       <div class="form-inputs">
         <%= f.input :ingredients, label: "Choose your ingredients:"%>
       </div>
-      <a href="#category" class="form-anchor">Next<a>
+      <a href="#category" class="form-anchor" data-action="click->form#preventCategory">Next<a>
     </div>
 
-    <div class="form-space" id="category">
+    <div class="form-space" id="category" data-form-target="category">
       <div class="form-inputs">
         <%= f.input :category, label: "Choose some categories:"%>
       </div>
-      <a href="#photo" class="form-anchor">Next<a>
+      <a href="#photo" class="form-anchor" data-action="click->form#preventPhoto">Next<a>
     </div>
 
-    <div class="form-space" id="photo">
+    <div class="form-space" id="photo" data-form-target="photo">
       <div class="form-inputs">
         <%= f.input :photo, as: :file, label: "Say 'cheese'! Share a photo of your recipe here:" %>
       </div>

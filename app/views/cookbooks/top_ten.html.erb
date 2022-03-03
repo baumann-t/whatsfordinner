@@ -1,0 +1,4 @@
+<h1>top 10</h1>
+<% @top_recipes.each do |recipe| %>
+  <li><%= recipe.title %> - <%= recipe.upvotes_tracker %></li>
+<% end %>

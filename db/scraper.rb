@@ -4,6 +4,7 @@ require "nokogiri"
 def scraping(recipe)
   url = "https://www.allrecipes.com/search/results/?search=#{recipe.title}"
   # url = "https://www.allrecipes.com/search/results/?search=#{recipe}"
+
   begin
     html_file = URI.open(url).read
   rescue URI::InvalidURIError

@@ -34,7 +34,7 @@ end
 puts "Creating recipes"
 50.times do
   recipe = Recipe.new(
-    title: @foods.sample,
+    title: Faker::Food.dish,
     description: Faker::Food.description,
     ingredients: "#{Faker::Food.ingredient},#{Faker::Food.measurement}, #{Faker::Food.ingredient}, #{Faker::Food.measurement}",
     prep_time: "#{Faker::Number.between(from: 1, to: 10)} hours",
@@ -42,7 +42,9 @@ puts "Creating recipes"
     category: Faker::Food.ethnic_category,
     serving_size: "#{Faker::Number.between(from: 2, to: 10)} servings"
   )
-  image_file = scraping(recipe)
+
+  @foods = ["Pho", "Cauliflower Penne", "Fettuccine Alfredo", "Mushroom Risotto", "Scotch Eggs", "Caprese Salad", "Chicken Milanese", "Lasagne", "Katsu Curry", "Barbecue Ribs", "Chicken Fajitas", "Arepas", "Chili con Carne", "Tuna Sashimi", "Fish and Chips", "Pork Sausage Roll", "Hummus", "Poutine", "California Maki", "Linguine with Clams", "French Fries with Sausages", "Bruschette with Tomato", "Pork Belly Buns", "French Toas", "Souvlaki", "Pierogi", "Pasta and Beans", "Salmon Nigiri", "Bunny Chow", "Peking Duck", "Pizza", "Kebab", "Cheeseburger", "Ebiten maki", "Tiramisu", "Tacos", "Stinky Tofu", "Chicken Parm", "Meatballs with Sauce", "Fried Eggs", "Sushi", "Cauliflower Penne", "Pasta with Tomato and Basil", "Massaman Curry", "Pizza", "Fish and Chips", "Katsu Curry", "Chocolate Cookies", "Belgian Waffles", "Cinnamon French Roast Casserole", "Meatloaf"]
+  image_file = scraping(@foods.sample)
   recipe.photo.attach(io: image_file, filename: recipe.title, content_type: 'image/png')
   user = User.all.sample
   recipe.user = user

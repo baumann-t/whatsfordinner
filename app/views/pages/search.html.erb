@@ -1,0 +1,20 @@
+<div data-controller="search" >
+  <form class="mt-3">
+    <div class="d-flex justify-content-center" >
+      <select data-search-target="search" data-action="change->search#changeView" >
+        <option value="recipe">Recipe</option>
+        <option value="user">User</option>
+      </select>
+      <div data-search-target="recipesearch">
+        <p><strong>Search for a recipe: </strong></p>
+        <input type="text" data-search-target="recipeinput" data-action="keyup->search#searchRecipe">
+      </div>
+      <div data-search-target="usersearch", style="visibility: hidden">
+        <p><strong>Search for a user: </strong></p>
+        <input type="text" data-search-target="userinput" data-action="keyup->search#searchUser">
+      </div>
+    </div>
+  </form>
+  <div data-search-target="recipelist"></div>
+  <div data-search-target="userlist"></div>
+</div>

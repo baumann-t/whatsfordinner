@@ -1,0 +1,11 @@
+<h1>All Recipes:</h1>
+
+<ul>
+  <% @user_recipes.each do |user_recipe| %>
+    <li>
+      <%=link_to user_recipe.recipe.title, cookbook_recipe_path(user_recipe)  %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Home", root_path %>

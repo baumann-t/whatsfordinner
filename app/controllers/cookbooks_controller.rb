@@ -4,7 +4,11 @@ class CookbooksController < ApplicationController
   def index
     @user = current_user
     @user_recipes = find_user_recipes(@user)
+  end
 
+  def top_ten
+    @user = params[:user_id] ? User.find(params[:user_id]) : current_user
+    @top_recipes = @user.recipes.order(upvotes_tracker: :desc)
   end
 
   def user_cookbook

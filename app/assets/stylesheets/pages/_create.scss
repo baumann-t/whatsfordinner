@@ -1,4 +1,27 @@
 // css for create recipe page
+#title {
+  padding-top: 100px;
+}
 .form-space {
   padding-top: 300px;
+  padding-bottom: 300px;
+}
+.form-inputs {
+  font-size: 18px;
+  text-align: center;
+  margin: 0px 25px;
+}
+.form-anchor {
+  color: #4A4A4A;
+  border: 1px solid #4A4A4A;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  margin: 0 auto;
+}
+
+.form-anchor:hover {
+  opacity: 1;
 }

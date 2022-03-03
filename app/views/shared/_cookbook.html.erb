@@ -6,7 +6,7 @@
         <%= link_to cookbook_recipe_path(user_recipe) do%>
           <%= recipe.title %>
         <% end %>
-          <%= cl_image_tag recipe.photo, height: 100, width: 200, crop: :fill  %>
+          <%# <%= cl_image_tag recipe.photo, height: 100, width: 200, crop: :fill  %> %>
           <p><strong>Prep time: </strong><%= recipe.prep_time %></p>
       </div>
     <% end %>

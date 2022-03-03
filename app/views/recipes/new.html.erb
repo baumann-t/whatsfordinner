@@ -1,56 +1,55 @@
-<h1>Create a recipe:</h1>
+<h1 class="text-center">Create a recipe:</h1>
 
 <%= simple_form_for @recipe do |f|%>
   <div class="form-space" id="title">
     <div class="form-inputs">
       <%= f.input :title, label: "What is the name of your creation?" %>
     </div>
-    <a href="#desc">Next<a>
+    <a href="#desc" class="form-anchor">Next<a>
   </div>
 
   <div class="form-space" id="desc">
     <div class="form-inputs">
       <%= f.input :description, label: 'Give us one or two sentences about your recipe!'%>
     </div>
-    <a href="#prep">Next<a>
+    <a href="#prep" class="form-anchor">Next<a>
   </div>
 
   <div class="form-space" id="prep">
     <div class="form-inputs">
       <%= f.input :prep_time, label: "How long does your dish take to prepare?"%>
     </div>
-    <a href="#instructions">Next<a>
+    <a href="#instructions" class="form-anchor">Next<a>
   </div>
 
   <div class="form-space"id="instructions">
     <div class="form-inputs" id="instructions">
       <%= f.input :instructions, label: "Give us your best how-to guide for your masterpiece:"%>
     </div>
-    <a href="#ingredients">Next<a>
+    <a href="#ingredients" class="form-anchor">Next<a>
   </div>
 
   <div class="form-space" id="ingredients">
     <div class="form-inputs">
-      <%= f.input :ingredients, label: "Choose your ingredients"%>
+      <%= f.input :ingredients, label: "Choose your ingredients:"%>
     </div>
-    <a href="#category">Next<a>
+    <a href="#category" class="form-anchor">Next<a>
   </div>
 
-  <div class="form-space">
-    <div class="form-inputs" id="category">
+  <div class="form-space" id="category">
+    <div class="form-inputs">
       <%= f.input :category, label: "Choose some categories:"%>
     </div>
-    <a href="#photo">Next<a>
+    <a href="#photo" class="form-anchor">Next<a>
   </div>
 
-  <div class="form-space">
-    <div class="form-inputs" id="photo">
+  <div class="form-space" id="photo">
+    <div class="form-inputs">
       <%= f.input :photo, as: :file, label: "Say 'cheese'! Share a photo of your recipe here:" %>
     </div>
-  </div>
-
-  <div class="form-actions">
-    <%= f.submit %>
+    <div class="form-actions">
+      <%= f.submit %>
+    </div>
   </div>
 <% end %>
 <br>

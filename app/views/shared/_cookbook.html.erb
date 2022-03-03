@@ -1,3 +1,5 @@
+
+<%== pagy_nav(@pagy) %>
  <div class="container container-bg-white">
   <div class="cookbook-card-container">
     <% user_recipes.each do |user_recipe| %>
@@ -11,7 +13,6 @@
           <div class="container d-flex">
             <p class="category"><%= user_recipe.recipe.category%></p>
           </div>
-
       </div>
     <% end %>
   </div>

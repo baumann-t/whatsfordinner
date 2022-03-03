@@ -1,9 +1,9 @@
 require "open-uri"
 require "nokogiri"
 
-@foods = ["Pho", "Cauliflower Penne", "Fettuccine Alfredo", "Mushroom Risotto", "Scotch Eggs", "Caprese Salad", "Chicken Milanese", "Lasagne", "Katsu Curry", "Barbecue Ribs", "Chicken Fajitas", "Arepas", "Chili con Carne", "Tuna Sashimi", "Fish and Chips", "Pork Sausage Roll", "Hummus", "Poutine", "California Maki", "Linguine with Clams", "French Fries with Sausages", "Bruschette with Tomato", "Pork Belly Buns", "French Toas", "Souvlaki", "Pierogi", "Pasta and Beans", "Salmon Nigiri", "Bunny Chow", "Peking Duck", "Pizza", "Kebab", "Cheeseburger", "Ebiten maki", "Tiramisu", "Tacos", "Stinky Tofu", "Chicken Parm", "Meatballs with Sauce", "Fried Eggs", "Sushi", "Cauliflower Penne", "Pasta with Tomato and Basil", "Massaman Curry", "Pizza", "Fish and Chips", "Katsu Curry", "Chocolate Cookies", "Belgian Waffles", "Cinnamon French Roast Casserole", "Meatloaf"]
-def scraping(recipe)
-  url = "https://www.allrecipes.com/search/results/?search=#{recipe.title}"
+
+def scraping(title)
+  url = "https://www.allrecipes.com/search/results/?search=#{title}"
   begin
     html_file = URI.open(url).read
   rescue URI::InvalidURIError

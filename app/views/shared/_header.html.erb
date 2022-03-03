@@ -1,7 +1,14 @@
 <% if request.path == "/" %>
   <div class="homepage-banner">
     <div class="login">
-      <%= link_to "Login", new_user_session_path %>
+       <% if user_signed_in? %>
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+        <% else %>
+            <%= link_to "Login", new_user_session_path %>
+        <% end %>
     </div>
 
     <h1>WHAT'S FOR DINNER?</h1>
@@ -13,8 +20,8 @@
   </div>
 <% end %>
 
-
-<div class="banner">
-  <h1><%= "MY COOKBOOK" if request.path == "/my-cookbook" %></h1>
-  <h1><%= "CREATE RECIPE" if request.path == "/recipe/new" %></h1>
-</div>
+<% if request.path == "/my-cookbook" %>
+  <div class="banner">
+    <h1>MY COOKBOOK"</h1>
+  </div>
+<% end %>

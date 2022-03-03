@@ -31,12 +31,12 @@
   align-self: flex-end;
 }
 
-// .banner {
-//   background-size: cover;
-//   background-position: center;
-//   height: 120px;
-//   background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), image-url('pexels-lukas-349609.jpeg');
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
+.banner {
+  background-size: cover;
+  background-position: center;
+  height: 120px;
+  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), image-url('pexels-lukas-349609.jpeg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

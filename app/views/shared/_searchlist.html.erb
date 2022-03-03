@@ -6,7 +6,7 @@
         <%= link_to cookbook_recipe_path(user_recipe) do%>
           <%= recipe.title %>
         <% end %>
-          <%= cl_image_tag recipe.photo.key, height: 100, width: 200, crop: :lfill if recipe.photo.attached? %>
+          <%= cl_image_tag recipe.photo.key, height: 100, width: 200, crop: :lfill  %>
           <p> Prep time: <%= recipe.prep_time %></p>
           <div class="container d-flex">
             <p class="category"><%= user_recipe.recipe.category%></p>
@@ -15,4 +15,3 @@
       <% end %>
   </div>
 </div>
-<%# <%== pagy_nav(@pagy) %>

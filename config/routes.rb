@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-
+  get '/search', to: 'pages#search'
   get '/recipes/new', to: 'recipes#new'
   post '/recipes', to: 'recipes#create'
   get '/my-recipes', to: 'recipes#my_recipes'
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   post '/recipes/:id/comments', to: 'comments#create', as: "comment_recipe"
   patch '/my-cookbook/:recipe_id', to: 'cookbooks#mark_cooked', as: "mark_as_cooked"
   get '/recipes/:id', to: 'recipes#show', as: 'recipe'
-  get '/recipes', to: 'recipes#index'
+  get '/recipes', to: 'recipes#search'
   get '/recipes/:id', to: 'recipes#index'
   get '/recipes/:id', to: 'recipes#details'
   get '/my-wishlist', to: 'cookbook#my-wishlit', as: "my_wishlist"

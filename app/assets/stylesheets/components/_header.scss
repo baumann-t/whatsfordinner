@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding: 10px;
 }
 
 .homepage-banner > h1 {
@@ -35,8 +35,14 @@
   background-size: cover;
   background-position: center;
   height: 120px;
-  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), image-url('pexels-lukas-349609.jpeg');
+  background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('pexels-lukas-349609.jpeg');
   display: flex;
-  justify-content: center;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
   align-items: center;
+  padding: 10px;
+}
+
+.banner > .login {
+  align-self: flex-end;
 }

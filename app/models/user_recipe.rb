@@ -14,7 +14,7 @@ class UserRecipe < ApplicationRecord
 
     if recipe = UserRecipe.where(user_id: user.id, recipe_id: recipe.id).first
       cookbooked = true
-      wishlisted = true if recipe.whishlisted
+      wishlisted = true if recipe.wishlisted
       cooked = true if recipe.cooked
     end
 

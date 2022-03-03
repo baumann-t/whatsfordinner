@@ -62,7 +62,7 @@ puts "creating user recipes..."
   user_recipe = UserRecipe.new(
     cooked: [false, true].sample,
     date_cooked: Faker::Date.in_date_period(year: 2018, month: 2),
-    whishlisted: [false, true].sample,
+    wishlisted: [false, true].sample
   )
   user_recipe.user = user
   user_recipe.recipe = recipe

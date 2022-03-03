@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/my-cookbook/top-10', to: 'cookbooks#top_ten', as: "my_top_ten"
   get '/my-cookbook/add/:recipe_id', to: 'cookbooks#add', as: "add_to_cookbook"
   post '/my-cookbook', to: 'cookbooks#create', as: "create_cookbook"
+  get '/my-cookbook/history', to: 'cookbooks#my_history', as: "my_cookbook_history"
   get '/users', to: 'cookbooks#all_users'
   get '/cookbook/:user_recipe_id', to: 'cookbooks#show', as: "cookbook_recipe"
   delete '/my-cookbook/:recipe_id', to: 'cookbooks#destroy', as: "cookbook-delete"

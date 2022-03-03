@@ -35,7 +35,6 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'devise'
 gem 'faker'
-gem 'pg_search', '~> 2.3.0'
 gem 'pagy', '~> 5.10'
 
 # Custom

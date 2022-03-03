@@ -1,7 +1,13 @@
 <% if request.path == "/" %>
   <div class="homepage-banner">
+    <div class="login">
+      <%= link_to "Login", new_user_session_path %>
+    </div>
     <h1>WHAT'S FOR DINNER?</h1>
     <p>The app allowing foodies to get inspired by what their network is cooking.</p>
+    <div class="btn btn-primary btn-search">
+      SEARCH
+    </div>
   </div>
 <% end %>
 

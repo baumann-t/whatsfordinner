@@ -1,0 +1,30 @@
+.info-card {
+  height: 300px;
+  width: 240px;
+  left: 75px;
+  border: 1px solid $primary;
+  border-radius: 8px;
+  margin: 50px auto;
+  box-shadow: 0px 2px 4px 0px #0000004D;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.info-card > img {
+  height: 150px;
+  width: 150px;
+}
+
+.info-card > p, h4 {
+  text-align: center;
+}
+.info-card > h4 {
+  font-size: 20px;
+  color: $primary;
+}
+
+.info-card > p {
+  font-size: 16px;
+}

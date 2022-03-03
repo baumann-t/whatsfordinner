@@ -1,0 +1,13 @@
+<h1>My cooking history</h1>
+
+<% if @cooking_history.length > 0 %>
+
+  <% @cooking_history.each do |user_recipe| %>
+    <li><%= user_recipe.recipe.title %> - cooked on: <%= user_recipe.date_cooked %></li>
+  <% end %>
+
+<% else %>
+
+  <p>No cooking history yet!</p>
+
+<% end %>

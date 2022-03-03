@@ -36,11 +36,7 @@ puts "Creating recipes"
 @foods.each do |food|
 # 50.times do
   recipe = Recipe.new(
-<<<<<<< HEAD
     title: food,
-=======
-    title: Faker::Food.dish,
->>>>>>> master
     description: Faker::Food.description,
     ingredients: "#{Faker::Food.ingredient},#{Faker::Food.measurement}, #{Faker::Food.ingredient}, #{Faker::Food.measurement}",
     prep_time: "#{Faker::Number.between(from: 1, to: 10)} hours",

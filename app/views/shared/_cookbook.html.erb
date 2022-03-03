@@ -1,6 +1,6 @@
-
-  <div class="cookbook-card-container">
-    <% user_recipes.each do |user_recipe| %>
+  <%== pagy_nav(@pagy) %>
+  <div>
+    <% @user_recipes.each do |user_recipe| %>
     <% recipe = user_recipe.recipe %>
       <div class="cookbook-recipe-card">
         <%= link_to cookbook_recipe_path(user_recipe) do%>

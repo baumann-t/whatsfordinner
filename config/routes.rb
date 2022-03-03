@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/recipes/new', to: 'recipes#new'
   post '/recipes', to: 'recipes#create'
   get '/my-recipes', to: 'recipes#my_recipes'
-  get '/my-cookbook', to: 'cookbooks#index'
+  get '/my-cookbook/', to: 'cookbooks#index'
   get '/my-cookbook/top-10', to: 'cookbooks#top_ten', as: "my_top_ten"
   get '/my-cookbook/add/:recipe_id', to: 'cookbooks#add', as: "add_to_cookbook"
   post '/my-cookbook', to: 'cookbooks#create', as: "create_cookbook"

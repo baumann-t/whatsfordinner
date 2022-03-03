@@ -3,7 +3,7 @@ class CookbooksController < ApplicationController
 
   def index
     @user = current_user
-    @user_recipes = find_user_recipes(@user)
+    @pagy, @user_recipes = pagy find_user_recipes(@user)
   end
 
   def top_ten

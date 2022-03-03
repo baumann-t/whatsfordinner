@@ -1,11 +1,12 @@
 
 <div class="recipe-banner">
   <h1><%= @recipe.title %></h1>
-  <%= cl_image_tag @recipe.photo.key, height: 375, width: 375, crop: :lfill  %>
+  <%#= cl_image_tag @recipe.photo.key, height: 375, width: 375, crop: :lfill  %>
 </div>
+
 <div class="container">
   <div class="recipe-head">
-  <% if @current_user.id == @cookbook_user.id %>
+    <% if @current_user.id == @cookbook_user.id %>
       <h4>Created by: <%= link_to "#{@recipe_author.first_name} #{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></h4>
       <h4>Member since: #TO-DO: add user timestamp to page</h4>
       <h4>Recipes created: #TO-DO: add recipes created.count using where keyword</h4>
@@ -18,6 +19,7 @@
       <h4><strong>Created by:</strong> <%= link_to "#{@recipe_author.first_name} #{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></h4>
     <% end %>
   </div>
+
   <div class="recipe-buttons">
     <% if @current_user.id == @cookbook_user.id %>
       <%= render "shared/buttons/remove", recipe: @recipe %>
@@ -49,6 +51,7 @@
     <p><%= @recipe.instructions %></p>
   </div>
 </div>
+
 <div class="container">
   <% if @current_user.id == @cookbook_user.id %>
     <h4>Your comment on the recipe:</strong> <%= @user_recipe.user_comment %></h4>

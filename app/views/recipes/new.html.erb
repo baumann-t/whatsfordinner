@@ -1,3 +1,60 @@
-<h1>Create a recipe:</h1>
-<%= render 'form', recipe: @recipe %>
+<h1 class="text-center">Create a recipe:</h1>
+<div class="container">
+  <div data-controller="form">
+    <%= simple_form_for @recipe do |f|%>
+      <div class="form-space" id="title">
+        <div class="form-inputs">
+          <%= f.input :title, label: "What is the name of your creation?" %>
+          <a href="#desc" class="form-anchor" data-action="click->form#preventDesc">Next<a>
+        </div>
+      </div>
+
+      <div class="form-space" id="desc" data-form-target="desc">
+        <div class="form-inputs">
+          <%= f.input :description, label: 'Give us one or two sentences about your recipe!'%>
+          <a href="#prep" class="form-anchor" data-action="click->form#preventPrep">Next<a>
+        </div>
+      </div>
+
+      <div class="form-space" id="prep" data-form-target="prep">
+        <div class="form-inputs">
+          <%= f.input :prep_time, label: "How long does your dish take to prepare?"%>
+          <a href="#instructions" class="form-anchor" data-action="click->form#preventInstructions">Next<a>
+        </div>
+      </div>
+
+      <div class="form-space"id="instructions" data-form-target="instructions">
+        <div class="form-inputs" id="instructions">
+          <%= f.input :instructions, label: "Give us your best how-to guide for your masterpiece:"%>
+        <a href="#ingredients" class="form-anchor" data-action="click->form#preventIngredients">Next<a>
+        </div>
+      </div>
+
+      <div class="form-space" id="ingredients" data-form-target="ingredients">
+        <div class="form-inputs">
+          <%= f.input :ingredients, label: "Write your ingredients below:"%>
+          <a href="#category" class="form-anchor" data-action="click->form#preventCategory">Next<a>
+        </div>
+      </div>
+
+      <div class="form-space" id="category" data-form-target="category">
+        <div class="form-inputs">
+          <%= f.input :category, label: "Write your category:"%>
+          <a href="#photo" class="form-anchor" data-action="click->form#preventPhoto">Next<a>
+        </div>
+      </div>
+
+      <div class="form-space" id="photo" data-form-target="photo">
+        <div class="form-inputs">
+          <%= f.input :photo, as: :file, label: "Say 'cheese'! Share a photo of your recipe here:" %>
+        </div>
+        <div class="form-actions">
+          <%= f.submit %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<br>
+<br>
 <%= link_to "Home", root_path %>

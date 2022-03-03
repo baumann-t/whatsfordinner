@@ -8,7 +8,7 @@ class CookbooksController < ApplicationController
 
   def top_ten
     @user = params[:user_id] ? User.find(params[:user_id]) : current_user
-    @top_recipes = @user.recipes.order(upvotes_tracker: :desc)
+    @top_recipes = @user.recipes.where("upvotes_tracker > 0").order(upvotes_tracker: :desc)
   end
 
   def user_cookbook

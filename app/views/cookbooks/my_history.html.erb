@@ -1,14 +1,28 @@
 <%= render "shared/buttons/create-topten-history" %>
-<h1>My cooking history</h1>
-
 <% if @cooking_history.length > 0 %>
 
-  <% @cooking_history.each do |user_recipe| %>
-    <li><%= user_recipe.recipe.title %> - cooked on: <%= user_recipe.date_cooked %></li>
-  <% end %>
+<%# Cards start here %>
+<div class="container">
+  <div class="cookbook-history-card try d-flex">
+    <% @cooking_history.each do |user_recipe| %>
+      <div class="col-4 row align-items-center">
+        <%= cl_image_tag user_recipe.recipe.photo.key, height: 100, width: 100, crop: :lfill  %>
+      </div>
+      <div class="row col-8">
+        <div class="row">
+          <%= link_to cookbook_recipe_path(user_recipe) do%>
+            <%= user_recipe.recipe.title %>
+          <% end %>
+          <p><%= user_recipe.recipe.description[0, 50] %>... <%= link_to "See\u00A0more", "/", class:"test" %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
 
 <% else %>
-
   <p>No cooking history yet!</p>
-
 <% end %>

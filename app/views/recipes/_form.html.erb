@@ -1,21 +1,24 @@
 <%= simple_form_for @recipe do |f|%>
-  <div class="form-inputs">
-    <%= f.input :title %>
+  <div class="form-inputs" id="title">
+    <%= f.input :title, label: "What is the name of your creation?" %>
   </div>
-  <div class="form-inputs">
-    <%= f.input :description %>
+  <div class="form-inputs" id="desc">
+    <%= f.input :description, label: 'Give us one or two sentences about your recipe!'%>
   </div>
-  <div class="form-inputs">
-    <%= f.input :prep_time %>
+  <div class="form-inputs" id="prep">
+    <%= f.input :prep_time, label: "How long does your dish take to prepare?"%>
   </div>
-  <div class="form-inputs">
-    <%= f.input :instructions %>
+  <div class="form-inputs" id="instructions">
+    <%= f.input :instructions, label: "Give us your best how-to guide for your masterpiece:"%>
   </div>
-  <div class="form-inputs">
-    <%= f.input :ingredients %>
+  <div class="form-inputs" id="ingredients">
+    <%= f.input :ingredients, label: "Choose your ingredients"%>
   </div>
-  <div class="form-inputs">
-    <%= f.input :category %>
+  <div class="form-inputs" id="category">
+    <%= f.input :category, label: "Choose some categories:"%>
+  </div>
+  <div class="form-inputs" id="photo">
+    <%= f.input :photo, as: :file, label: "Say 'cheese'! Share a photo of your recipe here:" %>
   </div>
   <div class="form-actions">
     <%= f.submit %>

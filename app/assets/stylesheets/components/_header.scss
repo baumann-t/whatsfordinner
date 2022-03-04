@@ -43,11 +43,11 @@
   padding: 10px;
 }
 
-.banner {
+.banner-user {
   background-size: cover;
   background-position: center;
   height: 120px;
-  background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('pexels-lukas-349609.jpeg');
+  background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('herbs.jpeg');
   display: flex;
   flex-direction: column-reverse;
   justify-content: flex-end;
@@ -55,6 +55,26 @@
   padding: 10px;
 }
 
+.banner-user > .login {
+  align-self: flex-end;
+}
+
 .banner-my-cookbook > .login {
+  align-self: flex-end;
+}
+
+.banner-search {
+  background-size: cover;
+  background-position: center;
+  height: 120px;
+  background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('lime.jpeg');
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+}
+
+.banner-search > .login {
   align-self: flex-end;
 }

@@ -69,6 +69,11 @@ class CookbooksController < ApplicationController
     @cooking_history = @user.user_recipes.where(cooked: true)
   end
 
+  def my_wishlist
+    @user = current_user
+    @wishlist = @user.user_recipes.where(wishlisted: true)
+  end
+
   private
 
   def find_user_recipe

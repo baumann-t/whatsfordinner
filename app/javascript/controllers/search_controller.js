@@ -15,6 +15,7 @@ export default class extends Controller {
       this.usersearchTarget.style.display = "none";
       this.recipelistTarget.innerHTML = ""
       this.userlistTarget.innerHTML = ""
+      this.searchRecipe()
     }
     if (selection === 1) {
       this.recipesearchTarget.style.display = "none";

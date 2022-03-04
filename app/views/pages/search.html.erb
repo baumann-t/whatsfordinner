@@ -1,16 +1,14 @@
 <div data-controller="search" >
   <form class="mt-3">
     <div class="d-flex justify-content-center" >
-      <select data-search-target="search" data-action="change->search#changeView" >
-        <option value="recipe">Recipe</option>
-        <option value="user">User</option>
-      </select>
+        <select data-search-target="search" data-action="change->search#changeView" >
+          <option value="recipe">Search Recipes</option>
+          <option value="user">Search Users</option>
+        </select>
       <div data-search-target="recipesearch">
-        <p><strong>Search for a recipe: </strong></p>
         <input type="text" data-search-target="recipeinput" data-action="keyup->search#searchRecipe">
       </div>
-      <div data-search-target="usersearch", style="visibility: hidden">
-        <p><strong>Search for a user: </strong></p>
+      <div data-search-target="usersearch", style="display: none">
         <input type="text" data-search-target="userinput" data-action="keyup->search#searchUser">
       </div>
     </div>

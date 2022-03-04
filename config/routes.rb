@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/my-cookbook/add/:recipe_id', to: 'cookbooks#add', as: "add_to_cookbook"
   post '/my-cookbook', to: 'cookbooks#create', as: "create_cookbook"
   get '/my-cookbook/history', to: 'cookbooks#my_history', as: "my_cookbook_history"
-  get '/users', to: 'cookbooks#all_users'
+  get '/users', to: 'cookbooks#user_search'
   get '/cookbook/:user_recipe_id', to: 'cookbooks#show', as: "cookbook_recipe"
   delete '/my-cookbook/:recipe_id', to: 'cookbooks#destroy', as: "cookbook-delete"
   get '/cookbooks/users/:user_id', to: 'cookbooks#user_cookbook', as: "user_cookbook"

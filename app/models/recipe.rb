@@ -11,4 +11,7 @@ class Recipe < ApplicationRecord
     against: [ :title],
     using: { tsearch: { prefix: true } }
 
+  def self.from_recipe_to_user_recipe(recipe)
+    UserRecipe.where(user_id: recipe.user, recipe_id: recipe.id).first
+  end
 end

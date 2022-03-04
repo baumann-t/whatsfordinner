@@ -1,39 +1,66 @@
-<h1><%= @recipe.title %></h1>
 
-<% if @current_user.id == @cookbook_user.id %>
-  <h4><strong>Original recipe from:</strong> <%= link_to "#{@recipe_author.first_name}#{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></h4>
-  <%= render "shared/upvotes", recipe: @recipe %>
-  <h4>Your comment on the recipe:</strong> <%= @user_recipe.user_comment %></h4>
-  <%= render "shared/comments", recipe: @recipe %>
-<% elsif @current_user.id ==  @cookbook_user.id && @recipe_author.id == @current_user.id %>
-  <h4>This is your recipe!</h4>
-  <%= render "shared/upvotes", recipe: @recipe %>
-  <h4>Your comment on the recipe:</strong> <%= @user_recipe.user_comment %></h4>
-  <%= render "shared/comments", recipe: @recipe %>
-<% else %>
-  <%= render "shared/upvotes", recipe: @recipe %>
-  <h4><strong>Original recipe from:</strong> <%= link_to "#{@recipe_author.first_name}#{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></h4>
-  <h4><strong><%= @cookbook_user.first_name%> comment on :</strong> <%= @user_recipe.user_comment %></h4>
-  <%= render "shared/comments", recipe: @recipe %>
-<% end %>
+<div class="recipe-banner">
+  <h1><%= @recipe.title %></h1>
+  <%= cl_image_tag @recipe.photo.key, height: 375, width: 375, crop: :lfill  %>
+</div>
 
-<p><strong>Category:</strong> <%= @recipe.category %></p>
-<p><strong>Description:</strong> <%= @recipe.description %></p>
-<p><strong>Prep-time:</strong> <%= @recipe.prep_time %></p>
-<p><strong>Ingredients:</strong> <%= @recipe.ingredients %></p>
-<p><strong>Instructions:</strong> <%= @recipe.instructions %></p>
+<div class="container">
+  <div class="recipe-head">
+    <% if @current_user.id == @cookbook_user.id %>
+      <h4>Created by: <%= link_to "#{@recipe_author.first_name} #{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></h4>
+      <h4>Member since: #TO-DO: add user timestamp to page</h4>
+      <h4>Recipes created: #TO-DO: add recipes created.count using where keyword</h4>
+      <%= render "shared/upvotes", recipe: @recipe %>
+    <% elsif @current_user.id ==  @cookbook_user.id && @recipe_author.id == @current_user.id %>
+      <h4>Created by: you!</h4>
+      <%= render "shared/upvotes", recipe: @recipe %>
+    <% else %>
+      <%= render "shared/upvotes", recipe: @recipe %>
+      <h4><strong>Created by:</strong> <%= link_to "#{@recipe_author.first_name} #{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></h4>
+    <% end %>
+  </div>
 
-<% if @current_user.id == @cookbook_user.id %>
-  <%= render "shared/buttons/remove", recipe: @recipe %>
-  <%= render "shared/buttons/mark_cooked", recipe: @recipe if !@user_recipe.cooked %>
-<% else %>
-  <% recipe_status = @user_recipe.user_recipe_status(@recipe, current_user) %>
-  <% if recipe_status == "cooked" || recipe_status == "cookbooked" %>
-    <%= render "shared/buttons/cooked", recipe: @recipe, user: current_user %>
-  <% elsif recipe_status == "wishlisted" %>
-    <%= render "shared/buttons/cooked", recipe: @recipe, user: current_user %>
+  <div class="recipe-buttons">
+    <% if @current_user.id == @cookbook_user.id %>
+      <%= render "shared/buttons/remove", recipe: @recipe %>
+      <%= render "shared/buttons/mark_cooked", recipe: @recipe if !@user_recipe.cooked %>
+    <% else %>
+      <% recipe_status = @user_recipe.user_recipe_status(@recipe, current_user) %>
+      <% if recipe_status == "cooked" || recipe_status == "cookbooked" %>
+        <%= render "shared/buttons/cooked", recipe: @recipe, user: current_user %>
+      <% elsif recipe_status == "wishlisted" %>
+        <%= render "shared/buttons/cooked", recipe: @recipe, user: current_user %>
+      <% else %>
+        <%= link_to "Add to cookbook", add_to_cookbook_path(@recipe) %>
+        <%= render "shared/buttons/wishlist", recipe: @recipe, user: current_user %>
+      <% end %>
+    <% end %>
+  </div>
+  <hr>
+
+  <div class="main text">
+    <p class="recipe-title">Prep-time:</p>
+    <p><%= @recipe.prep_time %></p>
+    <p class="recipe-title">Category:</p>
+    <p><%= @recipe.category %></p>
+    <p class="recipe-title">Description:</p>
+    <p><%= @recipe.description %></p>
+    <p class="recipe-title">Ingredients:</p>
+    <p><%= @recipe.ingredients %></p>
+    <p class="recipe-title">Instructions:</p>
+    <p><%= @recipe.instructions %></p>
+  </div>
+</div>
+
+<div class="container">
+  <% if @current_user.id == @cookbook_user.id %>
+    <h4>Your comment on the recipe:</strong> <%= @user_recipe.user_comment %></h4>
+    <%= render "shared/comments", recipe: @recipe %>
+  <% elsif @current_user.id ==  @cookbook_user.id && @recipe_author.id == @current_user.id %>
+    <h4>Your comment on the recipe:</strong> <%= @user_recipe.user_comment %></h4>
+    <%= render "shared/comments", recipe: @recipe %>
   <% else %>
-    <%= link_to "Add to cookbook", add_to_cookbook_path(@recipe) %>
-    <%= render "shared/buttons/wishlist", recipe: @recipe, user: current_user %>
+    <h4><strong><%= @cookbook_user.first_name%> comment on :</strong> <%= @user_recipe.user_comment %></h4>
+    <%= render "shared/comments", recipe: @recipe %>
   <% end %>
-<% end %>
+</div>

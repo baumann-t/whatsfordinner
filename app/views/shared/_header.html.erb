@@ -1,31 +1,30 @@
 <% if request.path == "/" %>
   <div class="homepage-banner">
-    <div class="login">
-       <% if user_signed_in? %>
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            </div>
-        <% else %>
-            <%= link_to "Login", new_user_session_path %>
-        <% end %>
-    </div>
+    <%= render 'shared/avatar' %>
 
     <h1>WHAT'S FOR DINNER?</h1>
     <p>The app allowing foodies to get inspired by what their network is cooking.</p>
 
     <div class="btn btn-primary btn-search">
-      SEARCH
+      <%= link_to "SEARCH", search_path%>
     </div>
   </div>
 <% end %>
 
 <% if request.path == "/my-cookbook" %>
   <div class="banner">
-    <h1>MY COOKBOOK"</h1>
+    <h1>MY COOKBOOK</h1>
+    <%= render 'shared/avatar' %>
   </div>
+<<<<<<< HEAD
 <% elsif request.path == "/my-cookbook/history" %>
   <div class="banner">
     <h1>MY HISTORY</h1>
   </div>
+=======
+  <%# elsif request.path == "/my-cookbook/" %>
+  <%# <div class="banner"> %>
+    <%# <h1>MY COOKBOOK"</h1> %>
+  <%# </div> %>
+>>>>>>> master
 <% end %>

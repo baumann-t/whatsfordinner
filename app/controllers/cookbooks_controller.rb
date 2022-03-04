@@ -16,11 +16,12 @@ class CookbooksController < ApplicationController
     @user_recipes = find_user_recipes(@user)
   end
 
-  def all_users
-    if params[:query].present?
-      @all_users = User.search_by_first_name_last_name(params[:query])
-    else
-      @all_users = User.all
+  def user_search
+    @all_users = User.search_by_first_name_last_name(params[:query])
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'shared/usersearch', locals: { users: @all_users }, formats: [:html] }
     end
   end
 

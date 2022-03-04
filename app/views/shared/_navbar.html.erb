@@ -5,7 +5,9 @@
       <li><%= link_to "Cookbook", my_cookbook_path, :class => current_class?(my_cookbook_path)%></li>
       <li>Wishlist</li>
       <li>Messages</li>
-      <li><i class="fas fa-search"></i></li>
+      <li><%= link_to search_path, :class => current_class?(search_path) do %>
+        <i class="fas fa-search"></i>
+      <% end %></li>
     </ul>
   </div>
 </div>

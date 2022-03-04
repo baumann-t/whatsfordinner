@@ -2,15 +2,19 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     # need to link to cookbook recipe, not individual recipe
-    @user_recipe = UserRecipe.where(user_id: @recipe.user, recipe_id: @recipe.id).first
+    @user_recipe = Recipe.from_recipe_to_user_recipe(@recipe)
     redirect_to cookbook_recipe_path(@user_recipe)
   end
 
-  def index
-    if params[:query].present?
-      @recipes = Recipe.search_by_title(params[:query])
-    else
-      @recipes = Recipe.all
+  def search
+    @recipes = Recipe.search_by_title(params[:query])
+    @user_recipes = @recipes.map do |recipe|
+      Recipe.from_recipe_to_user_recipe(recipe)
+    end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'shared/searchlist', locals: { user_recipes: @user_recipes }, formats: [:html] }
     end
   end
 
@@ -35,7 +39,9 @@ class RecipesController < ApplicationController
 
   private
 
+
+
   def recipe_params
-    params.require(:recipe).permit(:title, :description, :prep_time, :instructions, :ingredients, :category)
+    params.require(:recipe).permit(:title, :description, :prep_time, :instructions, :ingredients, :category, :photo)
   end
 end

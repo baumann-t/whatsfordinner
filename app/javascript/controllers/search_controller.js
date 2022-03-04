@@ -4,19 +4,25 @@ import { csrfToken } from "@rails/ujs"
 export default class extends Controller {
   static targets = ["search", "recipesearch", "recipeinput", "recipelist", "usersearch", "userinput", "userlist"]
 
+  connect() {
+    this.searchRecipe()
+  }
+
   changeView() {
     const selection = this.searchTarget.selectedIndex
-    if (selection === 1) {
-      this.recipesearchTarget.style.display = "none";
-      this.usersearchTarget.style.display = "unset";
-      this.recipelistTarget.innerHTML = ""
-      this.userlistTarget.innerHTML = ""
-    }
     if (selection === 0) {
       this.recipesearchTarget.style.display = "unset";
       this.usersearchTarget.style.display = "none";
       this.recipelistTarget.innerHTML = ""
       this.userlistTarget.innerHTML = ""
+      this.searchRecipe()
+    }
+    if (selection === 1) {
+      this.recipesearchTarget.style.display = "none";
+      this.usersearchTarget.style.display = "unset";
+      this.recipelistTarget.innerHTML = ""
+      this.userlistTarget.innerHTML = ""
+      this.searchUser()
     }
   }
 

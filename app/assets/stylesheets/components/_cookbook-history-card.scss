@@ -1,6 +1,15 @@
 .cookbook-history-card {
-  border: solid;
   padding: 5px;
+  background-color: #F3F3F3;
+  border-radius: 8px;
+  padding-bottom: 20px;
+}
+
+
+
+.cookbook-history-card a{
+  text-decoration: none;
+  color:black;
 }
 
 .container a.sml-a-tag {
@@ -13,4 +22,12 @@
 
 .container .recipe-title {
   font-size: 24px;
+}
+
+.container .img {
+  border-radius: 5px;
+}
+
+.padding-right-0 {
+  padding-right: 0px;
 }

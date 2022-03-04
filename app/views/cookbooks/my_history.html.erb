@@ -7,7 +7,7 @@
 <div class="container">
 
   <% @cooking_history.each do |user_recipe| %>
-    <div class="container" style="border:solid">
+    <div class="container cookbook-history-card">
       <div class="d-flex justify-content-around my-2 recipe-title">
         <%= link_to cookbook_recipe_path(user_recipe) do%>
           <%= user_recipe.recipe.title %>
@@ -17,10 +17,10 @@
       <div class="container d-flex">
 
         <div>
-          <%= cl_image_tag user_recipe.recipe.photo.key, height: 130, width: 130, crop: :lfill  %>
+          <%= cl_image_tag user_recipe.recipe.photo.key, height: 125, width: 125, crop: :lfill  %>
         </div>
 
-      <div class="container">
+      <div class="container padding-right-0">
           <div>
             <%= user_recipe.recipe.description[0, 50] %>... <%= link_to "See\u00A0more", "/", class:"sml-a-tag" %>
           </div>

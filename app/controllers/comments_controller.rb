@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     respond_to do |format|
       if @comment.save
-        comment = { comment: "<li> #{current_user.first_name} - #{@comment.content} </li>"  }
+        comment = { comment: "<li class='comment-list'> #{current_user.first_name} - <em>#{@comment.content}</em></li><hr>" }
         format.json { render :json => comment }
       end
     end

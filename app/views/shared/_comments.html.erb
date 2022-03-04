@@ -1,20 +1,21 @@
 <div data-controller="comments" data-comments-recipe-value=<%=@recipe.id%>>
   <h4 data-comments-target="intro">
       <% if @recipe.comments.length == 0 %>
-        <%= "No comments yet!" %>
+        <%= "There is no comments yet!" %>
       <% else %>
         <%= "Comments:" %>
       <% end %>
   </h4>
   <div data-comments-target="list">
     <% @recipe.comments.each do |comment| %>
-      <li> <%= comment.user.first_name %> - <%= comment.content %></li>
+      <li class="comment-list"> <%= comment.user.first_name %> - <em><%= comment.content %></em></li>
+      <hr>
     <% end %>
   </div>
-  <div class="d-flex">
+  <div class="comment-form">
     <form data-comments-target="input">
-      <input data-comments-target="field" type="text" name="input">
-      <button data-action="click->comments#add">Submit</button>
+      <input data-comments-target="field" type="text" name="input" class="comment-input">
+      <button data-action="click->comments#add" class="btn-submit">Submit</button>
     </form>
   </div>
 </div>

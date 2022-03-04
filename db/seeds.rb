@@ -18,7 +18,7 @@ user.save!
 
 puts "Creating users"
 
-15.times do
+20.times do
   user = User.new(
     email: Faker::Internet.unique.email,
     password: 123456,
@@ -32,7 +32,7 @@ puts "Creating users"
 end
 
 puts "Creating recipes"
-@foods = ["Ebiten maki", "Fettuccine Alfredo", "Mushroom Risotto", "Caprese Salad", "Chicken Milanese", "Lasagne", "Katsu Curry", "Barbecue Ribs", "Chicken Fajitas", "Arepas", "Chili con Carne", "Tuna Sashimi", "Fish and Chips", "Pork Sausage Roll", "Hummus", "Poutine", "California Maki", "Linguine with Clams", "French Fries with Sausages", "Bruschette with Tomato", "Pork Belly Buns", "French Toast", "Souvlaki", "Pierogi", "Pasta and Beans", "Salmon Nigiri", "Bunny Chow", "Peking Duck", "Pizza", "Kebab", "Cheeseburger", "Ebiten maki", "Tiramisu", "Tacos", "Stinky Tofu", "Chicken Parm", "Meatballs with Sauce", "Fried Eggs", "Sushi", "Pasta with Tomato and Basil", "Massaman Curry", "Pizza", "Fish and Chips", "Katsu Curry", "Chocolate Cookies", "Belgian Waffles", "Cinnamon French Roast Casserole", "Meatloaf"]
+@foods = ["Pho", "Cauliflower Penne", "Fettuccine Alfredo", "Mushroom Risotto", "Scotch Eggs", "Caprese Salad", "Chicken Milanese", "Lasagne", "Katsu Curry", "Barbecue Ribs", "Chicken Fajitas", "Arepas", "Chili con Carne", "Tuna Sashimi", "Fish and Chips", "Pork Sausage Roll", "Hummus", "Poutine", "California Maki", "Linguine with Clams", "French Fries with Sausages", "Bruschette with Tomato", "Pork Belly Buns", "French Toas", "Souvlaki", "Pierogi", "Pasta and Beans", "Salmon Nigiri", "Bunny Chow", "Peking Duck", "Pizza", "Kebab", "Cheeseburger", "Ebiten maki", "Tiramisu", "Tacos", "Stinky Tofu", "Chicken Parm", "Meatballs with Sauce", "Fried Eggs", "Sushi", "Cauliflower Penne", "Pasta with Tomato and Basil", "Massaman Curry", "Pizza", "Fish and Chips", "Katsu Curry", "Chocolate Cookies", "Belgian Waffles", "Cinnamon French Roast Casserole", "Meatloaf"]
 @foods.each do |food|
   recipe = Recipe.new(
     title: food,
@@ -44,8 +44,7 @@ puts "Creating recipes"
     serving_size: "#{Faker::Number.between(from: 2, to: 10)} servings"
   )
 
-  @foods = ["Pho", "Cauliflower Penne", "Fettuccine Alfredo", "Mushroom Risotto", "Scotch Eggs", "Caprese Salad", "Chicken Milanese", "Lasagne", "Katsu Curry", "Barbecue Ribs", "Chicken Fajitas", "Arepas", "Chili con Carne", "Tuna Sashimi", "Fish and Chips", "Pork Sausage Roll", "Hummus", "Poutine", "California Maki", "Linguine with Clams", "French Fries with Sausages", "Bruschette with Tomato", "Pork Belly Buns", "French Toas", "Souvlaki", "Pierogi", "Pasta and Beans", "Salmon Nigiri", "Bunny Chow", "Peking Duck", "Pizza", "Kebab", "Cheeseburger", "Ebiten maki", "Tiramisu", "Tacos", "Stinky Tofu", "Chicken Parm", "Meatballs with Sauce", "Fried Eggs", "Sushi", "Cauliflower Penne", "Pasta with Tomato and Basil", "Massaman Curry", "Pizza", "Fish and Chips", "Katsu Curry", "Chocolate Cookies", "Belgian Waffles", "Cinnamon French Roast Casserole", "Meatloaf"]
-  image_file = scraping(@foods.sample)
+  image_file = scraping(food)
   recipe.photo.attach(io: image_file, filename: recipe.title, content_type: 'image/png')
   user = User.all.sample
   recipe.user = user
@@ -60,14 +59,28 @@ end
 puts "creating user recipes..."
 
 50.times do
-  user = User.all.to_a.sample
+
+  random_offset_user = rand(User.count)
+  user = User.offset(random_offset_user).first
+
+  random_offset_recipe = rand(Recipe.count)
+  recipe = Recipe.offset(random_offset).first
+
   recipe = Recipe.all.to_a.sample
   user_recipe = UserRecipe.new(
     cooked: [false, true].sample,
     date_cooked: Faker::Date.in_date_period(year: 2018, month: 2),
-    wishlisted: [false, true].sample
+    wishlisted: [false, true].sample,
+    user_comment: ["Wow so good!", "Still have to try this one!", "I eat this at least once a week", "Easy recipe for week night dinner"].sample
   )
   user_recipe.user = user
   user_recipe.recipe = recipe
   user_recipe.save!
 end
+
+puts "creating upvotes"
+50.times do
+  user = User.all.sampl
+end
+
+puts "creating comments!"

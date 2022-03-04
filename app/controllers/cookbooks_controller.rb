@@ -77,7 +77,6 @@ class CookbooksController < ApplicationController
     if @user_recipe.save
       redirect_to my_wishlist_path
     end
-    raise
   end
 
   def my_history

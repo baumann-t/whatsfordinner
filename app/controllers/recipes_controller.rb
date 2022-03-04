@@ -8,13 +8,9 @@ class RecipesController < ApplicationController
 
   def search
     if params[:query] == ""
-      @recipes = Recipe.all
+      @user_recipes = UserRecipe.all
     else
-      @recipes = Recipe.search_by_title(params[:query])
-    end
-
-    @user_recipes = @recipes.map do |recipe|
-      Recipe.from_recipe_to_user_recipe(recipe)
+      @user_recipes = UserRecipe.recipe_title_search(params[:query])
     end
 
     respond_to do |format|
@@ -43,8 +39,6 @@ class RecipesController < ApplicationController
   end
 
   private
-
-
 
   def recipe_params
     params.require(:recipe).permit(:title, :description, :prep_time, :instructions, :ingredients, :category, :photo)

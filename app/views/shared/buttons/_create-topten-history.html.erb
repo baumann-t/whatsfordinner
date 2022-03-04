@@ -1,0 +1,17 @@
+<div class="container mb-2">
+  <div class="row justify-content-center container-bg-white">
+    <div class="col-4">
+      <h1 class="btn-top-10">Add recipe</h1>
+    </div>
+    <div class="col-4">
+      <% if @user.id == @current_user.id %>
+        <h1 class="btn-top-10"><%=link_to "Top ten", my_top_ten_path%> </h1>
+      <% else %>
+        <h1 class="btn-top-10"><%=link_to "Top ten", user_top_ten_path(@user)%> </h1>
+      <% end %>
+    </div>
+    <div class="col-4">
+      <h1 class="btn-top-10"><%=link_to "History", my_cookbook_history_path%></h1>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,9 @@
 <div class="container container-bg-white">
   <div class="cookbook-card-container">
     <% user_recipes.each do |user_recipe| %>
-    <% @recipe = user_recipe.recipe %>
-    <%= render 'shared/modal' %>
-      <div class="cookbook-recipe-card" data-toggle="modal" data-target="modalCenter">
+      <% @recipe = user_recipe.recipe %>
+      <%= render 'shared/modal' %>
+      <div class="cookbook-recipe-card" data-toggle="modal" data-target="#modal-<%= @recipe.id %>">
         <%= @recipe.title %>
         <%= cl_image_tag @recipe.photo.key, height: 100, width: 200, crop: :lfill  %>
         <p> Prep time: <%= @recipe.prep_time %></p>
@@ -13,3 +13,4 @@
       </div>
     <% end %>
   </div>
+</div>

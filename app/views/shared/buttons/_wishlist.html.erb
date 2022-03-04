@@ -1,3 +1,4 @@
-<%= simple_form_for(recipe, method: :get, url:"") do |f| %>
-    <%= f.submit "ADD TO WISHLIT"%>
+<%= simple_form_for(recipe, method: :get, url:'/my-wishlist/add') do |f| %>
+    <%= f.hidden_field :recipe_id, :value => recipe.id %>
+    <%= f.submit "ADD TO WISHLIST"%>
 <% end %>

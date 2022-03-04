@@ -4,11 +4,11 @@
       <% @recipe = user_recipe.recipe %>
       <%= render 'shared/modal', user_recipe: user_recipe %>
       <div class="cookbook-recipe-card" data-toggle="modal" data-target="#modal-<%= @recipe.id %>">
-        <%= @recipe.title %>
+        <h3><%= @recipe.title%></h3>
         <%= cl_image_tag @recipe.photo.key, height: 100, width: 200, crop: :lfill  %>
         <p> Prep time: <%= @recipe.prep_time %></p>
         <div class="container d-flex">
-          <p class="category"><%= user_recipe.recipe.category%></p>
+          <p class="btn-category"><%= user_recipe.recipe.category%></p>
         </div>
       </div>
     <% end %>

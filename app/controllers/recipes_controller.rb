@@ -7,7 +7,12 @@ class RecipesController < ApplicationController
   end
 
   def search
-    @recipes = Recipe.search_by_title(params[:query])
+    if params[:query] == ""
+      @recipes = Recipe.all
+    else
+      @recipes = Recipe.search_by_title(params[:query])
+    end
+
     @user_recipes = @recipes.map do |recipe|
       Recipe.from_recipe_to_user_recipe(recipe)
     end

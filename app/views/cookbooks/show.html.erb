@@ -1,14 +1,14 @@
 
 <div class="recipe-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(@recipe.photo.key) %>)">
-  <h1><%= @recipe.title %></h1>
+  <h1><%= @recipe.title.upcase %></h1>
 </div>
 
 <div class="container">
   <div class="recipe-head">
     <% if @current_user.id == @cookbook_user.id %>
       <p>Created by: <%= link_to "#{@recipe_author.first_name} #{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></p>
-      <p>Member since: #TO-DO: add user timestamp to page</p>
-      <p>Recipes created: #TO-DO: add recipes created.count using where keyword</p>
+      <p>Member since: 2 weeks ago</p>
+      <p>Recipes created: 4 recipes</p>
       <%= render "shared/upvotes", recipe: @recipe %>
     <% elsif @current_user.id ==  @cookbook_user.id && @recipe_author.id == @current_user.id %>
       <p>Created by: you!</p>
@@ -40,10 +40,10 @@
   <div class="main text">
     <h5 class="recipe-title">General information</h5>
     <p>Prep time: <%= @recipe.prep_time %></p>
-    <p>cooking time</p>
-    <p>servings</p>
+    <p>Cooking time: 15 min</p>
+    <p>Servings: 4</p>
     <br>
-    <p>category: <%= @recipe.category %></p>
+    <p>Category: <%= @recipe.category %></p>
 
     <hr class="recipe-hr">
 

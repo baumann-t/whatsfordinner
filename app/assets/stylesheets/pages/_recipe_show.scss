@@ -5,3 +5,33 @@
   flex-direction: column;
   align-items: center;
 }
+
+.recipe-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.recipe-hr {
+  width: 50%;
+  margin: 30px auto;
+  color: $primary;
+  opacity: 1;
+}
+
+.recipe-title {
+  color: $primary;
+}
+
+.comment-form {
+  text-align: center;
+}
+
+.comment-input {
+  height: 60px;
+  width: 300px;
+  margin: 15px;
+}
+
+.comment-list {
+  list-style: none;
+}

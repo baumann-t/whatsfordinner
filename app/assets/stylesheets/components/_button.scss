@@ -1,6 +1,27 @@
 .btn-search {
-  border-radius: 5px;
+  border-radius: 4px;
   color: white;
   width: 158px;
   box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.cooked-btn, .remove-btn, .btn-wishlist, .btn-add-cookbook {
+  background-color: $primary;
+  border-radius: 4px;
+  width: 170px;
+  height: 40px;
+  color: white;
+  margin: 5px;
+  border: none;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.btn-submit {
+  border-radius: 4px;
+  background-color: $primary;
+  color: white;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  width: 170px;
+  height: 40px;
+  border: none;
 }

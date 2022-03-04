@@ -1,5 +1,7 @@
-<%= simple_form_for(@user_recipe, method: :post, url: create_cookbook_path) do |f| %>
-  <%= f.input :user_comment %>
-   <%= hidden_field_tag 'recipe_id', params[:recipe_id] %>
-  <%= f.submit "Add to your cookbook!" %>
-<% end %>
+<div class="container text-center p-3">
+  <%= simple_form_for(@user_recipe, method: :post, url: create_cookbook_path) do |f| %>
+    <%= f.input :user_comment %>
+    <%= hidden_field_tag 'recipe_id', params[:recipe_id] %>
+    <%= f.submit "Add to my cookbook", class: "btn-add-cookbook" %>
+  <% end %>
+</div>

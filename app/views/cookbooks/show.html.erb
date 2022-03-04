@@ -1,22 +1,22 @@
 
 <div class="recipe-banner">
   <h1><%= @recipe.title %></h1>
-  <%#= cl_image_tag @recipe.photo.key, height: 375, width: 375, crop: :lfill  %>
+  <%= cl_image_tag @recipe.photo.key, height: 375, width: 375, crop: :lfill %>
 </div>
 
 <div class="container">
   <div class="recipe-head">
     <% if @current_user.id == @cookbook_user.id %>
-      <h4>Created by: <%= link_to "#{@recipe_author.first_name} #{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></h4>
-      <h4>Member since: #TO-DO: add user timestamp to page</h4>
-      <h4>Recipes created: #TO-DO: add recipes created.count using where keyword</h4>
+      <p>Created by: <%= link_to "#{@recipe_author.first_name} #{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></p>
+      <p>Member since: #TO-DO: add user timestamp to page</p>
+      <p>Recipes created: #TO-DO: add recipes created.count using where keyword</p>
       <%= render "shared/upvotes", recipe: @recipe %>
     <% elsif @current_user.id ==  @cookbook_user.id && @recipe_author.id == @current_user.id %>
-      <h4>Created by: you!</h4>
+      <p>Created by: you!</p>
       <%= render "shared/upvotes", recipe: @recipe %>
     <% else %>
       <%= render "shared/upvotes", recipe: @recipe %>
-      <h4><strong>Created by:</strong> <%= link_to "#{@recipe_author.first_name} #{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></h4>
+      <p><strong>Created by:</strong> <%= link_to "#{@recipe_author.first_name} #{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></p>
     <% end %>
   </div>
 
@@ -31,7 +31,7 @@
       <% elsif recipe_status == "wishlisted" %>
         <%= render "shared/buttons/cooked", recipe: @recipe, user: current_user %>
       <% else %>
-        <%= link_to "Add to cookbook", add_to_cookbook_path(@recipe) %>
+        <%= render "shared/buttons/add_to_cookbook", recipe: @recipe, user: current_user %>
         <%= render "shared/buttons/wishlist", recipe: @recipe, user: current_user %>
       <% end %>
     <% end %>
@@ -39,18 +39,31 @@
   <hr>
 
   <div class="main text">
-    <p class="recipe-title">Prep-time:</p>
-    <p><%= @recipe.prep_time %></p>
-    <p class="recipe-title">Category:</p>
-    <p><%= @recipe.category %></p>
-    <p class="recipe-title">Description:</p>
+    <h5 class="recipe-title">General information</h5>
+    <p>Prep time: <%= @recipe.prep_time %></p>
+    <p>cooking time</p>
+    <p>servings</p>
+    <br>
+    <p>category: <%= @recipe.category %></p>
+
+    <hr class="recipe-hr">
+
+    <h5 class="recipe-title">Description</h5>
     <p><%= @recipe.description %></p>
-    <p class="recipe-title">Ingredients:</p>
+
+    <hr class="recipe-hr">
+
+    <h5 class="recipe-title">Ingredients</h5>
     <p><%= @recipe.ingredients %></p>
-    <p class="recipe-title">Instructions:</p>
+
+    <hr class="recipe-hr">
+
+    <h5 class="recipe-title">Instructions</h5>
     <p><%= @recipe.instructions %></p>
   </div>
 </div>
+
+<hr class="recipe-hr">
 
 <div class="container">
   <% if @current_user.id == @cookbook_user.id %>

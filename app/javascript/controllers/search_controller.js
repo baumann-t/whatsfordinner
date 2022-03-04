@@ -4,15 +4,25 @@ import { csrfToken } from "@rails/ujs"
 export default class extends Controller {
   static targets = ["search", "recipesearch", "recipeinput", "recipelist", "usersearch", "userinput", "userlist"]
 
+  connect() {
+    this.searchRecipe()
+  }
+
   changeView() {
     const selection = this.searchTarget.selectedIndex
-    if (selection === 1) {
-      this.recipesearchTarget.style.visibility = "hidden";
-      this.usersearchTarget.style.visibility = "visible";
-    }
     if (selection === 0) {
-      this.recipesearchTarget.style.visibility = "visible";
-      this.usersearchTarget.style.visibility = "hidden";
+      this.recipesearchTarget.style.display = "unset";
+      this.usersearchTarget.style.display = "none";
+      this.recipelistTarget.innerHTML = ""
+      this.userlistTarget.innerHTML = ""
+      this.searchRecipe()
+    }
+    if (selection === 1) {
+      this.recipesearchTarget.style.display = "none";
+      this.usersearchTarget.style.display = "unset";
+      this.recipelistTarget.innerHTML = ""
+      this.userlistTarget.innerHTML = ""
+      this.searchUser()
     }
   }
 
@@ -22,11 +32,19 @@ export default class extends Controller {
       .then(response => response.text())
       .then((data) => {
         this.recipelistTarget.innerHTML = ""
+        this.userlistTarget.innerHTML = ""
         this.recipelistTarget.insertAdjacentHTML('beforeend' ,data)
       })
   }
 
   searchUser() {
-    console.log(this.inputTarget.value)
+    const url = `/users?query=${this.userinputTarget.value}`
+    fetch(url, { headers: { "Accept": "text/plain" } })
+      .then(response => response.text())
+      .then((data) => {
+        this.recipelistTarget.innerHTML = ""
+        this.userlistTarget.innerHTML = ""
+        this.userlistTarget.insertAdjacentHTML('beforeend' ,data)
+      })
   }
 }

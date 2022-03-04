@@ -1,0 +1,4 @@
+<h1> All users </h1>
+<% users.each do |user| %>
+  <li><%= link_to "#{user.first_name} - #{user.last_name}", user_cookbook_path(user)%></li>
+<% end %>

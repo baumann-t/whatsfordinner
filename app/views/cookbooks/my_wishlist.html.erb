@@ -1,0 +1,17 @@
+<div class="container container-bg-white">
+  <div class="cookbook-card-container">
+    <% @wishlist.each do |user_recipe| %>
+    <% recipe = user_recipe.recipe %>
+      <div class="cookbook-recipe-card">
+        <%= link_to cookbook_recipe_path(user_recipe) do%>
+          <%= recipe.title %>
+        <% end %>
+          <%= cl_image_tag recipe.photo.key, height: 100, width: 200, crop: :lfill if recipe.photo.attached? %>
+          <p> Prep time: <%= recipe.prep_time %></p>
+          <div class="container d-flex">
+            <p class="category"><%= user_recipe.recipe.category%></p>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>

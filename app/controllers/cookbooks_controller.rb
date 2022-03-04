@@ -16,11 +16,16 @@ class CookbooksController < ApplicationController
     @user_recipes = find_user_recipes(@user)
   end
 
-  def all_users
-    if params[:query].present?
-      @all_users = User.search_by_first_name_last_name(params[:query])
-    else
+  def user_search
+    if params[:query] == ""
       @all_users = User.all
+    else
+      @all_users = User.search_by_first_name_last_name(params[:query])
+    end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'shared/usersearch', locals: { users: @all_users }, formats: [:html] }
     end
   end
 
@@ -63,9 +68,26 @@ class CookbooksController < ApplicationController
     end
   end
 
+  def add_wishlist
+    @recipe = Recipe.find(params[:recipe][:recipe_id])
+    @user_recipe = UserRecipe.new(wishlisted: true)
+    @user_recipe.recipe = @recipe
+    @user_recipe.user = current_user
+
+    if @user_recipe.save
+      redirect_to my_wishlist_path
+    end
+    raise
+  end
+
   def my_history
     @user = current_user
     @cooking_history = @user.user_recipes.where(cooked: true)
+  end
+
+  def my_wishlist
+    @user = current_user
+    @wishlist = @user.user_recipes.where(wishlisted: true)
   end
 
   private

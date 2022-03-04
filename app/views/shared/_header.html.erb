@@ -6,7 +6,7 @@
     <p>The app allowing foodies to get inspired by what their network is cooking.</p>
 
     <div class="btn btn-primary btn-search">
-      SEARCH
+      <%= link_to "SEARCH", search_path%>
     </div>
   </div>
 <% end %>
@@ -16,8 +16,24 @@
     <h1>MY COOKBOOK</h1>
     <%= render 'shared/avatar' %>
   </div>
-  <%# elsif request.path == "/my-cookbook/" %>
-  <%# <div class="banner"> %>
-    <%# <h1>MY COOKBOOK"</h1> %>
-  <%# </div> %>
+<% elsif request.path == "/my-wishlist" %>
+  <div class="banner">
+    <h1>MY WISHLIST</h1>
+    <%= render 'shared/avatar' %>
+  </div>
+<% elsif request.path == "/my-cookbook/top-10" %>
+  <div class="banner">
+    <h1>MY TOP 10 RECIPES</h1>
+    <%= render 'shared/avatar' %>
+  </div>
+<% elsif request.path == "/my-cookbook/history" %>
+  <div class="banner">
+    <h1>MY COOKING HISTORY</h1>
+    <%= render 'shared/avatar' %>
+  </div>
+<% elsif request.path == "/recipes/new" %>
+  <div class="banner">
+    <h1>CREATE A RECIPE!</h1>
+    <%= render 'shared/avatar' %>
+  </div>
 <% end %>

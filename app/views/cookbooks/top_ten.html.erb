@@ -1,3 +1,5 @@
+<%= render "shared/buttons/create-topten-history" %>
+
 <% if @top_recipes.length > 0 %>
   <div class="container container-bg-white">
     <div class="cookbook-card-container">
@@ -27,7 +29,9 @@
     </div>
   </div>
 <% else %>
-  <div class= "d-flex justify-content-center pt-5">
-    <h1 style="color: #2B9348">No recipes upvoted yet!</h1>
+  <div class= "container text-center py-3">
+    <p>No recipes upvoted yet!</p>
+    <br>
+    <%= image_tag "burger.svg", class: "empty-top-img" %>
   </div>
 <% end %>

@@ -59,12 +59,14 @@ end
 puts "creating user recipes..."
 
 50.times do
+  # user = User.all.sample
+  # random_offset_user = rand(User.count)
+  # user = User.offset(random_offset_user).first
 
-  random_offset_user = rand(User.count)
-  user = User.offset(random_offset_user).first
-
-  random_offset_recipe = rand(Recipe.count)
-  recipe = Recipe.offset(random_offset).first
+  # random_offset_recipe = rand(Recipe.count)
+  # recipe = Recipe.offset(random_offset).first
+  user = User.all.sample
+  # recipe = Recipe.all.to_a.sample
 
   recipe = Recipe.all.to_a.sample
   user_recipe = UserRecipe.new(

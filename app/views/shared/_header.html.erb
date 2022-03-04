@@ -36,4 +36,15 @@
     <h1>ADD A RECIPE</h1>
     <%= render 'shared/avatar' %>
   </div>
+<% elsif request.path.starts_with?("/cookbooks/users/") %>
+  <div class="banner">
+    <% user = User.find(request.path.split('/').last) %>
+    <h1><%= "#{user.first_name.capitalize} #{user.last_name.capitalize}'s Cookbook" %></h1>
+    <%= render 'shared/avatar' %>
+  </div>
+<% elsif request.path == "/search" %>
+  <div class="banner">
+    <h1>Search</h1>
+    <%= render 'shared/avatar' %>
+  </div>
 <% end %>

@@ -2,22 +2,38 @@
 <% if @cooking_history.length > 0 %>
 
 <%# Cards start here %>
+
+
 <div class="container">
-  <div class="cookbook-history-card try d-flex">
-    <% @cooking_history.each do |user_recipe| %>
-      <div class="col-4 row align-items-center">
-        <%= cl_image_tag user_recipe.recipe.photo.key, height: 100, width: 100, crop: :lfill  %>
+
+  <% @cooking_history.each do |user_recipe| %>
+    <div class="container" style="border:solid">
+      <div class="d-flex justify-content-around my-2 recipe-title">
+        <%= link_to cookbook_recipe_path(user_recipe) do%>
+          <%= user_recipe.recipe.title %>
+        <% end %>
       </div>
-      <div class="row col-8">
-        <div class="row">
-          <%= link_to cookbook_recipe_path(user_recipe) do%>
-            <%= user_recipe.recipe.title %>
-          <% end %>
-          <p><%= user_recipe.recipe.description[0, 50] %>... <%= link_to "See\u00A0more", "/", class:"test" %></p>
+
+      <div class="container d-flex">
+
+        <div>
+          <%= cl_image_tag user_recipe.recipe.photo.key, height: 130, width: 130, crop: :lfill  %>
+        </div>
+
+      <div class="container">
+          <div>
+            <%= user_recipe.recipe.description[0, 50] %>... <%= link_to "See\u00A0more", "/", class:"sml-a-tag" %>
+          </div>
+
+          <div class="container d-flex p-0">
+            <p class="btn-category mx-0"><%= user_recipe.recipe.category %></p>
+          </div>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+    <p></p>
+  <% end %>
+
 </div>
 
 

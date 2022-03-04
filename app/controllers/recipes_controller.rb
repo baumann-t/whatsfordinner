@@ -8,9 +8,15 @@ class RecipesController < ApplicationController
 
   def search
     if params[:query] == ""
-      @user_recipes = UserRecipe.all
+      @recipes = Recipe.all
+      # @user_recipes = UserRecipe.all
     else
-      @user_recipes = UserRecipe.recipe_title_search(params[:query])
+      # @user_recipes = UserRecipe.recipe_title_search(params[:query])
+      @recipes = Recipe.search_by_title(params[:query])
+    end
+
+    @user_recipes = @recipes.map do |recipe|
+      Recipe.from_recipe_to_user_recipe(recipe)
     end
 
     respond_to do |format|

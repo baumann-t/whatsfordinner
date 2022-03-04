@@ -1,7 +1,7 @@
 <div class="container mb-2">
   <div class="row justify-content-center container-bg-white">
     <div class="col-4">
-      <h1 class="btn-top-10">Add recipe</h1>
+      <h1 class="btn-top-10"><%= link_to "Add recipe", recipes_new_path %> </h1>
     </div>
     <div class="col-4">
       <% if @user.id == @current_user.id %>

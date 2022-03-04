@@ -12,28 +12,28 @@
 <% end %>
 
 <% if request.path == "/my-cookbook" %>
-  <div class="banner">
+  <div class="banner-my-cookbook">
     <h1>MY COOKBOOK</h1>
     <%= render 'shared/avatar' %>
   </div>
 <% elsif request.path == "/my-wishlist" %>
-  <div class="banner">
+  <div class="banner-my-cookbook">
     <h1>MY WISHLIST</h1>
     <%= render 'shared/avatar' %>
   </div>
 <% elsif request.path == "/my-cookbook/top-10" %>
-  <div class="banner">
+  <div class="banner-my-cookbook">
     <h1>MY TOP 10 RECIPES</h1>
     <%= render 'shared/avatar' %>
   </div>
 <% elsif request.path == "/my-cookbook/history" %>
-  <div class="banner">
+  <div class="banner-my-cookbook">
     <h1>MY COOKING HISTORY</h1>
     <%= render 'shared/avatar' %>
   </div>
 <% elsif request.path == "/recipes/new" %>
-  <div class="banner">
-    <h1>CREATE A RECIPE!</h1>
+  <div class="banner-my-cookbook">
+    <h1>ADD A RECIPE</h1>
     <%= render 'shared/avatar' %>
   </div>
 <% end %>

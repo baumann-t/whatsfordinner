@@ -17,7 +17,11 @@ class CookbooksController < ApplicationController
   end
 
   def user_search
-    @all_users = User.search_by_first_name_last_name(params[:query])
+    if params[:query] == ""
+      @all_users = User.all
+    else
+      @all_users = User.search_by_first_name_last_name(params[:query])
+    end
 
     respond_to do |format|
       format.html # Follow regular flow of Rails

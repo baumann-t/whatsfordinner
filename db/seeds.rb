@@ -71,16 +71,25 @@ puts "creating user recipes..."
     cooked: [false, true].sample,
     date_cooked: Faker::Date.in_date_period(year: 2018, month: 2),
     wishlisted: [false, true].sample,
-    user_comment: ["Wow so good!", "Still have to try this one!", "I eat this at least once a week", "Easy recipe for week night dinner"].sample
+    user_comment: ["Wow so good!", "Still have to try this one!", "I eat this at least once a week",
+                   "Easy recipe for week night dinner"].sample
   )
   user_recipe.user = user
   user_recipe.recipe = recipe
   user_recipe.save!
 end
 
-puts "creating upvotes"
+puts "creating upvotes and comments"
 50.times do
-  user = User.all.sampl
-end
+  user = User.all.sample
+  recipe = Recipe.all.sample
+  content = ["So nice!", "I'll try that next week!", "Added to my cookbook right away!", "Are you sure we need that much sugar?", "Can I replace the wine with beef stock?", "You should go to Top Chef!"].sample
 
-puts "creating comments!"
+  comment = Comment.new(content: content)
+  comment.user = user
+  comment.recipe = recipe
+
+  upvote = Upvote.new
+  upvote.user = user
+  upvote.recipe = recipe
+end

@@ -1,7 +1,6 @@
 
-<div class="recipe-banner">
+<div class="recipe-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(@recipe.photo.key) %>)">
   <h1><%= @recipe.title %></h1>
-  <%= cl_image_tag @recipe.photo.key, height: 375, width: 375, crop: :lfill %>
 </div>
 
 <div class="container">

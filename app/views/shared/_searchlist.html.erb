@@ -2,7 +2,7 @@
   <div class="cookbook-card-container">
     <% user_recipes.each do |user_recipe| %>
       <% @recipe = user_recipe.recipe %>
-      <%= render 'shared/modal' %>
+      <%= render 'shared/modal', user_recipe: user_recipe %>
       <div class="cookbook-recipe-card" data-toggle="modal" data-target="#modal-<%= @recipe.id %>">
         <%= @recipe.title %>
         <%= cl_image_tag @recipe.photo.key, height: 100, width: 200, crop: :lfill  %>

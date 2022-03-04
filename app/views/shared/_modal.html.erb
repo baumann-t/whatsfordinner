@@ -13,8 +13,8 @@
         <p><%= @recipe.description %></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-top-10" data-dismiss="modal">Add to Wishlist</button>
-        <button type="button" class="btn btn-top-10">See more</button>
+        <button type="button" class="btn btn-top-10" data-dismiss="modal"><%= render 'shared/buttons/wishlist', recipe: @recipe %></button>
+        <button type="button" class="btn btn-top-10"><%= link_to "Show more", cookbook_recipe_path(user_recipe)%></button>
       </div>
     </div>
   </div>

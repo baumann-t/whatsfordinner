@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :followers, class_name: 'Relation', foreign_key: 'follower_id', dependent: :destroy
   has_many :followees, class_name: 'Relation', foreign_key: 'followee_id', dependent: :destroy
+  has_many :feed_items
 
   include PgSearch::Model
   pg_search_scope :search_by_first_name_last_name,

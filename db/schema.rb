@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_05_160731) do
+ActiveRecord::Schema.define(version: 2022_03_05_164101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(version: 2022_03_05_160731) do
     t.bigint "recipe_id"
     t.index ["recipe_id"], name: "index_comments_on_recipe_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "feed_items", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "user_recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_feed_items_on_user_id"
+    t.index ["user_recipe_id"], name: "index_feed_items_on_user_recipe_id"
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
@@ -136,6 +147,8 @@ ActiveRecord::Schema.define(version: 2022_03_05_160731) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "recipes"
   add_foreign_key "comments", "users"
+  add_foreign_key "feed_items", "user_recipes"
+  add_foreign_key "feed_items", "users"
   add_foreign_key "recipes", "users"
   add_foreign_key "relations", "users", column: "followee_id"
   add_foreign_key "relations", "users", column: "follower_id"

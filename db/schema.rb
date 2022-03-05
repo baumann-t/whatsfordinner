@@ -106,15 +106,6 @@ ActiveRecord::Schema.define(version: 2022_03_05_164101) do
     t.index ["user_id"], name: "index_upvotes_on_user_id"
   end
 
-  create_table "user_friends", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "friend_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["friend_id"], name: "index_user_friends_on_friend_id"
-    t.index ["user_id"], name: "index_user_friends_on_user_id"
-  end
-
   create_table "user_recipes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "recipe_id", null: false
@@ -154,8 +145,6 @@ ActiveRecord::Schema.define(version: 2022_03_05_164101) do
   add_foreign_key "relations", "users", column: "follower_id"
   add_foreign_key "upvotes", "recipes"
   add_foreign_key "upvotes", "users"
-  add_foreign_key "user_friends", "users"
-  add_foreign_key "user_friends", "users", column: "friend_id"
   add_foreign_key "user_recipes", "recipes"
   add_foreign_key "user_recipes", "users"
 end

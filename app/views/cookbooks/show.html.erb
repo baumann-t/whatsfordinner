@@ -67,12 +67,12 @@
 <div class="container">
   <% if @current_user.id == @cookbook_user.id %>
     <h4>Your comment on the recipe:</strong> <%= @user_recipe.user_comment %></h4>
-    <%= render "shared/comments", recipe: @recipe %>
+    <%= render "shared/comments", user_recipe: @user_recipe %>
   <% elsif @current_user.id ==  @cookbook_user.id && @recipe_author.id == @current_user.id %>
     <h4>Your comment on the recipe:</strong> <%= @user_recipe.user_comment %></h4>
-    <%= render "shared/comments", recipe: @recipe %>
+    <%= render "shared/comments", user_recipe: @user_recipe %>
   <% else %>
     <h4><strong><%= @cookbook_user.first_name%> comment on :</strong> <%= @user_recipe.user_comment %></h4>
-    <%= render "shared/comments", recipe: @recipe %>
+    <%= render "shared/comments", user_recipe: @user_recipe %>
   <% end %>
 </div>

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get '/cookbooks/users/:user_id/top-10', to: 'cookbooks#top_ten', as: "user_top_ten"
   get '/users/:user_id/recipes/:id', to: 'cookbooks#show'
   get '/recipes/:id/upvotes', to: 'upvotes#create', as: "upvote_recipe"
-  post '/recipes/:id/comments', to: 'comments#create', as: "comment_recipe"
+  post '/cookbook/:user_recipe/comments', to: 'comments#create', as: "comment_recipe"
   patch '/my-cookbook/:recipe_id', to: 'cookbooks#mark_cooked', as: "mark_as_cooked"
   get '/recipes/:id', to: 'recipes#show', as: 'recipe'
   get '/recipes', to: 'recipes#search'

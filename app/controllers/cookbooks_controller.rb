@@ -39,6 +39,7 @@ class CookbooksController < ApplicationController
     @user_recipe.user = current_user
 
     if @user_recipe.save
+      FeedItem.create(user_id: current_user.id, user_recipe_id: @user_recipe.id, item_type: "added")
       redirect_to my_cookbook_path
     else
       render 'cookbooks/add'

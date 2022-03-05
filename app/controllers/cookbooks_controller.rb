@@ -39,6 +39,7 @@ class CookbooksController < ApplicationController
     @user_recipe.user = current_user
 
     if @user_recipe.save
+      FeedItem.create(user_id: current_user.id, user_recipe_id: @user_recipe.id, item_type: "added")
       redirect_to my_cookbook_path
     else
       render 'cookbooks/add'
@@ -64,6 +65,7 @@ class CookbooksController < ApplicationController
     @user_recipe = find_user_recipe
     @user_recipe.mark_as_cooked!
     if @user_recipe.save!
+      FeedItem.create(item_type: "cooked", user_id: current_user.id, user_recipe_id: @user_recipe.id)
       redirect_to(my_cookbook_path)
     end
   end
@@ -75,6 +77,7 @@ class CookbooksController < ApplicationController
     @user_recipe.user = current_user
 
     if @user_recipe.save
+      FeedItem.create(item_type: "wishlisted", user_id: current_user.id, user_recipe_id: @user_recipe.id)
       redirect_to my_wishlist_path
     end
   end

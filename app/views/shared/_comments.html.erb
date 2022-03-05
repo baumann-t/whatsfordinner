@@ -1,4 +1,4 @@
-<div data-controller="comments" data-comments-recipe-value=<%=@recipe.id%>>
+<div data-controller="comments" data-comments-recipe-value=<%=@recipe.id%> data-comments-userecipe-value=<%=@user_recipe.id%>>
   <h4 data-comments-target="intro">
       <% if @recipe.comments.length == 0 %>
         <%= "There is no comments yet!" %>

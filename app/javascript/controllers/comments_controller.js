@@ -3,11 +3,11 @@ import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
   static targets = ["list", "form", "input", "field", "intro"]
-  static values = {recipe: Number}
+  static values = {recipe: Number, userecipe: Number}
 
   add(event) {
     event.preventDefault()
-    const url = `/recipes/${this.recipeValue}/comments`
+    const url = `/cookbook/${this.userecipeValue}/comments`
 
     fetch(url, {
       method: "POST",

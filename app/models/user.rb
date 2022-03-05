@@ -25,10 +25,9 @@ class User < ApplicationRecord
     Relation.create(follower: self, followee: user_to_follow)
   end
 
-  def list_followers
+  def list_followees
     Relation.where(follower: self).map do |relation|
-      followee_id = relation.followee_id
-      User.find(followee_id)
+      relation.followee_id
     end
   end
 end

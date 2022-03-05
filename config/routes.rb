@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   get '/recipes/:id', to: 'recipes#details'
   get '/my-wishlist', to: 'cookbooks#my_wishlist', as: "my_wishlist"
   get '/my-wishlist/add', to: 'cookbooks#add_wishlist'
+  get '/my-feed', to: 'feed#view'
 end

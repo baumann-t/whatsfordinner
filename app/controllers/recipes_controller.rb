@@ -8,19 +8,24 @@ class RecipesController < ApplicationController
 
   def search
     if params[:query] == ""
-      @recipes = Recipe.all
-      # @user_recipes = UserRecipe.all
+      @user_recipes = UserRecipe.all
     else
-      # @user_recipes = UserRecipe.recipe_title_search(params[:query])
-      @recipes = Recipe.search_by_title(params[:query])
-    end
+      @user_recipes_result = UserRecipe.recipe_title_search(params[:query])
 
-    @user_recipes = @recipes.map do |recipe|
-      Recipe.from_recipe_to_user_recipe(recipe)
+      ids = []
+      @user_recipes = []
+
+      @user_recipes_result.each do |user_recipe|
+        recipe_id = user_recipe.recipe.id
+        if ids.exclude?(recipe_id)
+          @user_recipes.push(user_recipe)
+          ids.push(recipe_id)
+        end
+      end
     end
 
     respond_to do |format|
-      format.html # Follow regular flow of Rails
+      format.html
       format.text { render partial: 'shared/searchlist', locals: { user_recipes: @user_recipes }, formats: [:html] }
     end
   end

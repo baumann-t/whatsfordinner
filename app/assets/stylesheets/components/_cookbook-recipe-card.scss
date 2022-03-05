@@ -15,14 +15,14 @@
   margin-bottom: 10px;
 }
 
-.cookbook-recipe-card > a {
-
+.cookbook-recipe-card h3 {
   color: black;
   text-decoration: none;
   padding: 15px;
   display: flex;
   flex-direction: column;
   font-weight: bold;
+  margin-bottom: 0;
 }
 
 .cookbook-recipe-card > img {
@@ -35,8 +35,13 @@
 .cookbook-recipe-card > p {
   margin-left: 20px;
   margin-top: 10px;
+  margin-bottom: 0px;
 }
 
 .container-bg-white{
   background-color: white;
+}
+
+.cookbook-recipe-card a {
+  text-decoration: none;
 }

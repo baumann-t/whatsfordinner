@@ -1,21 +1,5 @@
-<div class="container">
-  <div class="homepage-cards">
-    <div class="info-card">
-      <%= image_tag "groceries.svg" %>
-      <h4>Your cookbook</h4>
-      <p>Add recipes to your personal cookbook.</p>
-    </div>
-
-    <div class="info-card">
-      <%= image_tag "people.svg" %>
-      <h4>Get recipes from your friends</h4>
-      <p>Follow your friends on the platform and browse their own cookbook.</p>
-    </div>
-
-    <div class="info-card">
-      <%= image_tag "web_search.svg" %>
-      <h4>Find what you want</h4>
-      <p>Filter and search for specific recipes.</p>
-    </div>
-  </div>
-</div>
+<% if user_signed_in? %>
+  <%= render 'shared/newsfeed' %>
+<% else %>
+  <%= render 'shared/visitor_homepage' %>
+<% end %>

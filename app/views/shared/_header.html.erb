@@ -1,4 +1,4 @@
-<% if request.path == "/" %>
+<% if request.path == "/" && !user_signed_in?%>
   <div class="homepage-banner">
     <%= render 'shared/avatar' %>
 
@@ -11,7 +11,12 @@
   </div>
 <% end %>
 
-<% if request.path == "/my-cookbook" %>
+<% if request.path == "/" && user_signed_in? %>
+  <div class="banner-my-cookbook">
+    <h1>MY NEWSFEED</h1>
+    <%= render 'shared/avatar' %>
+  </div>
+<% elsif request.path == "/my-cookbook" %>
   <div class="banner-my-cookbook">
     <h1>MY COOKBOOK</h1>
     <%= render 'shared/avatar' %>

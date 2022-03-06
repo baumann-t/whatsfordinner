@@ -1,7 +1,11 @@
 <div class="d-flex" data-controller="upvotes" data-upvotes-recipe-value=<%=@recipe.id%>>
-  <h4 data-upvotes-target="count"><%= pluralize @recipe.upvotes.count, "upvote" %></h4>
   <% upvote = Upvote.where(user_id: current_user.id, recipe_id: @recipe.id).first %>
   <% if !upvote %>
-    <a data-upvotes-target="submit" data-action="click->upvotes#vote"> upvote </a>
+    <a data-upvotes-target="submit" data-action="click->upvotes#vote"> <i class="fa-regular fa-heart" style="color: #2B9348"></i> </a>
+    <a data-upvotes-target="remove" data-action="click->upvotes#unvote" style="display:none"> <i class="fa-solid fa-heart" style="color: #2B9348"></i> </a>
+  <% else %>
+    <a data-upvotes-target="submit" data-action="click->upvotes#vote" style="display:none"> <i class="fa-regular fa-heart" style="color: #2B9348"></i> </a>
+    <a data-upvotes-target="remove" data-action="click->upvotes#unvote" > <i class="fa-solid fa-heart" style="color: #2B9348"></i> </a>
   <% end %>
+  <h4 data-upvotes-target="count"><%= pluralize @recipe.upvotes.count, 'like'%></h4>
 </div>

@@ -7,4 +7,6 @@ class PagesController < ApplicationController
       @feed_items = FeedItem.where(user_id: my_followees).order(created_at: :desc)
     end
   end
+
+  def search; end
 end

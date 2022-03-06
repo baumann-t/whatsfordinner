@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   get '/my-wishlist', to: 'cookbooks#my_wishlist', as: "my_wishlist"
   get '/my-wishlist/add', to: 'cookbooks#add_wishlist'
   get '/my-feed', to: 'feed#view'
+  get '/cookbooks/users/:user_id/follow', to: 'relations#follow', as: "follow_user"
 end

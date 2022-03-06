@@ -6,6 +6,13 @@
     <div class="col-4">
       <h1 class="btn-top-10"><%=link_to "Top ten", user_top_ten_path(@user)%> </h1>
     </div>
+    <div class="col-4">
+      <% if current_user.follow?(@user) %>
+        <h1 class="btn-top-10-inactive">Followed!</h1>
+      <% else %>
+        <h1 class="btn-top-10"><%=link_to "Follow!", follow_user_path(@user)%> </h1>
+      <% end %>
+    </div>
   </div>
 </div>
 <%= render "shared/cookbook", user: @user, user_recipes: @user_recipes %>

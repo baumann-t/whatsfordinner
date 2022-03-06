@@ -30,4 +30,8 @@ class User < ApplicationRecord
       relation.followee_id
     end
   end
+
+  def follow?(user)
+    !Relation.where(follower_id: self.id, followee_id: user.id).empty?
+  end
 end

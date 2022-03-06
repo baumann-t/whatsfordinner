@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   get '/my-wishlist/add', to: 'cookbooks#add_wishlist'
   get '/my-feed', to: 'feed#view'
   get '/cookbooks/users/:user_id/follow', to: 'relations#follow', as: "follow_user"
+  delete '/cookbooks/users/:user_id/follow', to: 'relations#unfollow', as: "unfollow_user"
 end

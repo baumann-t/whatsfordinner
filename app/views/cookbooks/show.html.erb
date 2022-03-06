@@ -6,10 +6,10 @@
 <div class="container">
   <div class="recipe-head">
     <% if @current_user.id == @cookbook_user.id %>
+      <%= render "shared/upvotes", recipe: @recipe %>
       <p>Created by: <%= link_to "#{@recipe_author.first_name} #{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></p>
       <p>Member since: 2 weeks ago</p>
       <p>Recipes created: 4 recipes</p>
-      <%= render "shared/upvotes", recipe: @recipe %>
     <% elsif @current_user.id ==  @cookbook_user.id && @recipe_author.id == @current_user.id %>
       <p>Created by: you!</p>
       <%= render "shared/upvotes", recipe: @recipe %>

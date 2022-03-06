@@ -14,6 +14,18 @@ class UpvotesController < ApplicationController
     end
   end
 
+  def delete
+    @upvote = Upvote.where(user_id: current_user.id, recipe_id: params[:id]).first
+    @recipe = Recipe.find(params[:id])
+    if @upvote.delete
+      @recipe.upvotes_tracker -= 1
+      respond_to do |format|
+        upvote = { upvote_count: @recipe.upvotes.count }
+        format.json { render :json => upvote }
+      end
+    end
+  end
+
   def upvote_tracker(recipe)
     if recipe.upvotes_tracker.nil?
       recipe.upvotes_tracker = 1

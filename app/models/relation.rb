@@ -3,5 +3,4 @@ class Relation < ApplicationRecord
   belongs_to :followee, class_name: 'User' #The person that is followed
 
   validates :follower, uniqueness: { scope: :followee }
-
 end

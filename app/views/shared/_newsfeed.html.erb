@@ -1,0 +1,42 @@
+<div class="container container-bg-white">
+  <div class="cookbook-card-container">
+
+    <% @feed_items.each do |item| %>
+
+      <div class="cookbook-recipe-card">
+
+        <% user_recipe= UserRecipe.find(item.user_recipe_id)%>
+        <% recipe= Recipe.find(user_recipe.recipe_id)%>
+        <% recipe_owner= User.find(recipe.user_id)%>
+        <% user= User.find(item.user_id)%>
+
+        <% if item.item_type == "commented" %>
+          <%= "#{user.first_name} commented on #{recipe_owner.first_name}'s recipe: #{recipe.title}" %>
+        <% end %>
+
+        <% if item.item_type == "liked" %>
+          <%= "#{user.first_name} liked #{recipe_owner.first_name}'s recipe: #{recipe.title}" %>
+        <% end %>
+
+        <% if item.item_type == "wishlisted" %>
+          <%= "#{user.first_name} added #{recipe_owner.first_name}'s recipe to his wishlist: #{recipe.title}" %>
+        <% end %>
+
+        <% if item.item_type == "added" %>
+          <%= "#{user.first_name} added #{recipe_owner.first_name}'s recipe to his cookbook: #{recipe.title}" %>
+        <% end %>
+
+        <% if item.item_type == "cooked" %>
+          <%= "#{user.first_name} cooked #{recipe_owner.first_name}'s recipe: #{recipe.title}" %>
+        <% end %>
+
+        <br>
+        <div class="d-flex">
+          <%= link_to "View recipe", cookbook_recipe_path(user_recipe) %>
+          <%= item.creation_date %>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>

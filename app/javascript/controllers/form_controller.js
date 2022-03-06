@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["desc","prep","instructions","ingredients","category","photo"]
+  static targets = ["desc","prep","cooking", "servings","instructions","ingredients","category","photo"]
 
   connect() {
     console.log("connected")
@@ -19,16 +19,28 @@ export default class extends Controller {
     this.prepTarget.scrollIntoView()
   }
 
-  preventInstructions (event) {
-    console.log(this.instructionsTarget)
+  preventCooking (event) {
+    console.log(this.cookingTarget)
     event.preventDefault()
-    this.instructionsTarget.scrollIntoView()
+    this.cookingTarget.scrollIntoView()
+  }
+
+  preventServings (event) {
+    console.log(this.servingsTarget)
+    event.preventDefault()
+    this.servingsTarget.scrollIntoView()
   }
 
   preventIngredients (event) {
     console.log(this.ingredientsTarget)
     event.preventDefault()
     this.ingredientsTarget.scrollIntoView()
+  }
+
+  preventInstructions (event) {
+    console.log(this.instructionsTarget)
+    event.preventDefault()
+    this.instructionsTarget.scrollIntoView()
   }
 
   preventCategory (event) {

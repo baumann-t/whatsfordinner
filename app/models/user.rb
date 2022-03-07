@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  include PgSearch::Model
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -12,14 +11,17 @@ class User < ApplicationRecord
   has_many :followees, class_name: 'Relation', foreign_key: 'followee_id', dependent: :destroy
   has_many :feed_items
 
-  include PgSearch::Model
+  validates :email, uniqueness: true, presence: true
+  validates :password, :first_name, :last_name, presence: true
+
+  has_one_attached :photo
+
   pg_search_scope :search_by_first_name_last_name,
     against: [ :first_name, :last_name ],
     using: {
       tsearch: { prefix: true }
     }
-  validates :email, uniqueness: true, presence: true
-  validates :password, :first_name, :last_name, presence: true
+
 
   def follow(user_to_follow)
     Relation.create(follower: self, followee: user_to_follow)

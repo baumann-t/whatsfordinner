@@ -7,6 +7,7 @@
   flex-direction: column;
   align-items: center;
   padding: 10px;
+  align-items: center;
 }
 
 .homepage-banner > h1 {
@@ -34,7 +35,7 @@
 .banner-my-cookbook {
   background-size: cover;
   background-position: center;
-  height: 120px;
+  height: 150px;
   background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('lime.jpeg');
   display: flex;
   flex-direction: column-reverse;

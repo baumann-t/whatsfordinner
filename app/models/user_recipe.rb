@@ -2,7 +2,7 @@ class UserRecipe < ApplicationRecord
   include PgSearch::Model
   belongs_to :user
   belongs_to :recipe
-  has_many :feed_items
+  has_many :feed_items, dependent: :destroy
   has_many :comments, dependent: :destroy
 
   pg_search_scope :recipe_title_search,

@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = ["list", "form", "input", "field", "intro"]
+  static targets = ["list", "form", "input", "field", "intro", "id"]
   static values = {recipe: Number, userecipe: Number}
 
   add(event) {
@@ -11,14 +11,34 @@ export default class extends Controller {
 
     fetch(url, {
       method: "POST",
-      headers: { "Accept": "application/json", "X-CSRF-Token": csrfToken() },
+      headers: { "Accept": "text/plain", "X-CSRF-Token": csrfToken() },
       body: new FormData(this.inputTarget)
+    })
+    .then(response => response.text())
+    .then((data) => {
+      this.listTarget.insertAdjacentHTML('beforeend', data)
+      this.fieldTarget.value = ' '
+      this.introTarget.innerHTML = "Comments:"
+    })
+  }
+
+  delete(event) {
+    event.preventDefault()
+    console.log(this.idTarget.innerHTML);
+    const url= `/cookbook/${this.userecipeValue}/comments/${this.idTarget.innerHTML}`
+
+    fetch(url, {
+      method: "DELETE",
+      headers: { "Accept": "application/json", "X-CSRF-Token": csrfToken() }
     })
     .then(response => response.json())
     .then((data) => {
-      this.listTarget.insertAdjacentHTML('beforeend', data.comment)
-      this.fieldTarget.value = ' '
-      this.introTarget.innerHTML = "Comments:"
+      const comment = `${data.delete}-comment`
+      const hr = `${data.delete}-hr`
+      const elementComment = document.getElementById(comment)
+      const hrComment = document.getElementById(hr)
+      elementComment.remove()
+      hrComment.remove()
     })
   }
 

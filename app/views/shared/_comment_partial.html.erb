@@ -1,0 +1,10 @@
+<div class="comment-container" id="<%=comment.id%>-comment">
+  <li class="comment-list"> <%= comment.user.first_name %> - <em><%= comment.content %></em></li>
+  <% if comment.user_id == current_user.id %>
+    <%= link_to delete_comment_recipe_path(@recipe, comment), class:"delete-comment", data: { controller: 'comments', action: 'comments#delete' } do %>
+      <i class="fa-solid fa-trash-can" style="color:#2B9348"></i>
+      <p style="display:none" data-comments-target="id"><%= comment.id %> </p>
+    <% end %>
+  <% end %>
+</div>
+<hr id="<%=comment.id%>-hr">

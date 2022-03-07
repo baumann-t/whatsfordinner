@@ -50,11 +50,6 @@ lea = User.new(
 )
 puts lea.first_name
 lea.save!
-# ----- CREATE USER END -----
-
-
-# ----- Create Recipe end -----
-# ----- Creating Users
 
 puts "Creating users"
 
@@ -78,8 +73,6 @@ huang = User.new(
   last_name: "Shewei",
   location: "Montreal"
 )
-
-
 
 # ----- CREATE RECIPE START -----
 shrimp_pasta = Recipe.new(
@@ -154,12 +147,14 @@ baked_salmon = Recipe.new(
   serving_size: "4 servings",
   upvotes_tracker: 52
 )
+
 image_file = URI.open('https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/12/20/0/FNK_Baked-Salmon_H_s4x3.jpg.rend.hgtvcom.826.620.suffix/1576855635102.jpeg')
 baked_salmon.photo.attach(io: image_file, filename: baked_salmon.title, content_type: 'image/png')
 baked_salmon.user = lea
 user_recipe = UserRecipe.new(
   user: seb, recipe: baked_salmon
 )
+
 baked_salmon.save!
 user_recipe.save!
 puts baked_salmon.title

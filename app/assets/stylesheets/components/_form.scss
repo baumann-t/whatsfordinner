@@ -1,11 +1,19 @@
-.form-control:focus {
-  border: 1px solid $secondary;
+.form-control {
+  outline-color: $primary;
 }
 
 .search-form > input {
   outline-color: $primary;
 }
 
-.comment-input {
+.comment-input, .form-inputs:focus {
   outline-color: $primary;
+}
+
+.form-control:focus {
+  color: #0E0000;
+  background-color: #F4F4F4;
+  border-color: $primary;
+  outline-color: $primary;
+  box-shadow: none;
 }

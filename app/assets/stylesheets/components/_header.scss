@@ -2,11 +2,12 @@
   background-size: cover;
   background-position: center;
   height: 230px;
-  background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('pexels-lukas-349609.jpeg');
+  background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('homepage-img.webp');
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px;
+  align-items: center;
 }
 
 .homepage-banner > h1 {
@@ -34,7 +35,7 @@
 .banner-my-cookbook {
   background-size: cover;
   background-position: center;
-  height: 120px;
+  height: 150px;
   background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('lime.jpeg');
   display: flex;
   flex-direction: column-reverse;
@@ -46,7 +47,7 @@
 .banner-user {
   background-size: cover;
   background-position: center;
-  height: 120px;
+  height: 150px;
   background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('herbs.jpeg');
   display: flex;
   flex-direction: column-reverse;
@@ -66,7 +67,7 @@
 .banner-search {
   background-size: cover;
   background-position: center;
-  height: 120px;
+  height: 150px;
   background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('lime.jpeg');
   display: flex;
   flex-direction: column-reverse;
@@ -77,4 +78,20 @@
 
 .banner-search > .login {
   align-self: flex-end;
+}
+
+.banner-profile {
+  background-size: cover;
+  background-position: center;
+  height: 100px;
+  background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('lime.jpeg');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.back-button {
+  color:"white";
+  font-size: 30px;
 }

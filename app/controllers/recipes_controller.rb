@@ -8,17 +8,19 @@ class RecipesController < ApplicationController
 
   def search
     if params[:query] == ""
-      @user_recipes = UserRecipe.all
+      @user_recipes_result = UserRecipe.all
     else
       @user_recipes_result = UserRecipe.recipe_title_search(params[:query])
-      ids = []
-      @user_recipes = []
-      @user_recipes_result.each do |user_recipe|
-        recipe_id = user_recipe.recipe.id
-        if ids.exclude?(recipe_id)
-          @user_recipes.push(user_recipe)
-          ids.push(recipe_id)
-        end
+    end
+
+    ids = []
+    @user_recipes = []
+
+    @user_recipes_result.each do |user_recipe|
+      recipe_id = user_recipe.recipe.id
+      if ids.exclude?(recipe_id)
+        @user_recipes.push(user_recipe)
+        ids.push(recipe_id)
       end
     end
     respond_to do |format|

@@ -16,7 +16,7 @@ export default class extends Controller {
     .then((data) => {
       let string = ""
       if (data["upvote_count"] === 0) {
-        string = `${data["upvote_count"]} like`
+        string = `${data["upvote_count"]} likes`
       } else if (data["upvote_count"] === 1){
         string = `${data["upvote_count"]} like`
       } else {
@@ -39,7 +39,7 @@ export default class extends Controller {
     .then((data) => {
       let string = ""
       if (data["upvote_count"] === 0) {
-        string = `${data["upvote_count"]} like`
+        string = `${data["upvote_count"]} likes`
       } else if (data["upvote_count"] === 1){
         string = `${data["upvote_count"]} like`
       } else {

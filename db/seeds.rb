@@ -48,77 +48,8 @@ lea = User.new(
   last_name: "Pontet",
   location: "London"
 )
-<<<<<<< HEAD
-puts user.first_name
-user.save!
-
-recipe = Recipe.new(
-  title: "Best Egg Sandwich",
-  description: "The best egg sandwich ever.",
-  ingredients: "#{Faker::Food.ingredient} (#{Faker::Food.measurement}), #{Faker::Food.ingredient} (#{Faker::Food.measurement})",
-  prep_time: "#{Faker::Number.between(from: 1, to: 10)} hours",
-  instructions: "Cook the #{Faker::Food.ingredient} on #{['high', 'low', 'medium'].sample} for 10 minutes. Add the #{Faker::Food.spice}. Bake for #{Faker::Number.between(from: 1, to: 10)} hours. Then add #{Faker::Food.measurement} of #{Faker::Food.spice}. Prepare the #{Faker::Food.fruits} for dessert",
-  category: "Comfort Food",
-  serving_size: "#{Faker::Number.between(from: 2, to: 10)} servings"
-)
-image_file = scraping("Egg Sandwich")
-recipe.photo.attach(io: image_file, filename: recipe.title, content_type: 'image/png')
-recipe.user = user
-user_recipe = UserRecipe.new(
-  user: user, recipe: recipe
-)
-
-# need to associate recipe id with my cookbook and mark as cooked
-seb_us = UserRecipe.new(
-  user: seb, recipe: recipe, cooked: true, date_cooked: Date.yesterday
-)
-seb_us.save!
-
-#  Adding comment from Kieran
-
-recipe.save!
-user_recipe.save!
-puts recipe.title
-
-# need to make thomas baumann who made pasta dish
-
-puts "Creating Thomas"
-user = User.new(
-  email: "thomas@test.com",
-  password: 123456,
-  first_name: "Chef",
-  last_name: "Thomas",
-  location: "Montreal"
-)
-puts user.first_name
-user.save!
-
-recipe = Recipe.new(
-  title: "Tomato Pasta",
-  description: "This dish will always leave you satisfied! Trust me ;)",
-  ingredients: "#{Faker::Food.ingredient} (#{Faker::Food.measurement}), #{Faker::Food.ingredient} (#{Faker::Food.measurement})",
-  prep_time: "#{Faker::Number.between(from: 1, to: 10)} hours",
-  instructions: "Cook the #{Faker::Food.ingredient} on #{['high', 'low', 'medium'].sample} for 10 minutes. Add the #{Faker::Food.spice}. Bake for #{Faker::Number.between(from: 1, to: 10)} hours. Then add #{Faker::Food.measurement} of #{Faker::Food.spice}. Prepare the #{Faker::Food.fruits} for dessert",
-  category: "Italian",
-  serving_size: "#{Faker::Number.between(from: 2, to: 10)} servings",
-  upvotes_tracker: 11
-)
-image_file = scraping("Tomato Pasta")
-recipe.photo.attach(io: image_file, filename: recipe.title, content_type: 'image/png')
-recipe.user = user
-user_recipe = UserRecipe.new(
-  user: user, recipe: recipe
-)
-
-
-
-recipe.save!
-user_recipe.save!
-puts recipe.title
-=======
 puts lea.first_name
 lea.save!
->>>>>>> master
 
 puts "Creating users"
 
@@ -358,29 +289,6 @@ comment.recipe = garlic_butter_steak
 comment.user_recipe = user_recipe
 comment.save!
 
-<<<<<<< HEAD
-# puts "creating upvotes and comments"
-# 50.times do
-#   user = User.all.sample
-#   recipe = Recipe.all.sample
-#   content = ["So nice!", "I'll try that next week!", "Added to my cookbook right away!", "Are you sure we need that much sugar?", "Can I replace the wine with beef stock?", "You should go to Top Chef!"].sample
-
-#   comment = Comment.new(content: content)
-#   comment.user = user
-#   comment.recipe = recipe
-#   comment.save!
-
-#   upvote = Upvote.new
-#   upvote.user = user
-#   upvote.recipe = recipe
-#   upvote.save!
-# end
-
-# food array extended: "Tiramisu", "Tacos", "Stinky Tofu", "Chicken Parm",
-#           "Meatballs with Sauce", "Fried Eggs", "Sushi", "Cauliflower Penne", "Pasta with Tomato and Basil",
-#           "Massaman Curry", "Pizza", "Fish and Chips", "Katsu Curry", "Chocolate Cookies", "Belgian Waffles",
-#           "Cinnamon French Roast Casserole", "Meatloaf"
-=======
 puts "creating upvotes and comments"
 10.times do
   user = User.all.sample
@@ -403,4 +311,3 @@ puts "creating upvotes and comments"
     upvote.save!
   end
 end
->>>>>>> master

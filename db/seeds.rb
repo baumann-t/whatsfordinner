@@ -166,25 +166,25 @@ egg_sandwich.photo.attach(io: image_file, filename: egg_sandwich.title, content_
 
 # Target Thomas as the chef
 egg_sandwich.user = User.where(first_name: "Thomas").first
+egg_sandwich.save!
 
 # People added this recipe to their cookbook
 user_recipe = UserRecipe.new(
   user: seb, recipe: egg_sandwich
 )
-egg_sandwich.save!
 user_recipe.save!
 puts egg_sandwich.title
 
 # need to associate recipe id with my cookbook and mark as cooked
-seb_us = UserRecipe.new(
-  user: seb, recipe: egg_sandwich, cooked: true, date_cooked: Date.yesterday
-)
-seb_us.save!
+# seb_us = UserRecipe.new(
+#   user: seb, recipe: egg_sandwich, cooked: true, date_cooked: Date.yesterday
+# )
+# seb_us.save!
 
 comment = Comment.new(content: "This is the worst crap I've ever tasted!")
 comment.user = User.first
 comment.recipe = egg_sandwich
-comment.user_recipe = seb_us
+comment.user_recipe = user_recipe
 comment.save!
 
 # ------ Another recipe
@@ -300,8 +300,11 @@ end
 puts "creating upvotes and comments"
 20.times do
   user = User.all.sample
-  if user != comment.user
-    recipe = Recipe.all.sample
+  recipe = Recipe.all.sample
+
+  # guard clause
+  # Check if there's already an upvote from this user to that recipe
+  unless recipe.upvotes.pluck(:user_id).include?(user.id)
     content = ["So nice!", "I'll try that next week!", "Added to my cookbook right away!", "Are you sure we need that much sugar?", "Can I replace the wine with beef stock?", "You should go to Top Chef!"].sample
 
     comment = Comment.new(content: content)
@@ -314,8 +317,6 @@ puts "creating upvotes and comments"
     upvote.user = user
     upvote.recipe = recipe
     upvote.save!
-  else
-    puts "Error line 301"
   end
 
 end

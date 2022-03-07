@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/recipes/:id/upvotes', to: 'upvotes#create', as: "upvote_recipe"
   delete '/recipes/:id/upvotes', to: 'upvotes#delete', as: "remove_upvote_recipe"
   post '/cookbook/:user_recipe/comments', to: 'comments#create', as: "comment_recipe"
+  delete '/cookbook/:user_recipe/comments/:comment_id', to: 'comments#delete', as: "delete_comment_recipe"
   patch '/my-cookbook/:recipe_id', to: 'cookbooks#mark_cooked', as: "mark_as_cooked"
   get '/recipes/:id', to: 'recipes#show', as: 'recipe'
   get '/recipes', to: 'recipes#search'

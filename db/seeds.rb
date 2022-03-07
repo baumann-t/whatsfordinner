@@ -12,9 +12,12 @@ kieran = User.new(
   first_name: "Kieran",
   last_name: "Dunch",
   location: "Montreal"
+
 )
 puts kieran.email
 puts kieran.password
+image_file = URI.open('https://avatars.githubusercontent.com/u/94934653?v=4')
+kieran.photo.attach(io: image_file, filename: "Kieran's Avatar", content_type: 'image/png')
 kieran.save!
 
 # ----- CREATE USER START -----
@@ -27,6 +30,8 @@ seb = User.new(
   location: "Paris"
 )
 puts seb.first_name
+image_file = URI.open('https://media-exp1.licdn.com/dms/image/C4D03AQHbDdqG1f9QhA/profile-displayphoto-shrink_800_800/0/1588588745224?e=1652313600&v=beta&t=NOQjBvsCa8r76IVr7DjnwaY0Be-kiGYSyq6sz47Z9M0')
+seb.photo.attach(io: image_file, filename: "Seb's Avatar", content_type: 'image/png')
 seb.save!
 
 # CREATE FOLLOWED (relationship)
@@ -41,6 +46,9 @@ thomas = User.new(
 )
 puts thomas.first_name
 thomas.save!
+image_file = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641495117/tuy0mhevgftsg3fnakpe.jpg')
+thomas.photo.attach(io: image_file, filename: "Thomas's Avatar", content_type: 'image/png')
+thomas.save!
 
 puts "Creating Lea"
 lea = User.new(
@@ -50,9 +58,10 @@ lea = User.new(
   last_name: "Pontet",
   location: "London"
 )
-puts lea.first_name
-# lea.follow(thomas)
+image_file = URI.open('https://avatars.githubusercontent.com/u/49417360?v=4')
+lea.photo.attach(io: image_file, filename: "Lea's Avatar", content_type: 'image/png')
 lea.save!
+puts lea.first_name
 
 
 puts "Creating users"
@@ -65,7 +74,6 @@ puts "Creating users"
     last_name: Faker::Name.last_name,
     location: Faker::Address.city
   )
-
   puts user.first_name
   user.save!
 end
@@ -75,8 +83,13 @@ huang = User.new(
   password: 123456,
   first_name: "Huang",
   last_name: "Shewei",
-  location: "Montreal"
+  location: "Montreal",
 )
+image_file = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641790572/gsttrjkzlgxixrj25r5v.jpg')
+huang.photo.attach(io: image_file, filename: "Huang's Avatar", content_type: 'image/png')
+huang.save!
+
+
 
 kieran.follow(thomas)
 kieran.follow(huang)
@@ -320,4 +333,5 @@ puts "creating upvotes and comments"
     upvote.recipe = recipe
     upvote.save!
   end
+  # puts "Feed item created"
 end

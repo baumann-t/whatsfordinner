@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     if user_signed_in?
       my_followees = current_user.list_followees_id
-      @feed_items = FeedItem.where(user_id: my_followees).order(created_at: :desc)
+      @feed_items = FeedItem.where(user_id: my_followees).includes(:user_recipe).includes(:user).order(created_at: :desc)
     end
   end
 

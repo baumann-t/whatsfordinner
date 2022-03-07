@@ -118,7 +118,7 @@ puts shrimp_pasta.title
 
 # Comments
 comment = Comment.new(content: "This shrimp pasta is delicious, the lemon really bring the flavour together !!!!")
-comment.user = User.where(id: 3).first
+comment.user = User.where(first_name: "Kieran").first
 comment.recipe = shrimp_pasta
 comment.user_recipe = user_recipe
 comment.save!

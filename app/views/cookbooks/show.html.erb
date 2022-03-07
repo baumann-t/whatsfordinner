@@ -62,21 +62,21 @@
     <hr class="recipe-hr">
 
     <h5 class="recipe-title">Ingredients</h5>
-    <p><%= @recipe.ingredients[0] %></p>
+    <p><%= @recipe.ingredients %></p>
 
     <hr class="recipe-hr">
 
     <h5 class="recipe-title">Instructions</h5>
-    <p><%= @recipe.instructions[0] %></p>
+    <p><%= @recipe.instructions %></p>
   </div>
 
   <hr class="recipe-hr">
 
   <% if @current_user.id == @cookbook_user.id %>
-    <h5 class="recipe-title ">Your notes on this recipe:<%= @user_recipe.user_comment %></h5>
+    <h5 class="recipe-title ">Your notes on the recipe:<%= @user_recipe.user_comment %></h5>
     <hr class="recipe-hr">
   <% elsif @current_user.id ==  @cookbook_user.id && @recipe_author.id == @current_user.id %>
-    <h4 class="recipe-title">Your notes on this recipe:</strong> <%= @user_recipe.user_comment %></h4>
+    <h4 class="recipe-title">Your notes on the recipe:</strong> <%= @user_recipe.user_comment %></h4>
     <hr class="recipe-hr">
   <% else %>
     <h4 class="recipe-title"><%= @cookbook_user.first_name%>'s notes on the recipe:<%= @user_recipe.user_comment %></h4>

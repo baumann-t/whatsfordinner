@@ -1,13 +1,15 @@
 .recipe-banner {
   background-size: cover;
   background-position: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   color: white;
-  height: 180px;
+  // height: 180px;
   text-shadow: 0 0 3px black;
+  padding: 1rem;
+}
+
+.recipe-banner > h1 {
+  margin: 4rem 0;
+  text-align: center;
 }
 
 .recipe-buttons {
@@ -38,4 +40,10 @@
 
 .comment-list {
   list-style: none;
+}
+
+.comment-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

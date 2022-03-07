@@ -1,15 +1,16 @@
 
 <div class="recipe-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(@recipe.photo.key) %>)">
   <h1><%= @recipe.title.upcase %></h1>
+  <%# @recipe.category.each do |cat| %>
+    <div class="btn-category"><%= @recipe.category %></div>
+  <%# end %>
 </div>
 
 <div class="container">
-  <div class="recipe-head">
+  <div class="recipe-head d-flex flex-row-reverse justify-content-between", style="margin-top: 5px;">
     <% if @current_user.id == @cookbook_user.id %>
       <%= render "shared/upvotes", recipe: @recipe %>
       <p>Created by: <%= link_to "#{@recipe_author.first_name} #{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></p>
-      <p>Member since: 2 weeks ago</p>
-      <p>Recipes created: 4 recipes</p>
     <% elsif @current_user.id ==  @cookbook_user.id && @recipe_author.id == @current_user.id %>
       <p>Created by: you!</p>
       <%= render "shared/upvotes", recipe: @recipe %>
@@ -19,7 +20,7 @@
     <% end %>
   </div>
 
-  <div class="recipe-buttons">
+  <div class="recipe-buttons", style="padding: 20px 0 10px;">
     <% if @current_user.id == @cookbook_user.id %>
       <%= render "shared/buttons/remove", recipe: @recipe %>
       <%= render "shared/buttons/mark_cooked", recipe: @recipe if !@user_recipe.cooked %>
@@ -39,11 +40,18 @@
 
   <div class="main text">
     <h5 class="recipe-title">General information</h5>
-    <p>Prep time: <%= @recipe.prep_time %></p>
-    <p>Cooking time: 15 min</p>
-    <p>Servings: 4</p>
-    <br>
-    <p>Category: <%= @recipe.category %></p>
+
+    <div class="recipe-info d-flex justify-content-around">
+      <div class="recipe-prep">
+        <%= image_tag "chef_icon.svg", class: "recipe-icon" %> <%= @recipe.prep_time %>
+      </div>
+      <div class="recipe-cooking">
+        <%= image_tag "pot-svgrepo-com.svg", class: "recipe-icon" %> 15 min
+      </div>
+      <div class="recipe-servings">
+        <%= image_tag "utensils_icon.svg", class: "recipe-icon" %>  4
+      </div>
+    </div>
 
     <hr class="recipe-hr">
 

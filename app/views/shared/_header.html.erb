@@ -52,4 +52,12 @@
     <h1>SEARCH</h1>
     <%= render 'shared/avatar' %>
   </div>
+<% elsif request.path == "/my-profile" %>
+  <div class="banner-profile">
+    <h1>MY PROFILE</h1>
+  </div>
+<% elsif request.path == "/following" %>
+  <div class="banner-profile">
+    <h1>PEOPLE YOU FOLLOW</h1>
+  </div>
 <% end %>

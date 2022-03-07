@@ -10,7 +10,16 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         FeedItem.create(item_type: "commented", user_recipe_id:@user_recipe.id, user_id: current_user.id)
-        comment = { comment: "<li class='comment-list'> #{current_user.first_name} - <em>#{@comment.content}</em></li><hr>" }
+        format.text { render partial: 'shared/comment_partial', locals: { current_user: current_user, comment: @comment, recipe: @recipe }, formats: [:html] }
+      end
+    end
+  end
+
+  def delete
+    @comment = Comment.find(params[:comment_id])
+    if @comment.delete
+      respond_to do |format|
+        comment = { delete: @comment.id }
         format.json { render :json => comment }
       end
     end

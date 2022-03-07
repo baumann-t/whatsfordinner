@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="row">
+    <% @followees.each do |followee| %>
+      <div class="mx-auto" style="list-style: none;">
+        <li><%= link_to "#{followee.first_name} #{followee.last_name}", user_cookbook_path(followee), class:"d-flex justify-content-around simple-user-card m-2"%></li>
+      </div>
+    <% end %>
+</div>

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row container-bg-whit d-flex justify-content-center pt-5">
+    <% if current_user.photo.attached? %>
+      <%= cl_image_tag(current_user.photo.key,
+                                    :transformation=>[ {:aspect_ratio=>"1.0", :gravity=>"face", :width=>75, :zoom=>0.5, :crop=>"thumb"}],
+                                    class: "avatar-profile",) %>
+    <% else %>
+      <%= image_tag "https://static.thenounproject.com/png/363640-200.png", class: "avatar-profile" %>
+    <% end %>
+    <div class="d-flex justify-content-center">
+      <p><strong>First Name: </strong><%=@user.first_name%></p>
+      <p class="px-2"><strong>Last Name: </strong><%=@user.last_name%></p>
+    </div>
+    <p class="d-flex justify-content-center"><strong>Location:&nbsp</strong><%=@user.location%></p>
+    <p class="d-flex justify-content-center"><strong>Member since:&nbsp</strong><%=@user.member_since%></p>
+    <p class="d-flex justify-content-center"><strong>Recipes created :&nbsp</strong><%=@user.recipes.count%></p>
+    <p class="d-flex justify-content-center"><strong>Recipes in cookbook :&nbsp</strong><%=@user.user_recipes.count%></p>
+    <div class="d-flex justify-content-center">
+      <div class="col-4 ">
+        <p class="btn-top-10 my-3 mx-1"><%=link_to "Edit profile", edit_user_registration_path(@user)%></p>
+      </div>
+      <div class="col-4 ">
+        <p class="btn-top-10 m-0 my-3"><%=link_to "Friends list", following_path%></p>
+      </div>
+    </div>
+  </div>
+</div>

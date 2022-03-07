@@ -4,7 +4,7 @@
       <li><%= link_to "Home", root_path, :class => current_class?(root_path)%></li>
       <li><%= link_to "Cookbook", my_cookbook_path, :class => current_class?(my_cookbook_path)%></li>
       <li><%= link_to "Wishlist", my_wishlist_path, :class => current_class?(my_wishlist_path)%></li>
-      <li>Messages</li>
+      <li><%= link_to "Profile", my_profile_path, :class => current_class?(my_profile_path) %></li>
       <li><%= link_to search_path, :class => current_class?(search_path) do %>
         <i class="fas fa-search"></i>
       <% end %></li>

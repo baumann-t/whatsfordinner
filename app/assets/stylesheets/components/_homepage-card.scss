@@ -17,12 +17,13 @@
   width: 150px;
 }
 
-.info-card > p, h4 {
+.info-card > p {
   text-align: center;
 }
 .info-card > h4 {
   font-size: 20px;
   color: $primary;
+  text-align: center;
 }
 
 .info-card > p {

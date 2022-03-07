@@ -68,19 +68,34 @@
     <h5 class="recipe-title">Instructions</h5>
     <p><%= @recipe.instructions %></p>
   </div>
-</div>
 
-<hr class="recipe-hr">
+  <hr class="recipe-hr">
 
-<div class="container">
   <% if @current_user.id == @cookbook_user.id %>
-    <h4>Your comment on the recipe:</strong> <%= @user_recipe.user_comment %></h4>
-    <%= render "shared/comments", user_recipe: @user_recipe %>
+    <h5 class="recipe-title ">Your notes on the recipe:<%= @user_recipe.user_comment %></h5>
+    <hr class="recipe-hr">
   <% elsif @current_user.id ==  @cookbook_user.id && @recipe_author.id == @current_user.id %>
-    <h4>Your comment on the recipe:</strong> <%= @user_recipe.user_comment %></h4>
-    <%= render "shared/comments", user_recipe: @user_recipe %>
+    <h4 class="recipe-title">Your notes on the recipe:</strong> <%= @user_recipe.user_comment %></h4>
+    <hr class="recipe-hr">
   <% else %>
-    <h4><strong><%= @cookbook_user.first_name%> comment on :</strong> <%= @user_recipe.user_comment %></h4>
-    <%= render "shared/comments", user_recipe: @user_recipe %>
+    <h4 class="recipe-title"><%= @cookbook_user.first_name%>'s notes on the recipe:<%= @user_recipe.user_comment %></h4>
+    <hr class="recipe-hr">
   <% end %>
+
+  <div data-controller="hide"  >
+    <div data-hide-target="view" data-action="click->hide#show">
+      <div class="d-flex justify-content-center mb-3" >
+        <a class="btn-top-10">View <%= @recipe.comments.count%> comment</a>
+      </div>
+    </div>
+    <div style="display:none" data-hide-target="hide" data-action="click->hide#hide" >
+      <div class="d-flex justify-content-center mb-3" >
+        <a class="btn-top-10">Hide comments</a>
+      </div>
+    </div>
+    <div style="display:none" data-hide-target="comments">
+      <div class="main text">
+        <%= render "shared/comments", user_recipe: @user_recipe %>
+      </div>
+    </div>
 </div>

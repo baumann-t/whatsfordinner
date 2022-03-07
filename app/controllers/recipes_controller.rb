@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
+
   def show
     @recipe = Recipe.find(params[:id])
-    # need to link to cookbook recipe, not individual recipe
     @user_recipe = Recipe.from_recipe_to_user_recipe(@recipe)
     redirect_to cookbook_recipe_path(@user_recipe)
   end
@@ -11,10 +11,8 @@ class RecipesController < ApplicationController
       @user_recipes = UserRecipe.all
     else
       @user_recipes_result = UserRecipe.recipe_title_search(params[:query])
-
       ids = []
       @user_recipes = []
-
       @user_recipes_result.each do |user_recipe|
         recipe_id = user_recipe.recipe.id
         if ids.exclude?(recipe_id)
@@ -23,7 +21,6 @@ class RecipesController < ApplicationController
         end
       end
     end
-
     respond_to do |format|
       format.html
       format.text { render partial: 'shared/searchlist', locals: { user_recipes: @user_recipes }, formats: [:html] }
@@ -54,4 +51,5 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:title, :description, :prep_time, :instructions, :ingredients, :category, :photo, :serving_size)
   end
+
 end

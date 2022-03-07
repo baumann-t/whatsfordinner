@@ -7,19 +7,21 @@ export default class extends Controller {
     console.log("connected")
   }
 
-    goToNextFormSpace (event) {
-      event.preventDefault()
-      const currentFormSpacePosition = event.target.getAttribute("data-position")
-      const nextFormSpacePosition = parseInt(currentFormSpacePosition) + 1
-      const nextFormSpace = this.formSpaceTargets[nextFormSpacePosition]
-      nextFormSpace.scrollIntoView()
-    }
+  goToNextFormSpace (event) {
+    event.preventDefault()
+    const currentFormSpacePosition = event.target.getAttribute("data-position")
+    const nextFormSpacePosition = parseInt(currentFormSpacePosition) + 1
+    const nextFormSpace = this.formSpaceTargets[nextFormSpacePosition]
+    nextFormSpace.scrollIntoView()
+  }
 
-    goToLastFormSpace (event) {
-      event.preventDefault()
-      const currentFormSpacePosition = event.target.getAttribute("data-position")
-      const nextFormSpacePosition = parseInt(currentFormSpacePosition) - 1
-      const nextFormSpace = this.formSpaceTargets[nextFormSpacePosition]
-      nextFormSpace.scrollIntoView()
-    }
+  goToLastFormSpace (event) {
+    event.preventDefault()
+    const currentFormSpacePosition = event.target.getAttribute("data-position")
+    const nextFormSpacePosition = parseInt(currentFormSpacePosition) - 1
+    const nextFormSpace = this.formSpaceTargets[nextFormSpacePosition]
+    nextFormSpace.scrollIntoView()
+  }
+
+
 }

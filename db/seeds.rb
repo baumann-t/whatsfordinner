@@ -83,10 +83,6 @@ seb_us = UserRecipe.new(
 seb_us.save!
 
 #  Adding comment from Kieran
-comment = Comment.new(content: "This is the worst crap I've ever tasted!")
-comment.user = User.first
-comment.recipe = recipe
-comment.save!
 
 recipe.save!
 user_recipe.save!
@@ -122,10 +118,7 @@ user_recipe = UserRecipe.new(
   user: user, recipe: recipe
 )
 
-comment = Comment.new(content: "This was actually pretty good!!!!")
-comment.user = User.first
-comment.recipe = recipe
-comment.save!
+
 
 recipe.save!
 user_recipe.save!
@@ -194,22 +187,22 @@ puts "creating user recipes..."
   user_recipe.save!
 end
 
-puts "creating upvotes and comments"
-50.times do
-  user = User.all.sample
-  recipe = Recipe.all.sample
-  content = ["So nice!", "I'll try that next week!", "Added to my cookbook right away!", "Are you sure we need that much sugar?", "Can I replace the wine with beef stock?", "You should go to Top Chef!"].sample
+# puts "creating upvotes and comments"
+# 50.times do
+#   user = User.all.sample
+#   recipe = Recipe.all.sample
+#   content = ["So nice!", "I'll try that next week!", "Added to my cookbook right away!", "Are you sure we need that much sugar?", "Can I replace the wine with beef stock?", "You should go to Top Chef!"].sample
 
-  comment = Comment.new(content: content)
-  comment.user = user
-  comment.recipe = recipe
-  comment.save!
+#   comment = Comment.new(content: content)
+#   comment.user = user
+#   comment.recipe = recipe
+#   comment.save!
 
-  upvote = Upvote.new
-  upvote.user = user
-  upvote.recipe = recipe
-  upvote.save!
-end
+#   upvote = Upvote.new
+#   upvote.user = user
+#   upvote.recipe = recipe
+#   upvote.save!
+# end
 
 # food array extended: "Tiramisu", "Tacos", "Stinky Tofu", "Chicken Parm",
 #           "Meatballs with Sauce", "Fried Eggs", "Sushi", "Cauliflower Penne", "Pasta with Tomato and Basil",

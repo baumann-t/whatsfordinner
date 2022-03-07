@@ -98,30 +98,43 @@ puts shrimp_pasta.title
 # Comments
 comment = Comment.new(content: "This shrimp pasta is delicious, the lemon really bring the flavour together !!!!")
 comment.user = User.where(id: 3).first
-comment.recipe = tomato_pasta
+comment.recipe = shrimp_pasta
 comment.user_recipe = user_recipe
 comment.save!
 
 # ------ Another recipe
-escargot = Recipe.new(
-  title: "Escargot",
-  description: "a lovely dish just like my mom used to make.",
-  ingredients: "#{Faker::Food.ingredient} (#{Faker::Food.measurement}), #{Faker::Food.ingredient} (#{Faker::Food.measurement})",
-  prep_time: "#{Faker::Number.between(from: 1, to: 10)} hours",
-  instructions: "Cook the #{Faker::Food.ingredient} on #{['high', 'low', 'medium'].sample} for 10 minutes. Add the #{Faker::Food.spice}. Bake for #{Faker::Number.between(from: 1, to: 10)} hours. Then add #{Faker::Food.measurement} of #{Faker::Food.spice}. Prepare the #{Faker::Food.fruits} for dessert",
-  category: "French",
-  serving_size: "#{Faker::Number.between(from: 2, to: 10)} servings",
-  upvotes_tracker: 3
+baked_salmon = Recipe.new(
+  title: "Baked Salmon",
+  description: "This simple baked salmon really hits all the right notes: tangy, sweet, savory,
+                a little spicy and crunchy. Cooking a larger piece makes for a nice presentation.
+                Topped with buttery golden breadcrumbs and parsley,
+                it's perfect for a weeknight dinner yet fancy enough to serve to guests.",
+  ingredients: "2 tablespoon of brownsugar, 1/2 teaspoon of paprika, 1/2 teaspoon of garlic powder,
+                1/4 teaspoon of cayenne pepper, salt, ground black pepper, 1/4 cup of panko breadcrumbs,
+                1/2 cup of chopped parsley, 2 tablespoon of butter, 700g of salmon fillet, 1 tablespoon of dijon",
+  prep_time: "30 minutes",
+  instructions: "Preheat the oven to 425 degrees F. Line a baking sheet with foil. Mix the brown sugar, paprika,
+                garlic powder, cayenne pepper, 1 teaspoon kosher salt and a generous amount of freshly ground black
+                pepper in a small bowl. Mix the panko with the parsley, butter, 1/4 teaspoon kosher salt and a few
+                grinds of black pepper in another small bowl. Then Place the salmon skin-side down on the prepared
+                baking sheet and spread the surface with the Dijon. Press the brown sugar mixture all over the
+                salmon then top with the breadcrumb mixture. Crimp all four sides of the foil to create a border
+                around the salmon, this will help collect the juices so they don't spread and burn. Bake until the
+                breadcrumbs are golden brown, and the salmon is firm and flakes easily when pressed, 15 to 18 minutes.
+                Cut into four equal portions for serving. ",
+  category: "American",
+  serving_size: "4 servings",
+  upvotes_tracker: 52
 )
-image_file = scraping("Escargot")
-escargot.photo.attach(io: image_file, filename: escargot.title, content_type: 'image/png')
-escargot.user = lea
+image_file = URI.open('https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/12/20/0/FNK_Baked-Salmon_H_s4x3.jpg.rend.hgtvcom.826.620.suffix/1576855635102.jpeg')
+baked_salmon.photo.attach(io: image_file, filename: baked_salmon.title, content_type: 'image/png')
+baked_salmon.user = lea
 user_recipe = UserRecipe.new(
-  user: seb, recipe: escargot
+  user: seb, recipe: baked_salmon
 )
-escargot.save!
+baked_salmon.save!
 user_recipe.save!
-puts escargot.title
+puts baked_salmon.title
 
 # ------ Another recipe
 egg_sandwich = Recipe.new(
@@ -267,20 +280,42 @@ puts "creating user recipes..."
   user_recipe.save!
 end
 
+# puts "creating upvotes and comments"
+# 20.times do
+#   user = User.all.sample
+#   recipe = Recipe.all.sample
+#   content = ["So nice!", "I'll try that next week!", "Added to my cookbook right away!", "Are you sure we need that much sugar?", "Can I replace the wine with beef stock?", "You should go to Top Chef!"].sample
+
+#   comment = Comment.new(content: content)
+#   comment.user = user
+#   comment.recipe = recipe
+#   comment.user_recipe = user_recipe
+#   comment.save!
+
+#   upvote = Upvote.new
+#   upvote.user = user
+#   upvote.recipe = recipe
+#   upvote.save!
+# end
 puts "creating upvotes and comments"
-10.times do
+20.times do
   user = User.all.sample
-  recipe = Recipe.all.sample
-  content = ["So nice!", "I'll try that next week!", "Added to my cookbook right away!", "Are you sure we need that much sugar?", "Can I replace the wine with beef stock?", "You should go to Top Chef!"].sample
+  if user != comment.user
+    recipe = Recipe.all.sample
+    content = ["So nice!", "I'll try that next week!", "Added to my cookbook right away!", "Are you sure we need that much sugar?", "Can I replace the wine with beef stock?", "You should go to Top Chef!"].sample
 
-  comment = Comment.new(content: content)
-  comment.user = user
-  comment.recipe = recipe
-  comment.user_recipe = user_recipe
-  comment.save!
+    comment = Comment.new(content: content)
+    comment.user = user
+    comment.recipe = recipe
+    comment.user_recipe = user_recipe
+    comment.save!
 
-  upvote = Upvote.new
-  upvote.user = user
-  upvote.recipe = recipe
-  upvote.save!
+    upvote = Upvote.new
+    upvote.user = user
+    upvote.recipe = recipe
+    upvote.save!
+  else
+    puts "Error line 301"
+  end
+
 end

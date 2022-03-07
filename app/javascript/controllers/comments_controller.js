@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = ["list", "form", "input", "field", "intro", "id"]
+  static targets = ["list", "form", "input", "field", "id"]
   static values = {recipe: Number, userecipe: Number}
 
   add(event) {
@@ -18,7 +18,7 @@ export default class extends Controller {
     .then((data) => {
       this.listTarget.insertAdjacentHTML('beforeend', data)
       this.fieldTarget.value = ' '
-      this.introTarget.innerHTML = "Comments:"
+      window.scrollTo(0,document.body.scrollHeight);
     })
   }
 
@@ -39,6 +39,7 @@ export default class extends Controller {
       const hrComment = document.getElementById(hr)
       elementComment.remove()
       hrComment.remove()
+      window.scrollTo(0,document.body.scrollHeight);
     })
   }
 

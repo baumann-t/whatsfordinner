@@ -12,20 +12,37 @@ export default class extends Controller {
   }
 
   moreCat (event) {
-    this.moreTarget.insertAdjacentHTML("beforebegin", `<input class=\"form-control string optional\" name=\"recipe[categories][${currentCategoryPosition}]\" type=\"text\" value=\"\" id=\"recipe_categories-${currentCategoryPosition}\"><br>`);
+    this.moreTarget.insertAdjacentHTML("beforebegin", `<div id=\"recipe_categories-${currentCategoryPosition}\"><input class=\"form-control string optional\" name=\"recipe[categories][${currentCategoryPosition}]\" type=\"text\" value=\"\"><br></div>`);
     currentCategoryPosition += 1;
   }
+
   moreIngr (event) {
-    this.moreTarget.insertAdjacentHTML("beforebegin", `<input class=\"form-control string optional\" name=\"recipe[ingredients][${currentIngPosition}]\" type=\"text\" value=\"\" id=\"recipe_ingredients-${currentIngPosition}\"><br>`);
+    this.moreTarget.insertAdjacentHTML("beforebegin", `<div id=\"recipe_ingredients-${currentIngPosition}\"><input class=\"form-control string optional\" name=\"recipe[ingredients][${currentIngPosition}]\" type=\"text\" value=\"\"><br></div>`);
     currentIngPosition += 1;
   }
+
   moreInst (event) {
-    this.moreTarget.insertAdjacentHTML("beforebegin", `<input class=\"form-control string optional\" name=\"recipe[instructions][${currentInstPosition}]\" type=\"text\" value=\"\" id=\"recipe_instructions-${currentInstPosition}\"><br>`);
+    this.moreTarget.insertAdjacentHTML("beforebegin", `<div id=\"recipe_instructions-${currentInstPosition}\"><input class=\"form-control string optional\" name=\"recipe[instructions][${currentInstPosition}]\" type=\"text\" value=\"\"><br></div>`);
     currentInstPosition += 1;
   }
 
   lessCat (event) {
-    id = document.getElementById(`recipe_categories-${currentCategoryPosition - 1}`)
+    currentCategoryPosition -= 1
+    const id = document.getElementById(`recipe_categories-${currentCategoryPosition}`)
+    console.log(id)
+    id.remove();
+  }
+
+  lessIngr (event) {
+    currentIngPosition -= 1
+    const id = document.getElementById(`recipe_ingredients-${currentIngPosition}`)
+    console.log(id)
+    id.remove();
+  }
+
+  lessInst (event) {
+    currentInstPosition -= 1
+    const id = document.getElementById(`recipe_instructions-${currentInstPosition}`)
     console.log(id)
     id.remove();
   }

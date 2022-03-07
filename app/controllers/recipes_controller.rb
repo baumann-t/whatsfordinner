@@ -38,8 +38,8 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
-    @recipe.ingredients = params[:recipe][:ingredients].values
-    @recipe.instructions = params[:recipe][:instructions].values
+    @recipe.ingredients[0] = params[:recipe][:ingredients].values
+    @recipe.instructions[0] = params[:recipe][:instructions].values
     @recipe.categories = params[:recipe][:categories].values
     if @recipe.save
       user_recipe = UserRecipe.create(recipe: @recipe, user: current_user)

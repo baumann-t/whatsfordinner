@@ -23,4 +23,11 @@ export default class extends Controller {
     this.moreTarget.insertAdjacentHTML("beforebegin", `<input class=\"form-control string optional\" name=\"recipe[instructions][${currentInstPosition}]\" type=\"text\" value=\"\" id=\"recipe_instructions-${currentInstPosition}\"><br>`);
     currentInstPosition += 1;
   }
+
+  lessCat (event) {
+    id = document.getElementById(`recipe_categories-${currentCategoryPosition - 1}`)
+    console.log(id)
+    id.remove();
+  }
+
 }

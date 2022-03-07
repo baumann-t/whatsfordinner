@@ -54,6 +54,7 @@ puts lea.first_name
 # lea.follow(thomas)
 lea.save!
 
+
 puts "Creating users"
 
 10.times do
@@ -76,6 +77,11 @@ huang = User.new(
   last_name: "Shewei",
   location: "Montreal"
 )
+
+kieran.follow(thomas)
+kieran.follow(huang)
+kieran.follow(lea)
+kieran.follow(seb)
 
 # ----- CREATE RECIPE START -----
 shrimp_pasta = Recipe.new(
@@ -111,7 +117,7 @@ shrimp_pasta.user = User.where(first_name: "Lea").first
 
 # People added this recipe to their cookbook
 user_recipe = UserRecipe.new(
-  user: seb, recipe: shrimp_pasta
+  user: lea, recipe: shrimp_pasta
 )
 
 # Save it
@@ -155,7 +161,7 @@ image_file = URI.open('https://food.fnr.sndimg.com/content/dam/images/food/fulls
 baked_salmon.photo.attach(io: image_file, filename: baked_salmon.title, content_type: 'image/png')
 baked_salmon.user = lea
 user_recipe = UserRecipe.new(
-  user: seb, recipe: baked_salmon
+  user: lea, recipe: baked_salmon
 )
 
 baked_salmon.save!
@@ -196,7 +202,7 @@ egg_sandwich.save!
 
 # People added this recipe to their cookbook
 user_recipe = UserRecipe.new(
-  user: seb, recipe: egg_sandwich
+  user: thomas, recipe: egg_sandwich
 )
 user_recipe.save!
 puts egg_sandwich.title
@@ -235,7 +241,7 @@ tomato_pasta.photo.attach(io: image_file, filename: tomato_pasta.title, content_
 tomato_pasta.user = kieran
 tomato_pasta.save!
 user_recipe = UserRecipe.new(
-  user: seb, recipe: tomato_pasta
+  user: kieran, recipe: tomato_pasta
 )
 user_recipe.save!
 
@@ -305,9 +311,10 @@ puts "creating upvotes and comments"
     comment = Comment.new(content: content)
     comment.user = user
     comment.recipe = recipe
+    # user_recipe = UserRecipe.where(user_id: user.id, recipe_id: recipe.id)
     comment.user_recipe = user_recipe
     comment.save!
-
+    # FeedItem.create!(item_type: "commented", user_recipe_id: user_recipe.id, user_id: user.id)
     upvote = Upvote.new
     upvote.user = user
     upvote.recipe = recipe

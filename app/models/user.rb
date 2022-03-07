@@ -27,13 +27,23 @@ class User < ApplicationRecord
     Relation.create(follower: self, followee: user_to_follow)
   end
 
-  def list_followees
+  def list_followees_id
     Relation.where(follower: self).map do |relation|
       relation.followee_id
     end
   end
 
+  def list_followees
+    Relation.where(follower: self).map do |relation|
+      User.find(relation.followee_id)
+    end
+  end
+
   def follow?(user)
     !Relation.where(follower_id: self.id, followee_id: user.id).empty?
+  end
+
+  def member_since
+    self.created_at.strftime('%m/%d/%Y')
   end
 end

@@ -327,11 +327,12 @@ puts "creating upvotes and comments"
     # user_recipe = UserRecipe.where(user_id: user.id, recipe_id: recipe.id)
     comment.user_recipe = user_recipe
     comment.save!
-    # FeedItem.create!(item_type: "commented", user_recipe_id: user_recipe.id, user_id: user.id)
+    FeedItem.create!(item_type: "commented", user_recipe_id: user_recipe.id, user_id: user.id)
     upvote = Upvote.new
     upvote.user = user
     upvote.recipe = recipe
     upvote.save!
+    FeedItem.create!(item_type: "liked", user_recipe_id: user_recipe.id, user_id: user.id)
   end
   # puts "Feed item created"
 end

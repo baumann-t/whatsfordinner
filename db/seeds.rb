@@ -29,6 +29,8 @@ seb = User.new(
 puts seb.first_name
 seb.save!
 
+# CREATE FOLLOWED (relationship)
+# CREATE FEED ITEM
 puts "Creating Thomas"
 thomas = User.new(
   email: "thomas@test.com",
@@ -49,6 +51,7 @@ lea = User.new(
   location: "London"
 )
 puts lea.first_name
+# lea.follow(thomas)
 lea.save!
 
 puts "Creating users"

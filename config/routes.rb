@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get '/cookbooks/users/:user_id/top-10', to: 'cookbooks#top_ten', as: "user_top_ten"
   get '/users/:user_id/recipes/:id', to: 'cookbooks#show'
   get '/recipes/:id/upvotes', to: 'upvotes#create', as: "upvote_recipe"
+  delete '/recipes/:id/upvotes', to: 'upvotes#delete', as: "remove_upvote_recipe"
   post '/cookbook/:user_recipe/comments', to: 'comments#create', as: "comment_recipe"
   patch '/my-cookbook/:recipe_id', to: 'cookbooks#mark_cooked', as: "mark_as_cooked"
   get '/recipes/:id', to: 'recipes#show', as: 'recipe'
@@ -27,4 +28,5 @@ Rails.application.routes.draw do
   get '/my-wishlist/add', to: 'cookbooks#add_wishlist'
   get '/my-feed', to: 'feed#view'
   get '/cookbooks/users/:user_id/follow', to: 'relations#follow', as: "follow_user"
+  delete '/cookbooks/users/:user_id/follow', to: 'relations#unfollow', as: "unfollow_user"
 end

@@ -42,35 +42,44 @@
       </div>
 
       <div class="form-space" id="ingredients" data-form-target="formSpace">
-        <div class="form-inputs">
+        <div class="form-inputs" data-controller="input">
           <%= f.input :ingredients, label: "Write your ingredients below:", input_html: { name: 'recipe[ingredients][0]' }%>
 
-          <i class="fa-solid fa-plus"></i>
+          <i class="fa-solid fa-plus" data-input-target="more" data-action="click->input#moreIngr"></i>
 
           <a href="#servings" class="form-anchor" data-action="click->form#goToLastFormSpace" data-position="5">Back<a>
           <a href="#instructions" class="form-anchor" data-action="click->form#goToNextFormSpace" data-position="5">Next<a>
+
+          <i class="fa-solid fa-minus" data-input-target="less" data-action="click->input#lessIngr"></i>
         </div>
       </div>
 
       <div class="form-space"id="instructions" data-form-target="formSpace">
-        <div class="form-inputs" id="instructions">
+        <div class="form-inputs" id="instructions" data-controller="input">
           <%= f.input :instructions, label: "Preparation instructions:", input_html: { name: 'recipe[instructions][0]' }%>
 
-          <i class="fa-solid fa-plus"></i>
+          <i class="fa-solid fa-plus" data-input-target="more" data-action="click->input#moreInst"></i>
 
         <a href="#ingredients" class="form-anchor" data-action="click->form#goToLastFormSpace" data-position="6">Back<a>
         <a href="#category" class="form-anchor" data-action="click->form#goToNextFormSpace" data-position="6">Next<a>
+
+        <i class="fa-solid fa-minus" data-input-target="less" data-action="click->input#lessInst"></i>
+
+
         </div>
       </div>
 
       <div class="form-space" id="category" data-form-target="formSpace">
-        <div class="form-inputs">
+        <div class="form-inputs" data-controller="input">
           <%= f.input :categories, label: "Category:", input_html: { name: 'recipe[categories][0]' }%>
 
-          <i class="fa-solid fa-plus" data-form-target="more" data-action="click->form#moreCat" data-position= "0"id="category-more"></i>
+          <i class="fa-solid fa-plus" data-input-target="more" data-action="click->input#moreCat"></i>
 
           <a href="#instructions" class="form-anchor" data-action="click->form#goToLastFormSpace" data-position="7">Back<a>
           <a href="#photo" class="form-anchor" data-action="click->form#goToNextFormSpace" data-position="7">Next<a>
+
+          <i class="fa-solid fa-minus" data-input-target="less" data-action="click->input#lessCat"></i>
+
         </div>
       </div>
 

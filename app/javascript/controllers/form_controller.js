@@ -1,7 +1,9 @@
 import { Controller } from "stimulus"
 
+let currentCategoryPosition = 1
+
 export default class extends Controller {
-  static targets = ["formSpace","more"]
+  static targets = ["formSpace"]
 
   connect() {
     console.log("connected")
@@ -23,9 +25,4 @@ export default class extends Controller {
     nextFormSpace.scrollIntoView()
   }
 
-  moreCat (event) {
-    const currentCategoryPosition = event.target.getAttribute("data-position")
-    const id = document.getElementById("category-more");
-    id.insertAdjacentHTML("beforebegin", "<p>Hello World</p>");
-  }
 }

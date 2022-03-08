@@ -117,7 +117,7 @@ shrimp_pasta = Recipe.new(
                 butter and 1/2 cup of the reserved cooking water.", "Continue to cook, tossing, until the butter
                 is melted and the shrimp is hot, about 2 minutes, adding more of the reserved cooking water as needed.", "Season with salt; stir in the parsley.
                 Serve with lemon wedges.",],
-  categories: ["Italian", "Cheesy"],
+  categories: ["Italian", "Citrus"],
   serving_size: "4",
   upvotes_tracker: 10
 )

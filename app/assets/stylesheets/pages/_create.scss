@@ -2,15 +2,40 @@
 #title {
   padding-top: 100px;
 }
-.form-space {
-  padding-top: 180px;
-  padding-bottom: 300px;
+
+.form-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.form-section-1 {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.form-section-1 > .form-space {
+  margin-top: 25%;
+}
+
+.form-space {
+  // padding: 100px 100px;
+  // margin: 30px 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  background-color: #fefefa;
+}
+
 .form-inputs {
   font-size: 18px;
   text-align: center;
-  margin: 0px 25px;
+  padding: 80px 20px;
+  width: 300px;
+  max-height: 1300px;
 }
+
 .form-anchor, .btn-create {
   padding: 8px 24px;
   font-weight: lighter;

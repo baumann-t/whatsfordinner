@@ -9,7 +9,11 @@
           <%= cl_image_tag recipe.photo.key, height: 100, width: 200, crop: :lfill if recipe.photo.attached? %>
           <p> Prep time: <%= recipe.prep_time %></p>
           <div class="container d-flex">
-            <p class="btn-category"><%= user_recipe.recipe.category%></p>
+            <% user_recipe.recipe.categories.each do |cat| %>
+              <div class="btn-category">
+                <%= cat %>
+              </div>
+            <% end %>
           </div>
         </div>
       <% end %>

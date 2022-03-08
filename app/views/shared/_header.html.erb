@@ -43,7 +43,7 @@
   </div>
 <% elsif request.path.starts_with?("/cookbooks/users/") %>
   <div class="banner-user">
-    <% user = User.find(request.path.split('/').last) %>
+    <% user = User.find(request.path.scan(/\d/).join('')) %>
     <h1><%= "#{user.first_name.capitalize} #{user.last_name.capitalize}'s Cookbook" %></h1>
     <%= render 'shared/avatar' %>
   </div>

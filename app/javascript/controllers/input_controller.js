@@ -12,17 +12,17 @@ export default class extends Controller {
   }
 
   moreCat (event) {
-    this.moreTarget.insertAdjacentHTML("beforebegin", `<div id=\"recipe_categories-${currentCategoryPosition}\"><input class=\"form-control string optional\" name=\"recipe[categories][${currentCategoryPosition}]\" type=\"text\" value=\"\"><br></div>`);
+    this.lessTarget.insertAdjacentHTML("beforebegin", `<div class="mb-3" id=\"recipe_categories-${currentCategoryPosition}\"><input class=\"form-control string optional\" name=\"recipe[categories][${currentCategoryPosition}]\" type=\"text\" value=\"\"></div>`);
     currentCategoryPosition += 1;
   }
 
   moreIngr (event) {
-    this.moreTarget.insertAdjacentHTML("beforebegin", `<div id=\"recipe_ingredients-${currentIngPosition}\"><input class=\"form-control string optional\" name=\"recipe[ingredients][${currentIngPosition}]\" type=\"text\" value=\"\"><br></div>`);
+    this.lessTarget.insertAdjacentHTML("beforebegin", `<div class="mb-3" id=\"recipe_ingredients-${currentIngPosition}\"><input class=\"form-control string optional\" name=\"recipe[ingredients][${currentIngPosition}]\" type=\"text\" value=\"\"></div>`);
     currentIngPosition += 1;
   }
 
   moreInst (event) {
-    this.moreTarget.insertAdjacentHTML("beforebegin", `<div id=\"recipe_instructions-${currentInstPosition}\"><input class=\"form-control string optional\" name=\"recipe[instructions][${currentInstPosition}]\" type=\"text\" value=\"\"><br></div>`);
+    this.lessTarget.insertAdjacentHTML("beforebegin", `<div class="mb-3" id=\"recipe_instructions-${currentInstPosition}\"><input class=\"form-control string optional\" name=\"recipe[instructions][${currentInstPosition}]\" type=\"text\" value=\"\"></div>`);
     currentInstPosition += 1;
   }
 

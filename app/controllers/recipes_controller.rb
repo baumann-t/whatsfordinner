@@ -41,9 +41,6 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
-    @recipe.ingredients = params[:recipe][:ingredients].values
-    @recipe.instructions = params[:recipe][:instructions].values
-    @recipe.categories = params[:recipe][:categories].values
     if @recipe.save
       user_recipe = UserRecipe.create(recipe: @recipe, user: current_user)
       redirect_to my_cookbook_path(user_recipe.user), notice: "Your recipe was created!"
@@ -55,7 +52,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :description, :prep_time, :cooking_time, :photo,
-                                   :serving_size, instructions: [], ingredients: [], categories: [])
+    params.require(:recipe).permit(:title, :description, :prep_time, :instructions, :ingredients, :category, :photo, :serving_size)
   end
 end

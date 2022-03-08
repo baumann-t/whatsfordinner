@@ -28,6 +28,16 @@
   border: none;
 }
 
+.btn-submit-disable {
+  border-radius: 4px;
+  background-color: #CAD2C5;
+  color: #2F3E46;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  width: 170px;
+  height: 40px;
+  border: none;
+}
+
 .btn-create-account {
   border-radius: 4px;
   background-color: $secondary;

@@ -47,7 +47,7 @@
         <%= image_tag "chef_icon.svg", class: "recipe-icon" %> <%= @recipe.prep_time %>
       </div>
       <div class="recipe-cooking">
-        <%= image_tag "pot-svgrepo-com.svg", class: "recipe-icon" %> 15 min
+        <%= image_tag "pot-svgrepo-com.svg", class: "recipe-icon" %> <%= @recipe.cooking_time %>
       </div>
       <div class="recipe-servings">
         <%= image_tag "utensils_icon.svg", class: "recipe-icon" %>   <%= @recipe.serving_size %>

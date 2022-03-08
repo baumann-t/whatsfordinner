@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   delete '/cookbook/:user_recipe/comments/:comment_id', to: 'comments#delete', as: "delete_comment_recipe"
   patch '/my-cookbook/:recipe_id', to: 'cookbooks#mark_cooked', as: "mark_as_cooked"
   get '/recipes/:id', to: 'recipes#show', as: 'recipe'
-  get '/recipes', to: 'recipes#search'
   get '/recipes/:id', to: 'recipes#index'
   get '/recipes/:id', to: 'recipes#details'
   get '/my-wishlist', to: 'cookbooks#my_wishlist', as: "my_wishlist"

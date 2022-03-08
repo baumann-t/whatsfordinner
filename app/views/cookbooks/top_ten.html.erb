@@ -28,7 +28,11 @@
             </div>
 
             <div class="container d-flex">
-              <p class="btn-category"><%= recipe.category%></p>
+              <% user_recipe.recipe.categories.each do |cat| %>
+              <div class="btn-category">
+                <%= cat %>
+              </div>
+              <% end %>
             </div>
           </div>
         <% i+=1 %>
@@ -36,8 +40,10 @@
       <% end %>
 
       <% if i==0 %>
-        <div class= "d-flex justify-content-center pt-5">
-          <h1 style="color: #2B9348">No recipes upvoted yet!</h1>
+        <div class= "container text-center py-3">
+          <p>No recipes upvoted yet!</p>
+          <br>
+          <%= image_tag "burger.svg", class: "empty-top-img" %>
         </div>
       <% end %>
     </div>

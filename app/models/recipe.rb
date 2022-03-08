@@ -4,7 +4,7 @@ class Recipe < ApplicationRecord
   has_many :upvotes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one_attached :photo
-  validates :title, :description, :ingredients, :prep_time, :instructions, :category, presence: true
+  validates :title, :description, :ingredients, :prep_time, :cooking_time, :instructions, presence: true
 
   include PgSearch::Model
   pg_search_scope :search_by_title,

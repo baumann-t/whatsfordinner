@@ -9,9 +9,8 @@
       <div class="modal-body">
         <p><%= @recipe.description %></p>
       </div>
-      <div class="modal-footer d-flex flex-nowrap">
-        <%= render 'shared/buttons/wishlist', recipe: @recipe %>
-        <%= link_to "SHOW MORE", cookbook_recipe_path(user_recipe), class: "btn btn-wishlist"%>
+      <div class="modal-footer d-flex justify-content-end align-items-end">
+        <button type="button" class="btn btn-top-10"><%= link_to "Show more", cookbook_recipe_path(user_recipe)%></button>
       </div>
     </div>
   </div>

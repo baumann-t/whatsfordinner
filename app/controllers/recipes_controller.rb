@@ -8,19 +8,19 @@ class RecipesController < ApplicationController
 
   def search
     if params[:query] == ""
-      @user_recipes = UserRecipe.all
+      @user_recipes_result = UserRecipe.all
     else
       @user_recipes_result = UserRecipe.recipe_title_search(params[:query])
+    end
 
-      ids = []
-      @user_recipes = []
+    ids = []
+    @user_recipes = []
 
-      @user_recipes_result.each do |user_recipe|
-        recipe_id = user_recipe.recipe.id
-        if ids.exclude?(recipe_id)
-          @user_recipes.push(user_recipe)
-          ids.push(recipe_id)
-        end
+    @user_recipes_result.each do |user_recipe|
+      recipe_id = user_recipe.recipe.id
+      if ids.exclude?(recipe_id)
+        @user_recipes.push(user_recipe)
+        ids.push(recipe_id)
       end
     end
 
@@ -41,6 +41,9 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
+    @recipe.ingredients = params[:recipe][:ingredients].values
+    @recipe.instructions = params[:recipe][:instructions].values
+    @recipe.categories = params[:recipe][:categories].values
     if @recipe.save
       user_recipe = UserRecipe.create(recipe: @recipe, user: current_user)
       redirect_to my_cookbook_path(user_recipe.user), notice: "Your recipe was created!"
@@ -52,6 +55,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :description, :prep_time, :instructions, :ingredients, :category, :photo, :serving_size)
+    params.require(:recipe).permit(:title, :description, :prep_time, :cooking_time, :photo,
+                                   :serving_size, instructions: [], ingredients: [], categories: [])
   end
 end

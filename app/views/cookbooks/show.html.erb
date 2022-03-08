@@ -2,9 +2,9 @@
 <div class="recipe-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(@recipe.photo.key) %>)">
   <%= render "shared/buttons/back_button", back: user_cookbook_path(@cookbook_user) %>
   <h1><%= @recipe.title.upcase %></h1>
-  <%# @recipe.category.each do |cat| %>
-    <div class="btn-category"><%= @recipe.category %></div>
-  <%# end %>
+  <% @recipe.categories.each do |cat| %>
+    <div class="btn-category"><%= cat %></div>
+  <% end %>
 </div>
 
 <div class="container">
@@ -47,10 +47,10 @@
         <%= image_tag "chef_icon.svg", class: "recipe-icon" %> <%= @recipe.prep_time %>
       </div>
       <div class="recipe-cooking">
-        <%= image_tag "pot-svgrepo-com.svg", class: "recipe-icon" %> 15 min
+        <%= image_tag "pot-svgrepo-com.svg", class: "recipe-icon" %> <%= @recipe.cooking_time %>
       </div>
       <div class="recipe-servings">
-        <%= image_tag "utensils_icon.svg", class: "recipe-icon" %>  4
+        <%= image_tag "utensils_icon.svg", class: "recipe-icon" %>   <%= @recipe.serving_size %>
       </div>
     </div>
 
@@ -62,23 +62,32 @@
     <hr class="recipe-hr">
 
     <h5 class="recipe-title">Ingredients</h5>
-    <p><%= @recipe.ingredients %></p>
+
+    <ul>
+      <% @recipe.ingredients.each do |ingredient| %>
+        <li> <%= ingredient %> </li>
+      <% end %>
+    </ul>
 
     <hr class="recipe-hr">
 
     <h5 class="recipe-title">Instructions</h5>
-    <p><%= @recipe.instructions %></p>
+      <% @recipe.instructions.each do |instruction| %>
+        <li> <%= instruction %> </li>
+      <% end %>
   </div>
 
   <hr class="recipe-hr">
 
   <% if @current_user.id == @cookbook_user.id %>
-    <h5 class="recipe-title ">Your notes on the recipe:<%= @user_recipe.user_comment %></h5>
+    <%# no one has notes on their own recipe. %>
+    <h5 class="recipe-title ">Your notes on this recipe:<%= @user_recipe.user_comment %></h5>
     <hr class="recipe-hr">
   <% elsif @current_user.id ==  @cookbook_user.id && @recipe_author.id == @current_user.id %>
     <h4 class="recipe-title">Your notes on the recipe:</strong> <%= @user_recipe.user_comment %></h4>
     <hr class="recipe-hr">
   <% else %>
+    <%# do we need this? Notes are private. %>
     <h4 class="recipe-title"><%= @cookbook_user.first_name%>'s notes on the recipe:<%= @user_recipe.user_comment %></h4>
     <hr class="recipe-hr">
   <% end %>

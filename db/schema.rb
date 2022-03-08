@@ -83,10 +83,10 @@ ActiveRecord::Schema.define(version: 2022_03_08_031154) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "serving_size"
     t.integer "upvotes_tracker"
+    t.string "cooking_time"
     t.string "categories", default: [], array: true
     t.string "ingredients", default: [], array: true
     t.string "instructions", default: [], array: true
-    t.string "cooking_time"
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 

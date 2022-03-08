@@ -30,10 +30,9 @@
       <% if recipe_status == "cooked" || recipe_status == "cookbooked" %>
         <%= render "shared/buttons/cooked", recipe: @recipe, user: current_user %>
       <% elsif recipe_status == "wishlisted" %>
-        <%= render "shared/buttons/cooked", recipe: @recipe, user: current_user %>
+        <%= render "shared/buttons/wishlisted", recipe: @recipe, user: current_user %>
       <% else %>
-        <%= render "shared/buttons/add_to_cookbook", recipe: @recipe, user: current_user %>
-        <%= render "shared/buttons/wishlist", recipe: @recipe, user: current_user %>
+        <%= render "shared/buttons/wishlist_add", user_recipe: @user_recipe, user: current_user %>
       <% end %>
     <% end %>
   </div>
@@ -82,18 +81,8 @@
   <hr class="recipe-hr">
 
   <% if @current_user.id == @cookbook_user.id %>
-    <%# no one has notes on their own recipe. %>
-    <p class="recipe-note ">Your notes on this recipe:</p>
-    <p style="font-size: 14px;"><%= @user_recipe.user_comment %></p>
-    <hr class="recipe-hr">
-  <% elsif @current_user.id ==  @cookbook_user.id && @recipe_author.id == @current_user.id %>
-    <p class="recipe-note">Your notes on the recipe:</p>
-    <p style="font-size: 14px;"><%= @user_recipe.user_comment %></p>
-    <hr class="recipe-hr">
-  <% else %>
-    <%# do we need this? Notes are private. %>
-    <p class="recipe-note"><%= @cookbook_user.first_name%>'s notes on the recipe:</p>
-    <p style="font-size: 14px;"><%= @user_recipe.user_comment %></p>
+    <h5 class="recipe-title ">Your notes on this recipe:</h5>
+    <p><%= @user_recipe.user_comment %></p>
     <hr class="recipe-hr">
   <% end %>
 

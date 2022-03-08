@@ -34,11 +34,9 @@ class CookbooksController < ApplicationController
   end
 
   def create
-    @user_recipe = UserRecipe.new(user_recipe_params)
-    @user_recipe.recipe = Recipe.find(params[:recipe_id])
-    @user_recipe.user = current_user
+    @user_recipe = UserRecipe.where(recipe_id: params[:recipe_id], user_id: current_user.id).first
 
-    if @user_recipe.save
+    if @user_recipe.update(wishlisted: false, user_comment: params[:user_recipe][:user_comment])
       FeedItem.create(user_id: current_user.id, user_recipe_id: @user_recipe.id, item_type: "added")
       redirect_to my_cookbook_path
     else
@@ -71,7 +69,8 @@ class CookbooksController < ApplicationController
   end
 
   def add_wishlist
-    @recipe = Recipe.find(params[:recipe][:recipe_id])
+    @original_user_recipe = UserRecipe.find(params[:user_recipe_id])
+    @recipe = @original_user_recipe.recipe
     @user_recipe = UserRecipe.new(wishlisted: true)
     @user_recipe.recipe = @recipe
     @user_recipe.user = current_user
@@ -80,6 +79,16 @@ class CookbooksController < ApplicationController
       FeedItem.create(item_type: "wishlisted", user_id: current_user.id, user_recipe_id: @user_recipe.id)
       redirect_to my_wishlist_path
     end
+  end
+
+  def wishlist_view
+    @user_recipe = UserRecipe.find(params[:user_recipe_id])
+    @recipe = @user_recipe.recipe
+    @recipe_author = @recipe.user
+  end
+
+  def my_wishlist_recipe
+    @user_recipe = UserRecipe.find(params[:user_recipe_id])
   end
 
   def my_history
@@ -99,7 +108,7 @@ class CookbooksController < ApplicationController
   end
 
   def find_user_recipes(user)
-    @user_recipes = UserRecipe.where(user_id: user.id)
+    @user_recipes = UserRecipe.where(user_id: user.id, wishlisted: [false, nil])
   end
 
   def user_recipe_params

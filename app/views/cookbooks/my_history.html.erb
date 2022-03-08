@@ -38,13 +38,6 @@
 
 </div>
 
-
-
-
 <% else %>
-  <div class="container text-center py-3">
-    <p>We're sorry, you haven't cooked anything yet!</p>
-    <br>
-    <%= image_tag "cooking.svg", class: "empty-history-img" %>
-  </div>
+  <%= render "shared/no_content", excuse: "you haven't cooked anything yet" %>
 <% end %>

@@ -40,18 +40,10 @@
       <% end %>
 
       <% if i==0 %>
-        <div class= "container text-center py-3">
-          <p>No recipes upvoted yet!</p>
-          <br>
-          <%= image_tag "burger.svg", class: "empty-top-img" %>
-        </div>
+        <%= render "shared/no_content", excuse: "no recipes in the top ten, wait for upvotes" %>
       <% end %>
     </div>
   </div>
 <% else %>
-  <div class= "container text-center py-3">
-    <p>No recipes upvoted yet!</p>
-    <br>
-    <%= image_tag "burger.svg", class: "empty-top-img" %>
-  </div>
+  <%= render "shared/no_content", excuse: "no recipes in the top ten, wait for upvotes" %>
 <% end %>

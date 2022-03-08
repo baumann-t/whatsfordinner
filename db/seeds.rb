@@ -22,7 +22,7 @@ kieran.photo.attach(io: image_file, filename: "Kieran's Avatar", content_type: '
 kieran.save!
 
 # ----- CREATE USER START -----
-puts "Creating Sebestien"
+puts "Creating Sebastien"
 seb = User.new(
   email: "seb@test.com",
   password: 123456,
@@ -106,8 +106,8 @@ shrimp_pasta = Recipe.new(
                 "1/3 cup of dry white wine", "1/2 lemon juice",
                 "4 tablespoons of butter",
                 "1/4 chopped parsley"],
-  prep_time: "30 minutes",
-  cooking_time: "25 minutes",
+  prep_time: "30 min",
+  cooking_time: "25 min",
   instructions: ["Bring a large pot of salted water to a boil.", "Add the linguine and cook as the label directs.", "Reserve 1 cup cooking water, then drain.",
                 "Season the shrimp with salt, heat the olive oil in a large skillet over medium-high heat.",
                 "Add the garlic and red pepper flakes and cook until the garlic is just golden, 30 seconds to 1 minute.",
@@ -118,7 +118,7 @@ shrimp_pasta = Recipe.new(
                 is melted and the shrimp is hot, about 2 minutes, adding more of the reserved cooking water as needed.", "Season with salt; stir in the parsley.
                 Serve with lemon wedges.",],
   categories: ["Italian", "Cheesy"],
-  serving_size: "4 servings",
+  serving_size: "4",
   upvotes_tracker: 10
 )
 
@@ -158,8 +158,8 @@ baked_salmon = Recipe.new(
   ingredients: ["2 tablespoon of brownsugar", "1/2 teaspoon of paprika", "1/2 teaspoon of garlic powder",
                 "1/4 teaspoon of cayenne pepper", "salt", "ground black pepper", "1/4 cup of panko breadcrumbs",
                 "1/2 cup of chopped parsley", "2 tablespoon of butter", "700g of salmon fillet", "1 tablespoon of dijon"],
-  prep_time: "30 minutes",
-  cooking_time: "1 hour",
+  prep_time: "30 min",
+  cooking_time: "1 h",
   instructions: ["Preheat the oven to 425 degrees F.", "Line a baking sheet with foil. Mix the brown sugar, paprika,
                 garlic powder, cayenne pepper, 1 teaspoon kosher salt and a generous amount of freshly ground black
                 pepper in a small bowl.", "Mix the panko with the parsley, butter, 1/4 teaspoon kosher salt and a few
@@ -170,7 +170,7 @@ baked_salmon = Recipe.new(
                 breadcrumbs are golden brown, and the salmon is firm and flakes easily when pressed, 15 to 18 minutes.",
                 "Cut into four equal portions for serving."],
   categories: ["American", "Fish"],
-  serving_size: "4 servings",
+  serving_size: "4",
   upvotes_tracker: 52
 )
 
@@ -192,8 +192,8 @@ egg_sandwich = Recipe.new(
   ingredients: ["1 tablespoon of ketchup", "1/2 teaspoon chipotle sauce",
                 "2 slices of bread", "2 slices of cheddar",
                 "1 tablespoon of butter", "1 slice of bacon", "1 egg"],
-  prep_time: "20 minutes",
-  cooking_time: "20 minutes",
+  prep_time: "20 min",
+  cooking_time: "20 min",
   instructions: ["Combine the ketchup and chipotle and spread on the inside of each piece of bread.",
                  "Place the cheese between the bread at an angle so that the edges hangover the sides of the bread.",
                  "Butter the outside of one bread slice with half the butter. Heat a skillet over medium heat.",
@@ -208,7 +208,7 @@ egg_sandwich = Recipe.new(
                  "Open up the sandwich (use a spoon to help pull apart the bread) and slide in the eggs and bacon.",
                  "Close up, slice and enjoy."],
   categories: ["Comfort Food", "Breafast"],
-  serving_size: "1 serving"
+  serving_size: "1"
 )
 
 image_file = URI.open('https://food.fnr.sndimg.com/content/dam/images/food/fullset/2016/11/3/2/NLV-Crave-Worthy_breakfast-sandwich_s4x3.jpg.rend.hgtvcom.826.620.suffix/1478289713133.jpeg')
@@ -240,8 +240,8 @@ tomato_pasta = Recipe.new(
   ingredients: ["500g penne", "2 tablespoon of olive oil", "1 small onion", "2 garlic cloves", "salt to taste",
                 "ground black pepper to taste", "1 can crushed tomatoes", "1/2 cup of heavy cream", "1/2 cup of basil leaves",
                 "grated parmesan to taste"],
-  prep_time: "35 minutes",
-  cooking_time: "30 minutes",
+  prep_time: "35 min",
+  cooking_time: "30 min",
   instructions: ["Heat olive oil in a large, high-sided sauté pan over medium heat until shimmering.",
                 "Add the onion and sauté until softened and translucent, 3 to 4 minutes.",
                 "Add the garlic and red pepper flakes, if using, and sauté until fragrant, 30 seconds to 1 minute.",
@@ -252,7 +252,7 @@ tomato_pasta = Recipe.new(
                 10 minutes or according to package instructions.", "Drain the pasta and add it to the sauce.", "Toss gently to
                 combine.", "Add the basil, toss once more, and serve immediately with grated cheese."],
   categories: ["Italian", "Spicy"],
-  serving_size: "4 to 6 servings",
+  serving_size: "4",
   upvotes_tracker: 11
 )
 image_file = URI.open('https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fill,g_center,w_1460,h_1825/k%2Farchive%2F0eb929bc2c007ebf6009316a327b1e37587045a4')
@@ -280,8 +280,8 @@ garlic_butter_steak = Recipe.new(
   ingredients: ["1 ribeye steak", "salt to taste", "ground black pepper to taste",
                 "3 tablespoon canola oil", "3 tablespoon of butter", "3 cloves of garlic",
                 "2 sprigs fresh thyme"],
-  prep_time: "1 hour",
-  cooking_time: "10 minutes",
+  prep_time: "1 h",
+  cooking_time: "10 min",
   instructions: ["Preheat oven to 200°F (95°C).", "Generously season all sides of the steak with salt and pepper.
                 Transfer to a wire rack on top of a baking sheet, then bake for about 45 minutes to an hour until the
                 internal temperature reads about 125°F (51° C) for medium-rare.", "Adjust the bake time based on if you
@@ -336,11 +336,11 @@ puts "creating upvotes and comments"
     comment.save!
     FeedItem.create!(item_type: "commented", user_recipe_id: user_recipe.id, user_id: user.id)
 
-    # Upvote section
-    upvote = Upvote.new
-    upvote.user = user
-    upvote.recipe = recipe
-    upvote.save!
-    FeedItem.create!(item_type: "liked", user_recipe_id: user_recipe.id, user_id: user.id)
+    # # Upvote section
+    # upvote = Upvote.new
+    # upvote.user = user
+    # upvote.recipe = recipe
+    # upvote.save!
+    # FeedItem.create!(item_type: "liked", user_recipe_id: user_recipe.id, user_id: user.id)
   end
 end

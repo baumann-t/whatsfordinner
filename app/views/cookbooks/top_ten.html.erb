@@ -10,20 +10,40 @@
           <div class="cookbook-recipe-card">
             <div class="d-flex p-2 ">
               <p><strong><%= i + 1 %>. <%= link_to recipe.title, cookbook_recipe_path(user_recipe) %></strong></p>
-              <p><strong>&nbsp- <%= pluralize recipe.upvotes_tracker, "upvote" %></strong></p>
+              <p><strong>&nbsp- <%=recipe.upvotes_tracker %></strong></p> <i class="fa-solid fa-heart" style="color: #2B9348"></i>
             </div>
+
             <%= cl_image_tag recipe.photo.key, height: 100, width: 200, crop: :lfill  %>
-            <p> Prep time: <%= recipe.prep_time %></p>
+
+            <div class="recipe-card-info d-flex justify-content-around">
+              <div class="recipe-prep">
+                <%= image_tag "chef_icon.svg", class: "recipe-icon" %> 10 min
+              </div>
+              <div class="recipe-cooking">
+                <%= image_tag "pot-svgrepo-com.svg", class: "recipe-icon" %> 15 min
+              </div>
+              <div class="recipe-servings">
+                <%= image_tag "utensils_icon.svg", class: "recipe-icon" %>  4
+              </div>
+            </div>
+
             <div class="container d-flex">
-              <p class="category"><%= recipe.category%></p>
+              <% user_recipe.recipe.categories.each do |cat| %>
+              <div class="btn-category">
+                <%= cat %>
+              </div>
+              <% end %>
             </div>
           </div>
         <% i+=1 %>
         <% end %>
       <% end %>
+
       <% if i==0 %>
-        <div class= "d-flex justify-content-center pt-5">
-          <h1 style="color: #2B9348">No recipes upvoted yet!</h1>
+        <div class= "container text-center py-3">
+          <p>No recipes upvoted yet!</p>
+          <br>
+          <%= image_tag "burger.svg", class: "empty-top-img" %>
         </div>
       <% end %>
     </div>

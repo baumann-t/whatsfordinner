@@ -1,0 +1,7 @@
+<% if user.photo.attached? %>
+  <%= cl_image_tag(user.photo.key,
+                                :transformation=>[ {:aspect_ratio=>"1.0", :gravity=>"face", :width=>75, :zoom=>0.5, :crop=>"thumb"}],
+                                class: "avatar-user-cookbook")%>
+<% else %>
+  <%= image_tag "https://static.thenounproject.com/png/363640-200.png", class: "avatar-user-cookbook" %>
+<% end %>

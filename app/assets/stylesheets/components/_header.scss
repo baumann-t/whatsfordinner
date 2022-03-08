@@ -56,6 +56,17 @@
   padding: 10px;
 }
 
+.banner-profile-user {
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('herbs.jpeg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
 .banner-user > .login {
   align-self: flex-end;
 }

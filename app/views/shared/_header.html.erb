@@ -42,10 +42,12 @@
     <%= render 'shared/avatar' %>
   </div>
 <% elsif request.path.starts_with?("/cookbooks/users/") %>
-  <div class="banner-user">
+  <div class="banner-profile-user">
     <% user = User.find(request.path.scan(/\d/).join('')) %>
-    <h1><%= "#{user.first_name.capitalize} #{user.last_name.capitalize}'s Cookbook" %></h1>
-    <%= render 'shared/avatar' %>
+    <div class="d-flex align-items-center flex-column">
+      <%= render 'shared/avatar_user_cookbook', user: user %>
+      <h1 class="text-center"><%= "#{user.first_name.capitalize} #{user.last_name.capitalize}'s Cookbook" %></h1>
+    </div>
   </div>
 <% elsif request.path == "/search" %>
   <div class="banner-search">

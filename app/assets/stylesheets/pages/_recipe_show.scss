@@ -28,6 +28,11 @@
   color: $primary;
 }
 
+.recipe-note {
+  text-decoration: underline;
+  font-size: 18px;
+}
+
 .comment-form {
   text-align: center;
 }
@@ -46,4 +51,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+ol > li {
+  padding-bottom: 16px;
 }

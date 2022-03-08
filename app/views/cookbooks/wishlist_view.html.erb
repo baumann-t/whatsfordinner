@@ -1,6 +1,5 @@
 
 <div class="recipe-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(@recipe.photo.key) %>)">
-  <%= render "shared/buttons/back_button", back: user_cookbook_path(@cookbook_user) %>
   <h1><%= @recipe.title.upcase %></h1>
   <% @recipe.categories.each do |cat| %>
     <div class="btn-category"><%= cat %></div>
@@ -9,32 +8,12 @@
 
 <div class="container">
   <div class="recipe-head d-flex flex-row-reverse justify-content-between", style="margin-top: 5px;">
-    <% if @current_user.id == @cookbook_user.id %>
-      <%= render "shared/upvotes", recipe: @recipe %>
-      <p>Created by: <%= link_to "#{@recipe_author.first_name} #{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></p>
-    <% elsif @current_user.id ==  @cookbook_user.id && @recipe_author.id == @current_user.id %>
-      <p>Created by: you!</p>
-      <%= render "shared/upvotes", recipe: @recipe %>
-    <% else %>
-      <%= render "shared/upvotes", recipe: @recipe %>
-      <p><strong>Created by:</strong> <%= link_to "#{@recipe_author.first_name} #{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></p>
-    <% end %>
+    <%= render "shared/upvotes", recipe: @recipe %>
+    <p>Created by: <%= link_to "#{@recipe_author.first_name} #{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></p>
   </div>
 
   <div class="recipe-buttons", style="padding: 20px 0 10px;">
-    <% if @current_user.id == @cookbook_user.id %>
-      <%= render "shared/buttons/remove", recipe: @recipe %>
-      <%= render "shared/buttons/mark_cooked", recipe: @recipe if !@user_recipe.cooked %>
-    <% else %>
-      <% recipe_status = @user_recipe.user_recipe_status(@recipe, current_user) %>
-      <% if recipe_status == "cooked" || recipe_status == "cookbooked" %>
-        <%= render "shared/buttons/cooked", recipe: @recipe, user: current_user %>
-      <% elsif recipe_status == "wishlisted" %>
-        <%= render "shared/buttons/wishlisted", recipe: @recipe, user: current_user %>
-      <% else %>
-        <%= render "shared/buttons/wishlist_add", user_recipe: @user_recipe, user: current_user %>
-      <% end %>
-    <% end %>
+    <%= render "shared/buttons/add_to_cookbook", recipe: @recipe, user: current_user %>
   </div>
   <hr>
 
@@ -77,13 +56,6 @@
   </div>
 
   <hr class="recipe-hr">
-
-  <% if @current_user.id == @cookbook_user.id %>
-    <%# no one has notes on their own recipe. %>
-    <h5 class="recipe-title ">Your notes on this recipe:</h5>
-    <p><%= @user_recipe.user_comment %></p>
-    <hr class="recipe-hr">
-  <% end %>
 
   <div data-controller="hide"  >
     <div data-hide-target="view" data-action="click->hide#show">

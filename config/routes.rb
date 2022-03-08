@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post '/recipes', to: 'recipes#create'
   get '/my-recipes', to: 'recipes#my_recipes'
   get '/my-cookbook', to: 'cookbooks#index'
+  get '/my-cookbook/:user_recipe_id', to: 'cookbooks#show', as:"my_cookbook_recipe"
   get '/my-cookbook/top-10', to: 'cookbooks#top_ten', as: "my_top_ten"
   get '/my-cookbook/add/:recipe_id', to: 'cookbooks#add', as: "add_to_cookbook"
   post '/my-cookbook', to: 'cookbooks#create', as: "create_cookbook"
@@ -26,7 +27,8 @@ Rails.application.routes.draw do
   get '/recipes/:id', to: 'recipes#index'
   get '/recipes/:id', to: 'recipes#details'
   get '/my-wishlist', to: 'cookbooks#my_wishlist', as: "my_wishlist"
-  get '/my-wishlist/add', to: 'cookbooks#add_wishlist'
+  get '/my-wishlist/:user_recipe_id', to: 'cookbooks#wishlist_view', as: "my_wishlist_recipe"
+  get '/my-wishlist/add/:user_recipe_id', to: 'cookbooks#add_wishlist', as: "add_wishlist"
   get '/my-feed', to: 'feed#view'
   get '/cookbooks/users/:user_id/follow', to: 'relations#follow', as: "follow_user"
   delete '/cookbooks/users/:user_id/follow', to: 'relations#unfollow', as: "unfollow_user"

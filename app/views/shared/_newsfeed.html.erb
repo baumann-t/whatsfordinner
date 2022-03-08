@@ -19,7 +19,7 @@
             <%# Recipe Image %>
             <%= link_to cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image"), cookbook_recipe_path(user_recipe) %>
           </div>
-          <div class=" m-3">
+          <div class=" m-3 newsfeed-content">
             <%# Feed %>
             <%= "#{user.first_name} left a comment on #{recipe_owner.first_name}'s recipe: "%> <strong><%=recipe.title %></strong>
           </div>

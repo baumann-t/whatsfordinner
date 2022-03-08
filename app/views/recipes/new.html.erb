@@ -6,7 +6,7 @@
         <div class="form-space" id="first">
           <div class="form-inputs">
             <%= f.input :title, label: "Recipe name:" %>
-            <a href="#desc" class="form-anchor" data-action="click->form#goToNextFormSpace" data-position="0">Next<a>
+            <a href="#desc" class="form-anchor" data-action="click->form#goToNextFormSpace" data-position="0">Next</a>
           </div>
         </div>
       </div>
@@ -15,8 +15,8 @@
         <div class="form-space" id="desc">
           <div class="form-inputs">
             <%= f.input :description, label: 'Give us one or two sentences about your recipe!'%>
-            <a href="#first" class="form-anchor" data-action="click->form#goToLastFormSpace" data-position="1">Back<a>
-            <a href="#prep" class="form-anchor" data-action="click->form#goToNextFormSpace" data-position="1">Next<a>
+            <a href="#first" class="form-anchor" data-action="click->form#goToLastFormSpace" data-position="1">Back</a>
+            <a href="#prep" class="form-anchor" data-action="click->form#goToNextFormSpace" data-position="1">Next</a>
           </div>
         </div>
       </div>
@@ -25,8 +25,8 @@
         <div class="form-space" id="prep" >
           <div class="form-inputs">
             <%= f.input :prep_time, label: "Preparation time:"%>
-            <a href="#desc" class="form-anchor" data-action="click->form#goToLastFormSpace" data-position="2">Back<a>
-            <a href="#cooking" class="form-anchor" data-action="click->form#goToNextFormSpace" data-position="2">Next<a>
+            <a href="#desc" class="form-anchor" data-action="click->form#goToLastFormSpace" data-position="2">Back</a>
+            <a href="#cooking" class="form-anchor" data-action="click->form#goToNextFormSpace" data-position="2">Next</a>
           </div>
         </div>
       </div>
@@ -35,8 +35,8 @@
         <div class="form-space" id="cooking">
           <div class="form-inputs">
             <%= f.input :cooking_time, label: "Cooking time:"%>
-            <a href="#prep" class="form-anchor" data-action="click->form#goToLastFormSpace" data-position="3">Back<a>
-            <a href="#servings" class="form-anchor" data-action="click->form#goToNextFormSpace" data-position="3">Next<a>
+            <a href="#prep" class="form-anchor" data-action="click->form#goToLastFormSpace" data-position="3">Back</a>
+            <a href="#servings" class="form-anchor" data-action="click->form#goToNextFormSpace" data-position="3">Next</a>
           </div>
         </div>
       </div>
@@ -45,8 +45,8 @@
         <div class="form-space" id="servings">
           <div class="form-inputs">
             <%= f.input :serving_size, label: "Serving size:"%>
-            <a href="#cooking" class="form-anchor" data-action="click->form#goToLastFormSpace" data-position="4">Back<a>
-            <a href="#ingredients" class="form-anchor" data-action="click->form#goToNextFormSpace" data-position="4">Next<a>
+            <a href="#cooking" class="form-anchor" data-action="click->form#goToLastFormSpace" data-position="4">Back</a>
+            <a href="#ingredients" class="form-anchor" data-action="click->form#goToNextFormSpace" data-position="4">Next</a>
           </div>
         </div>
       </div>
@@ -61,8 +61,8 @@
 
             <br> <br>
 
-            <a href="#servings" class="form-anchor" data-action="click->form#goToLastFormSpace" data-position="5">Back<a>
-            <a href="#instructions" class="form-anchor" data-action="click->form#goToNextFormSpace" data-position="5">Next<a>
+            <a href="#servings" class="form-anchor" data-action="click->form#goToLastFormSpace" data-position="5">Back</a>
+            <a href="#instructions" class="form-anchor" data-action="click->form#goToNextFormSpace" data-position="5">Next</a>
 
           </div>
         </div>
@@ -78,8 +78,8 @@
 
             <br> <br>
 
-            <a href="#ingredients" class="form-anchor" data-action="click->form#goToLastFormSpace" data-position="6">Back<a>
-            <a href="#category" class="form-anchor" data-action="click->form#goToNextFormSpace" data-position="6">Next<a>
+            <a href="#ingredients" class="form-anchor" data-action="click->form#goToLastFormSpace" data-position="6">Back</a>
+            <a href="#category" class="form-anchor" data-action="click->form#goToNextFormSpace" data-position="6">Next</a>
 
           </div>
         </div>
@@ -95,8 +95,8 @@
 
             <br> <br>
 
-            <a href="#instructions" class="form-anchor" data-action="click->form#goToLastFormSpace" data-position="7">Back<a>
-            <a href="#photo" class="form-anchor" data-action="click->form#goToNextFormSpace" data-position="7">Next<a>
+            <a href="#instructions" class="form-anchor" data-action="click->form#goToLastFormSpace" data-position="7">Back</a>
+            <a href="#photo" class="form-anchor" data-action="click->form#goToNextFormSpace" data-position="7">Next</a>
           </div>
         </div>
       </div>
@@ -106,7 +106,7 @@
           <div class="form-inputs">
             <%= f.input :photo, as: :file, label: "Say 'cheese'! Share a photo of your recipe here:" %>
             <div class="form-action">
-              <button href="#category" class="form-anchor" data-action="click->form#goToLastFormSpace" data-position="8">Back</button>
+              <button class="form-anchor" data-action="click->form#goToLastFormSpace" data-position="8">Back</button>
               <%= f.submit "Create recipe", class: "btn btn-create" %>
             </div>
           </div>

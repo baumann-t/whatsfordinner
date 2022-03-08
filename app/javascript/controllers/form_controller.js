@@ -7,9 +7,6 @@ export default class extends Controller {
     console.log("connected")
     window.addEventListener("keyup", this.preventEnter)
   }
-  disconnect() {
-    window.removeEventListener("keyup", this.preventEnter)
-  }
 
   goToNextFormSpace (event) {
     event.preventDefault()
@@ -17,6 +14,7 @@ export default class extends Controller {
     const nextFormSpacePosition = parseInt(currentFormSpacePosition) + 1
     const nextFormSpace = this.formSpaceTargets[nextFormSpacePosition]
     nextFormSpace.scrollIntoView()
+    console.log("next")
   }
 
   goToLastFormSpace (event) {
@@ -31,5 +29,10 @@ export default class extends Controller {
     console.log(event.key)
     if (event.key !== "Enter") return
     event.preventDefault()
+    console.log("Default prevented")
+  }
+
+  disconnect() {
+    window.removeEventListener("keyup", this.preventEnter)
   }
 }

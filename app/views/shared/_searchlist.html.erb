@@ -5,7 +5,8 @@
       <%= render 'shared/modal', user_recipe: user_recipe %>
       <div class="cookbook-recipe-card" data-toggle="modal" data-target="#modal-<%= @recipe.id %>">
         <h3><%= @recipe.title%></h3>
-        <%= cl_image_tag @recipe.photo.key, height: 100, width: 200, crop: :lfill  %>
+        <%= cl_image_tag(@recipe.photo.key, class: "newsfeed-recipe-image") %>
+        <%#= cl_image_tag @recipe.photo.key, height: 100, width: 200, crop: :lfill  %>
 
         <div class="recipe-card-info d-flex justify-content-around">
           <div class="recipe-prep">

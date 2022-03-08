@@ -4,10 +4,11 @@
 }
 
 .form-section {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: min-content;
 }
 
 .form-section-1 {
@@ -33,7 +34,10 @@
   text-align: center;
   padding: 80px 20px;
   width: 300px;
-  max-height: 1300px;
+}
+
+.fa-plus, .fa-minus {
+  padding: 0 14px;
 }
 
 .form-anchor, .btn-create {
@@ -41,6 +45,7 @@
   font-weight: lighter;
   transition: opacity 0.3s ease;
   margin: 0 auto;
+  margin-bottom: 1px;
   align-items: center;
   background-color: #2B9348;
   opacity: 100;
@@ -48,6 +53,7 @@
   border-radius: 4px;
   border: none;
   text-decoration: none !important;
+  font-size: 1rem;
 }
 
 .form-anchor:hover {

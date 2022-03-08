@@ -2,7 +2,7 @@
   <% if user_signed_in? %>
     <% if current_user.photo.attached? %>
       <%= cl_image_tag(current_user.photo.key,
-                                    :transformation=>[ {:aspect_ratio=>"1.0", :gravity=>"face", :width=>40, :zoom=>0.5, :crop=>"thumb"}],
+                                    :transformation=>[ {:aspect_ratio=>"1.0", :gravity=>"face", :width=>100, :zoom=>0.5, :crop=>"thumb"}],
                                     class: "dropdown-toggle avatar",
                                     id: "navbarDropdown",
                                     data: { bs_toggle: "dropdown" },

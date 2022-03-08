@@ -5,9 +5,9 @@
     <% end %>
   </div>
   <div class="comment-form">
-    <form data-comments-target="input">
+    <form data-comments-target="input" data-action="keyup->comments#submitButton">
       <input data-comments-target="field" type="text" name="input" class="comment-input">
-      <button data-action="click->comments#add" class="btn-submit">SUBMIT</button>
+      <button data-comments-target= "submit" data-action="click->comments#add" class="btn-submit-disable" disabled="true">SUBMIT</button>
     </form>
   </div>
 </div>

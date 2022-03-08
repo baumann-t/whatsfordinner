@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = ["list", "form", "input", "field", "id"]
+  static targets = ["list", "form", "input", "field", "id", "submit"]
   static values = {recipe: Number, userecipe: Number}
 
   add(event) {
@@ -20,6 +20,20 @@ export default class extends Controller {
       this.fieldTarget.value = ' '
       window.scrollTo(0,document.body.scrollHeight);
     })
+  }
+
+  submitButton(){
+    if (this.fieldTarget.value.length >= 0){
+      this.submitTarget.classList.remove("btn-submit-disable")
+      this.submitTarget.disabled = false
+      this.submitTarget.classList.add('btn-submit')
+    }
+
+    if (this.fieldTarget.value.length === 0) {
+      this.submitTarget.classList.remove('btn-submit')
+      this.submitTarget.disabled = true
+      this.submitTarget.classList.add("btn-submit-disable")
+    }
   }
 
   delete(event) {

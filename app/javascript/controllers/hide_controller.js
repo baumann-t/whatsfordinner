@@ -1,5 +1,4 @@
 import { Controller } from "stimulus"
-import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
   static targets = ["comments", "view", "hide"]
@@ -16,6 +15,4 @@ export default class extends Controller {
     this.viewTarget.style.display = "unset";
     this.hideTarget.style.display = "none";
   }
-
-
 }

@@ -1,40 +1,45 @@
-<div class="container container-bg-white">
-  <div class="cookbook-card-container">
-    <% user_recipes.each do |user_recipe| %>
-    <% recipe = user_recipe.recipe %>
-      <div class="cookbook-recipe-card">
-        <% if @user == current_user %>
-          <%= link_to my_cookbook_recipe_path(user_recipe) do%>
+<% if user_recipes.length > 0 %>
+  <div class="container container-bg-white">
+    <div class="cookbook-card-container">
+      <% user_recipes.each do |user_recipe| %>
+      <% recipe = user_recipe.recipe %>
+        <div class="cookbook-recipe-card">
+          <% if @user == current_user %>
+            <%= link_to my_cookbook_recipe_path(user_recipe) do%>
+                <h3><%= recipe.title %></h3>
+              <% end %>
+          <% else %>
+            <%= link_to cookbook_recipe_path(user_recipe) do%>
               <h3><%= recipe.title %></h3>
             <% end %>
-        <% else %>
-          <%= link_to cookbook_recipe_path(user_recipe) do%>
-            <h3><%= recipe.title %></h3>
           <% end %>
-        <% end %>
 
-          <%= cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image") %>
-          <div class="recipe-card-info d-flex justify-content-around">
-            <div class="recipe-prep">
-              <%= image_tag "chef_icon.svg", class: "recipe-icon" %> <%= recipe.prep_time %>
-            </div>
-            <div class="recipe-cooking">
-              <%= image_tag "pot-svgrepo-com.svg", class: "recipe-icon" %> 15 min
-            </div>
-            <div class="recipe-servings">
-              <%= image_tag "utensils_icon.svg", class: "recipe-icon" %>  4
-            </div>
-          </div>
-
-          <div class="container d-flex">
-            <% user_recipe.recipe.categories.each do |cat| %>
-              <div class="btn-category">
-                <%= cat %>
+            <%= cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image") %>
+            <div class="recipe-card-info d-flex justify-content-around">
+              <div class="recipe-prep">
+                <%= image_tag "chef_icon.svg", class: "recipe-icon" %> <%= recipe.prep_time %>
               </div>
-              <% end %>
+              <div class="recipe-cooking">
+                <%= image_tag "pot-svgrepo-com.svg", class: "recipe-icon" %> 15 min
+              </div>
+              <div class="recipe-servings">
+                <%= image_tag "utensils_icon.svg", class: "recipe-icon" %>  4
+              </div>
+            </div>
+
+            <div class="container d-flex">
+              <% user_recipe.recipe.categories.each do |cat| %>
+                <div class="btn-category">
+                  <%= cat %>
+                </div>
+                <% end %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+    </div>
   </div>
-</div>
+<% else %>
+  <%= render "shared/no_content", excuse: "no recipes yet" %>
+<% end %>
+
 <%# <%== pagy_nav(@pagy) %>

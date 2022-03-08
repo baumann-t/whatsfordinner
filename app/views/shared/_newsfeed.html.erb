@@ -1,35 +1,39 @@
-<div class="container container-bg-white">
-  <div class="cookbook-card-container">
+<% if @feed_items.length > 0 %>
+  <div class="container container-bg-white">
+    <div class="cookbook-card-container">
 
-    <% @feed_items.each_with_index do |item, index| %>
-      <% user_recipe= UserRecipe.find(item.user_recipe_id)%>
-      <% recipe= Recipe.find(user_recipe.recipe_id)%>
-      <% recipe_owner= User.find(recipe.user_id)%>
-      <% user= User.find(item.user_id)%>
-      <div class="newsfeed-recipe-card">
-        <% if item.item_type == "commented" %>
+      <% @feed_items.each_with_index do |item, index| %>
+        <% user_recipe= UserRecipe.find(item.user_recipe_id)%>
+        <% recipe= Recipe.find(user_recipe.recipe_id)%>
+        <% recipe_owner= User.find(recipe.user_id)%>
+        <% user= User.find(item.user_id)%>
+        <div class="newsfeed-recipe-card">
+          <% if item.item_type == "commented" %>
 
-          <div class="container mb-3 d-flex newsfeed-item-center">
-            <%# Avatar %>
-            <%= link_to cl_image_tag(user.photo.key, class: "avatar"), user_cookbook_path(user) %>
-            <%#= cl_image_tag(user.photo.key, class: "avatar") %>
-            <%= link_to user.first_name, user_cookbook_path(user), :class => "newsfeed-user" %>
-          </div>
-          <div class="container">
-            <%# Recipe Image %>
-            <%= link_to cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image"), cookbook_recipe_path(user_recipe) %>
-          </div>
-          <div class=" m-3 newsfeed-content">
-            <%# Feed %>
-            <%= "#{user.first_name} left a comment on #{recipe_owner.first_name}'s recipe: "%> <strong><%=recipe.title %></strong>
-          </div>
-        <% end %>
+            <div class="container mb-3 d-flex newsfeed-item-center">
+              <%# Avatar %>
+              <%= link_to cl_image_tag(user.photo.key, class: "avatar"), user_cookbook_path(user) %>
+              <%#= cl_image_tag(user.photo.key, class: "avatar") %>
+              <%= link_to user.first_name, user_cookbook_path(user), :class => "newsfeed-user" %>
+            </div>
+            <div class="container">
+              <%# Recipe Image %>
+              <%= link_to cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image"), cookbook_recipe_path(user_recipe) %>
+            </div>
+            <div class=" m-3 newsfeed-content">
+              <%# Feed %>
+              <%= "#{user.first_name} left a comment on #{recipe_owner.first_name}'s recipe: "%> <strong><%=recipe.title %></strong>
+            </div>
+          <% end %>
 
-        <div class="newsfeed-divider"></div>
-        <div class="d-flex justify-content-end newsfeed-minutes-ago">
-          <%= index * 3 + 4 %> minutes ago
+          <div class="newsfeed-divider"></div>
+          <div class="d-flex justify-content-end newsfeed-minutes-ago">
+            <%= index * 3 + 4 %> minutes ago
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% else %>
+  <%= render "shared/no_content", excuse: "No posts in your newsfeed yet" %>
+<% end %>

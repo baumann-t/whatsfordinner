@@ -28,11 +28,7 @@
             </div>
 
             <div class="container d-flex">
-              <% user_recipe.recipe.categories.each do |cat| %>
-              <div class="btn-category">
-                <%= cat %>
-              </div>
-              <% end %>
+              <p class="btn-category"><%= recipe.category%></p>
             </div>
           </div>
         <% i+=1 %>

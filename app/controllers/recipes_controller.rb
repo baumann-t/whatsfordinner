@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
-
   def show
     @recipe = Recipe.find(params[:id])
+    # need to link to cookbook recipe, not individual recipe
     @user_recipe = Recipe.from_recipe_to_user_recipe(@recipe)
     redirect_to cookbook_recipe_path(@user_recipe)
   end
@@ -23,6 +23,7 @@ class RecipesController < ApplicationController
         ids.push(recipe_id)
       end
     end
+
     respond_to do |format|
       format.html
       format.text { render partial: 'shared/searchlist', locals: { user_recipes: @user_recipes }, formats: [:html] }

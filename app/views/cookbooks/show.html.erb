@@ -84,7 +84,7 @@
     <h5 class="recipe-title ">Your notes on this recipe:<%= @user_recipe.user_comment %></h5>
     <hr class="recipe-hr">
   <% elsif @current_user.id ==  @cookbook_user.id && @recipe_author.id == @current_user.id %>
-    <h4 class="recipe-title">Your notes on this recipe:</strong> <%= @user_recipe.user_comment %></h4>
+    <h4 class="recipe-title">Your notes on the recipe:</strong> <%= @user_recipe.user_comment %></h4>
     <hr class="recipe-hr">
   <% else %>
     <%# do we need this? Notes are private. %>

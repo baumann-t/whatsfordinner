@@ -42,7 +42,7 @@
   <div class="main text">
     <h5 class="recipe-title">General information</h5>
 
-    <div class="recipe-info d-flex justify-content-around">
+    <div class="recipe-info d-flex justify-content-around", style="font-size: 14px;">
       <div class="recipe-prep">
         <%= image_tag "chef_icon.svg", class: "recipe-icon" %> <%= @recipe.prep_time %>
       </div>
@@ -72,35 +72,40 @@
     <hr class="recipe-hr">
 
     <h5 class="recipe-title">Instructions</h5>
-      <% @recipe.instructions.each do |instruction| %>
-        <li> <%= instruction %> </li>
-      <% end %>
+      <ol>
+        <% @recipe.instructions.each do |instruction| %>
+          <li> <%= instruction %> </li>
+        <% end %>
+      </ol>
   </div>
 
   <hr class="recipe-hr">
 
   <% if @current_user.id == @cookbook_user.id %>
     <%# no one has notes on their own recipe. %>
-    <h5 class="recipe-title ">Your notes on this recipe:<%= @user_recipe.user_comment %></h5>
+    <h5 class="recipe-title ">Your notes on this recipe</h5>
+    <p><%= @user_recipe.user_comment %></p>
     <hr class="recipe-hr">
   <% elsif @current_user.id ==  @cookbook_user.id && @recipe_author.id == @current_user.id %>
-    <h4 class="recipe-title">Your notes on the recipe:</strong> <%= @user_recipe.user_comment %></h4>
+    <h5 class="recipe-title">Your notes on the recipe</h5>
+    <p><%= @user_recipe.user_comment %></p>
     <hr class="recipe-hr">
   <% else %>
     <%# do we need this? Notes are private. %>
-    <h4 class="recipe-title"><%= @cookbook_user.first_name%>'s notes on the recipe:<%= @user_recipe.user_comment %></h4>
+    <h5 class="recipe-title"><%= @cookbook_user.first_name%>'s notes on the recipe</h5>
+    <p><%= @user_recipe.user_comment %></p>
     <hr class="recipe-hr">
   <% end %>
 
   <div data-controller="hide"  >
     <div data-hide-target="view" data-action="click->hide#show">
       <div class="d-flex justify-content-center mb-3" >
-        <a class="btn-top-10">View <%= @recipe.comments.count%> comment</a>
+        <a class="btn-top-10">VIEW <%= @recipe.comments.count%> COMMENT</a>
       </div>
     </div>
     <div style="display:none" data-hide-target="hide" data-action="click->hide#hide" >
       <div class="d-flex justify-content-center mb-3" >
-        <a class="btn-top-10">Hide comments</a>
+        <a class="btn-top-10">HIDE COMMENTS</a>
       </div>
     </div>
     <div style="display:none" data-hide-target="comments">

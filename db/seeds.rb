@@ -4,6 +4,7 @@ require 'open-uri'
 User.destroy_all
 Recipe.destroy_all
 UserRecipe.destroy_all
+FeedItem.destroy_all
 
 puts "creating admin account"
 kieran = User.new(
@@ -89,8 +90,7 @@ image_file = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_fa
 huang.photo.attach(io: image_file, filename: "Huang's Avatar", content_type: 'image/png')
 huang.save!
 
-
-
+# Create relationships
 kieran.follow(thomas)
 kieran.follow(huang)
 kieran.follow(lea)
@@ -139,11 +139,12 @@ user_recipe.save!
 puts shrimp_pasta.title
 
 # Comments
-comment = Comment.new(content: "This shrimp pasta is delicious, the lemon really bring the flavour together !!!!")
-comment.user = User.where(id: 3).first
-comment.recipe = shrimp_pasta
-comment.user_recipe = user_recipe
-comment.save!
+# comment = Comment.new(content: "This shrimp pasta is delicious, the lemon really bring the flavour together !!!!")
+# comment.user = User.third
+# comment.recipe = shrimp_pasta
+# comment.user_recipe = user_recipe
+# comment.save!
+# FeedItem.create!(item_type: "commented", user_recipe_id: user_recipe.id, user_id: User.third.id)
 
 # ------ Another recipe
 baked_salmon = Recipe.new(
@@ -222,11 +223,11 @@ puts egg_sandwich.title
 
 # need to associate recipe id with my cookbook and mark as cooked
 
-comment = Comment.new(content: "This is the worst crap I've ever tasted!")
-comment.user = User.first
-comment.recipe = egg_sandwich
-comment.user_recipe = user_recipe
-comment.save!
+# comment = Comment.new(content: "This is the worst crap I've ever tasted!")
+# comment.user = User.first
+# comment.recipe = egg_sandwich
+# comment.user_recipe = user_recipe
+# comment.save!
 
 # ------ Another recipe
 tomato_pasta = Recipe.new(
@@ -298,10 +299,12 @@ garlic_butter_steak.user = huang
 garlic_butter_steak.save!
 
 user_recipe = UserRecipe.new(
-  user: huang, recipe: garlic_butter_steak
+  user_id: huang.id, recipe_id: garlic_butter_steak.id
 )
 user_recipe.save!
-puts garlic_butter_steak.title
+p user_recipe.recipe.id
+p user_recipe.user.id
+# puts garlic_butter_steak.title
 
 # need to associate recipe id with my cookbook and mark as cooked
 
@@ -310,29 +313,29 @@ comment.user = lea
 comment.recipe = garlic_butter_steak
 comment.user_recipe = user_recipe
 comment.save!
+FeedItem.create!(item_type: "commented", user_recipe_id: user_recipe.id, user_id: lea.id)
 
 puts "creating upvotes and comments"
-10.times do
-  user = User.all.sample
-  recipe = Recipe.all.sample
-
+[garlic_butter_steak, shrimp_pasta, baked_salmon, egg_sandwich, tomato_pasta].each_with_index do |recipe, index|
+  user = [seb, thomas, lea, kieran, huang][index]
   # guard clause
   # Check if there's already an upvote from this user to that recipe
   unless recipe.upvotes.pluck(:user_id).include?(user.id)
-    content = ["So nice!", "I'll try that next week!", "Added to my cookbook right away!", "Are you sure we need that much sugar?", "Can I replace the wine with beef stock?", "You should go to Top Chef!"].sample
-
+    # Comment section
+    content = ["So nice!", "I'll try that next week!", "Added to my cookbook right away!", "Is there a vegetarian option for it?", "I cook it every week, it is delicious", "You should go to Top Chef!"].sample
     comment = Comment.new(content: content)
     comment.user = user
     comment.recipe = recipe
-    # user_recipe = UserRecipe.where(user_id: user.id, recipe_id: recipe.id)
+    user_recipe = UserRecipe.where(user_id: recipe.user.id, recipe_id: recipe.id).first
     comment.user_recipe = user_recipe
     comment.save!
     FeedItem.create!(item_type: "commented", user_recipe_id: user_recipe.id, user_id: user.id)
+
+    # Upvote section
     upvote = Upvote.new
     upvote.user = user
     upvote.recipe = recipe
     upvote.save!
     FeedItem.create!(item_type: "liked", user_recipe_id: user_recipe.id, user_id: user.id)
   end
-  # puts "Feed item created"
 end

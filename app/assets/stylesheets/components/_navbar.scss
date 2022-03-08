@@ -1,6 +1,6 @@
 .navbar {
   justify-content: space-between;
-  background: white;
+  background: #fefefa;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -13,7 +13,7 @@
 }
 
 .inactive{
-  color: black;
+  color: #333234;
   text-decoration: none;
 }
 
@@ -27,7 +27,7 @@
 
 .inline > li {
   display: inline-flex;
-  border-right: solid 1px black;
+  border-right: solid 1px #333234;
   padding: 0 10px;
 }
 

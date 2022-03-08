@@ -1,9 +1,9 @@
 .recipe-banner {
   background-size: cover;
   background-position: center;
-  color: white;
+  color: #fefefa;
   // height: 180px;
-  text-shadow: 0 0 3px black;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
   padding: 1rem;
 }
 
@@ -28,6 +28,11 @@
   color: $primary;
 }
 
+.recipe-note {
+  text-decoration: underline;
+  font-size: 18px;
+}
+
 .comment-form {
   text-align: center;
 }
@@ -46,4 +51,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+ol > li {
+  padding-bottom: 16px;
 }

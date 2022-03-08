@@ -3,9 +3,16 @@
     <% user_recipes.each do |user_recipe| %>
     <% recipe = user_recipe.recipe %>
       <div class="cookbook-recipe-card">
-        <%= link_to cookbook_recipe_path(user_recipe) do%>
-          <h3><%= recipe.title %></h3>
+        <% if @user == current_user %>
+          <%= link_to my_cookbook_recipe_path(user_recipe) do%>
+              <h3><%= recipe.title %></h3>
+            <% end %>
+        <% else %>
+          <%= link_to cookbook_recipe_path(user_recipe) do%>
+            <h3><%= recipe.title %></h3>
+          <% end %>
         <% end %>
+
           <%= cl_image_tag recipe.photo.key, height: 100, width: 200, crop: :lfill if recipe.photo.attached? %>
 
           <div class="recipe-card-info d-flex justify-content-around">

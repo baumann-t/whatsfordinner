@@ -1,13 +1,15 @@
 <div class="navbar">
   <div class="inline">
-    <ul class="inline">
-      <li><%= link_to "Home", root_path, :class => current_class?(root_path)%></li>
-      <li><%= link_to "Cookbook", my_cookbook_path, :class => current_class?(my_cookbook_path)%></li>
-      <li><%= link_to "Wishlist", my_wishlist_path, :class => current_class?(my_wishlist_path)%></li>
-      <li><%= link_to "Profile", my_profile_path, :class => current_class?(my_profile_path) %></li>
-      <li><%= link_to search_path, :class => current_class?(search_path) do %>
-        <i class="fas fa-search"></i>
-      <% end %></li>
-    </ul>
+    <div data-controller="menu">
+      <ul class="inline">
+        <li><%= link_to "Home", root_path, class: "inactive", data: { menu_target: 'home' }%></li>
+        <li><%= link_to "Cookbook", my_cookbook_path, class: "inactive",data: { menu_target: 'cookbook'}%></li>
+        <li><%= link_to "Wishlist", my_wishlist_path, class: "inactive",data: { menu_target: 'wishlist'}%></li>
+        <li><%= link_to "Profile", my_profile_path, class: "inactive",data: { menu_target: 'profile' }%></li>
+        <li><%= link_to search_path, class: "inactive",data: { menu_target: 'search' } do %>
+          <i class="fas fa-search"></i>
+        <% end %></li>
+      </ul>
+    </div>
   </div>
 </div>

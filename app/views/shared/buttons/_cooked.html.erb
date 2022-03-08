@@ -1,2 +1,4 @@
 <% user_recipe = UserRecipe.where(user_id: user.id, recipe_id: recipe.id).first %>
-<%= link_to "VIEW IN COOKBOOK", cookbook_recipe_path(user_recipe), class:"btn btn-secondary"%>
+<%= link_to my_cookbook_recipe_path(user_recipe) do%>
+  <button class="cooked-btn">VIEW IN COOKBOOK</button>
+<% end %>

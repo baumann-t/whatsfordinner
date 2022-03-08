@@ -3,7 +3,7 @@
     <% @wishlist.each do |user_recipe| %>
     <% recipe = user_recipe.recipe %>
       <div class="cookbook-recipe-card">
-        <%= link_to cookbook_recipe_path(user_recipe) do%>
+        <%= link_to my_wishlist_recipe_path(user_recipe) do%>
           <h3><%= recipe.title %></h3>
         <% end %>
           <%= cl_image_tag recipe.photo.key, height: 100, width: 200, crop: :lfill if recipe.photo.attached? %>

@@ -7,23 +7,22 @@
   <% @cooking_history.each do |user_recipe| %>
     <div class="cookbook-history-card">
       <%# <div class="d-flex justify-content-around my-2 recipe-title"> %>
-        <%= link_to cookbook_recipe_path(user_recipe) do%>
+        <%#= link_to cookbook_recipe_path(user_recipe) do%>
           <h3 style="font-weight:bold; margin:10px"><%= user_recipe.recipe.title %></h3>
           <div class="container d-flex">
             <div>
-              <%= cl_image_tag user_recipe.recipe.photo.key, height: 125, width: 125, crop: :lfill  %>
+              <%= cl_image_tag user_recipe.recipe.photo.key, height: 125, width: 125, crop: :lfill, class: "history-img"  %>
             </div>
-          <div class="container padding-right-0">
-              <div>
+          <div class="container padding-right-0 d-flex flex-column justify-content-between">
                 <p>
-                  <%= user_recipe.recipe.description[0, 50] %>... <%= link_to "See\u00A0more", "/", class:"sml-a-tag" %>
+                  <%= user_recipe.recipe.description[0, 50] %>...
+                  <%= link_to "See\u00A0more", cookbook_recipe_path(user_recipe), class:"sml-a-tag" %>
                 </p>
                 <p>
                   <strong>Cooked on : <%= user_recipe.date_cooked_formated %></strong>
                 </p>
-              </div>
-            </div>
-        <% end %>
+          </div>
+        <%# end %>
       </div>
     </div>
     <p></p>

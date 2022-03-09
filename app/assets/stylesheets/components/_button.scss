@@ -45,3 +45,24 @@
   height: 40px;
   border: none;
 }
+
+.btn:hover {
+  color: #fefefa
+}
+
+.add-recipe-button{
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  width: 350px;
+  height: 30px;
+  border: none;
+  background-color: #2B9348;
+  font-size: 16px;
+  border-radius: 4px;
+  color: #fefefa;
+  text-align: center;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  text-decoration: none;
+  padding-top: 3px;
+  margin-bottom: 15px;
+}

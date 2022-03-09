@@ -13,7 +13,7 @@
               <p><strong>&nbsp- <%=recipe.upvotes_tracker %></strong></p> <i class="fa-solid fa-heart" style="color: #2B9348"></i>
             </div>
 
-            <%= cl_image_tag recipe.photo.key, height: 100, width: 200, crop: :lfill  %>
+            <%= cl_image_tag recipe.photo.key, height: 100, width: 200, crop: :lfill, class: "newsfeed-recipe-image" %>
 
             <div class="recipe-card-info d-flex justify-content-around">
               <div class="recipe-prep">

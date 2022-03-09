@@ -26,6 +26,7 @@ body{
 h1 {
   font-family: 'Roboto', sans-serif;
   text-shadow: 5px 5px 12px rgba(0, 0, 0, 0.4);
+  // font-size: 3.2vw;
 }
 
 .content-container {
@@ -43,3 +44,8 @@ h1 {
 // white #fefefa
 // black #333234
 // shadow rgba(0, 0, 0, 0.2)
+@media (min-width: 768px) {
+  h1 {
+    font-size: 30px;
+  }
+}

@@ -6,13 +6,13 @@
     <p>The app allowing foodies to get inspired by what their network is cooking.</p>
 
     <div class="btn btn-primary btn-search">
-      <%= link_to "SEARCH", search_path%>
+      <%= link_to "LOGIN", new_user_session_path %>
     </div>
   </div>
 <% end %>
 
 <% if request.path == "/" && user_signed_in? %>
-  <div class="banner-my-cookbook">
+  <div class="banner-my-newsfeed">
     <h1>MY NEWSFEED</h1>
     <%= render 'shared/avatar' %>
   </div>

@@ -2,7 +2,7 @@
   <div class="row justify-content-center container-bg-white">
     <div class="col-4">
       <% if @user.id == current_user.id %>
-        <h1 class="btn-top-10"><%= link_to "Add recipe", recipes_new_path %> </h1>
+        <h1 class="btn-top-10"><%= link_to "All recipes", my_cookbook_path %> </h1>
       <% else %>
         <h1 class="btn-top-10"><%=link_to "All recipes", user_cookbook_path(@user)%></h1>
       <% end %>
@@ -19,9 +19,9 @@
         <h1 class="btn-top-10"><%=link_to "History", my_cookbook_history_path%></h1>
       <% else %>
         <% if current_user.follow?(@user) %>
-          <h1 class="btn-top-10"><%=link_to "Unfollow!", unfollow_user_path(@user), method: "delete"%> </h1>
+          <h1 class="btn-top-10"><%=link_to "Unfollow", unfollow_user_path(@user), method: "delete"%> </h1>
         <% else %>
-          <h1 class="btn-top-10"><%=link_to "Follow!", follow_user_path(@user)%> </h1>
+          <h1 class="btn-top-10"><%=link_to "Follow", follow_user_path(@user)%> </h1>
         <% end %>
       <% end %>
     </div>

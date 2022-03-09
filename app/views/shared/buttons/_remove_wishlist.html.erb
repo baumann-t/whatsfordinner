@@ -1,0 +1,3 @@
+<%= simple_form_for(recipe, method: :get, url: remove_wishlist_path(@user_recipe)) do |f| %>
+    <%= f.submit "REMOVE", class: "btn-add-cookbook"%>
+<% end %>

@@ -4,8 +4,8 @@ export default class extends Controller {
   static targets = ["formSpace"]
 
   connect() {
-    console.log("connected")
-    window.addEventListener("keyup", this.preventEnter)
+    console.log("form controller connected")
+    window.addEventListener("keydown", this.preventEnter)
   }
 
   goToNextFormSpace (event) {

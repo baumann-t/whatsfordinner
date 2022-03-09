@@ -8,7 +8,7 @@ export default class extends Controller {
   static targets = ["less","more"]
 
   connect() {
-    console.log("connected")
+    console.log("input controller connected")
   }
 
   moreCat (event) {

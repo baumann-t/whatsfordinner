@@ -46,6 +46,7 @@
       </div>
       <div class="form-section" data-form-target="formSpace">
         <div class="form-space" id="ingredients">
+          <%# Ingredients Array and Stimulus %>
           <div class="form-inputs" data-controller="input">
             <%= f.input :ingredients, label: "Write your ingredients below:", input_html: { name: 'recipe[ingredients][0]' }%>
             <i class="fa-solid fa-minus" data-input-target="less" data-action="click->input#lessIngr"></i>
@@ -58,6 +59,7 @@
       </div>
       <div class="form-section" data-form-target="formSpace">
         <div class="form-space"id="instructions">
+          <%# Instructions Array and Stimulus %>
           <div class="form-inputs" id="instructions" data-controller="input">
             <%= f.input :instructions, label: "Preparation instructions:", input_html: { name: 'recipe[instructions][0]' }%>
             <i class="fa-solid fa-minus" data-input-target="less" data-action="click->input#lessInst"></i>
@@ -70,6 +72,7 @@
       </div>
       <div class="form-section" data-form-target="formSpace">
         <div class="form-space" id="category">
+          <%# Categories Array and Stimulus %>
           <div class="form-inputs" data-controller="input">
             <%= f.input :categories, label: "Category:", input_html: { name: 'recipe[categories][0]' }%>
             <i class="fa-solid fa-minus" data-input-target="less" data-action="click->input#lessCat"></i>

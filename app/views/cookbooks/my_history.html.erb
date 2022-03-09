@@ -5,7 +5,6 @@
 
 
 <div class="container">
-
   <% @cooking_history.each do |user_recipe| %>
     <div class="container cookbook-history-card">
       <%# <div class="d-flex justify-content-around my-2 recipe-title"> %>
@@ -14,13 +13,10 @@
           <%= user_recipe.recipe.title %>
         <% end %>
       </div>
-
       <div class="container d-flex">
-
         <div>
           <%= cl_image_tag user_recipe.recipe.photo.key, height: 125, width: 125, crop: :lfill  %>
         </div>
-
       <div class="container padding-right-0">
           <div>
             <p>
@@ -35,7 +31,6 @@
     </div>
     <p></p>
   <% end %>
-
 </div>
 
 <% else %>

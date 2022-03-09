@@ -16,6 +16,10 @@ class UserRecipe < ApplicationRecord
     self.date_cooked = Date.today
   end
 
+  def date_cooked_formated
+    self.date_cooked.strftime('%b %d')
+  end
+
   def user_recipe_status(recipe, user)
     wishlisted = false
     cooked = false

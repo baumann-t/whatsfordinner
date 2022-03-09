@@ -13,6 +13,7 @@
 
   <div class="recipe-buttons", style="padding: 20px 0 10px;">
     <%= render "shared/buttons/add_to_cookbook", recipe: @recipe, user: current_user %>
+    <%= render "shared/buttons/remove_wishlist", recipe: @recipe,user_recipe: @user_recipe, user: current_user %>
   </div>
   <hr>
 

@@ -13,32 +13,32 @@
 
 <% if request.path == "/" && user_signed_in? %>
   <div class="banner-my-newsfeed">
-    <h1>MY NEWSFEED</h1>
+    <h1 class="mt-3">MY NEWSFEED</h1>
     <%= render 'shared/avatar' %>
   </div>
 <% elsif request.path == "/my-cookbook" %>
   <div class="banner-my-cookbook">
-    <h1>MY COOKBOOK</h1>
+    <h1 class="mt-3">MY COOKBOOK</h1>
     <%= render 'shared/avatar' %>
   </div>
 <% elsif request.path == "/my-wishlist" %>
   <div class="banner-my-cookbook">
-    <h1>MY WISHLIST</h1>
+    <h1 class="mt-3">MY WISHLIST</h1>
     <%= render 'shared/avatar' %>
   </div>
 <% elsif request.path == "/my-cookbook/top-ten" %>
   <div class="banner-my-cookbook">
-    <h1>MY TOP 10 RECIPES</h1>
+    <h1 class="mt-3">MY TOP 10 RECIPES</h1>
     <%= render 'shared/avatar' %>
   </div>
 <% elsif request.path == "/my-cookbook/history" %>
   <div class="banner-my-cookbook">
-    <h1>MY COOKING HISTORY</h1>
+    <h1 class="mt-3">MY COOKING HISTORY</h1>
     <%= render 'shared/avatar' %>
   </div>
 <% elsif request.path == "/recipes/new" %>
   <div class="banner-my-cookbook">
-    <h1>ADD A RECIPE</h1>
+    <h1 class="mt-3">ADD A RECIPE</h1>
     <div class="back-button-banner">
       <%= render "shared/buttons/back_button", back: my_cookbook_path%>
     </div>
@@ -49,20 +49,22 @@
     <% user = User.find(request.path.scan(/\d/).join('')) %>
     <div class="d-flex align-items-center flex-column">
       <%= render 'shared/avatar_user_cookbook', user: user %>
-      <h1 class="text-center"><%= "#{user.first_name.capitalize} #{user.last_name.capitalize}'s Cookbook" %></h1>
+      <h1 class="text-center"><%= "#{user.first_name.upcase} #{user.last_name.upcase}'S" %> <br>COOKBOOK</h1>
     </div>
   </div>
 <% elsif request.path == "/search" %>
   <div class="banner-search">
-    <h1>SEARCH</h1>
+    <h1 class="mt-3">SEARCH</h1>
     <%= render 'shared/avatar' %>
   </div>
 <% elsif request.path == "/my-profile" %>
   <div class="banner-profile">
-    <h1>MY PROFILE</h1>
+    <h1 class="mt-3">MY PROFILE</h1>
+    <%= render 'shared/avatar' %>
   </div>
 <% elsif request.path == "/following" %>
   <div class="banner-profile">
-    <h1>PEOPLE YOU FOLLOW</h1>
+    <h1 class="mt-3">PEOPLE YOU FOLLOW</h1>
+    <%= render 'shared/avatar' %>
   </div>
 <% end %>

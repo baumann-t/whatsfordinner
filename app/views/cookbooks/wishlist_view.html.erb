@@ -1,4 +1,5 @@
 <div class="recipe-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(@recipe.photo.key) %>)">
+  <%= render "shared/buttons/back_button", back: my_wishlist_path%>
   <h1><%= @recipe.title.upcase %></h1>
   <% @recipe.categories.each do |cat| %>
     <div class="btn-category"><%= cat %></div>

@@ -110,6 +110,14 @@ class CookbooksController < ApplicationController
     end
   end
 
+  def newsfeed_view
+    @user_recipe = UserRecipe.find(params[:user_recipe_id])
+    @cookbook_user = @user_recipe.user
+    @current_user = current_user
+    @recipe = @user_recipe.recipe
+    @recipe_author = @recipe.user
+  end
+
   private
 
   def find_user_recipe

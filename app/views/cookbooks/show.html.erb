@@ -88,7 +88,7 @@
   <div data-controller="hide"  >
     <div data-hide-target="view" data-action="click->hide#show">
       <div class="d-flex justify-content-center mb-3" >
-        <a class="btn-top-10">VIEW <%= @recipe.comments.count%> COMMENT</a>
+        <a class="btn-top-10" data-hide-target="text" >VIEW <%= (pluralize @recipe.comments.count, "comment").upcase%></a>
       </div>
     </div>
     <div style="display:none" data-hide-target="hide" data-action="click->hide#hide" >
@@ -97,7 +97,7 @@
       </div>
     </div>
     <div style="display:none" data-hide-target="comments">
-      <div class="main text">
+      <div class="main text" data-hide-target = "list">
         <%= render "shared/comments", user_recipe: @user_recipe %>
       </div>
     </div>

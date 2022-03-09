@@ -17,10 +17,10 @@
     <p class="d-flex justify-content-center"><strong>Recipes in cookbook :&nbsp</strong><%=@user.user_recipes.count%></p>
     <div class="d-flex justify-content-center">
       <div class="col-4 ">
-        <p class="btn-top-10 my-3 mx-1"><%=link_to "Edit profile", edit_user_registration_path(@user)%></p>
+        <p class="btn-edit-items my-3 mx-1"><%=link_to "Edit profile", edit_user_registration_path(@user)%></p>
       </div>
       <div class="col-4 ">
-        <p class="btn-top-10 m-0 my-3"><%=link_to "Friends list", following_path%></p>
+        <p class="btn-edit-items m-0 my-3"><%=link_to "Friends list", following_path%></p>
       </div>
     </div>
   </div>

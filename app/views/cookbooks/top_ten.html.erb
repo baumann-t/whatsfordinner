@@ -1,11 +1,12 @@
 <%= render "shared/buttons/create-topten-history" %>
 
 <% if @top_recipes.length > 0 %>
+
   <div class="container container-bg-white">
     <div class="cookbook-card-container">
       <% i=0 %>
       <% @top_recipes.each do |recipe| %>
-        <% user_recipe = UserRecipe.where(user_id: current_user.id, recipe_id: recipe.id).first %>
+        <% user_recipe = UserRecipe.where(user_id: @user.id, recipe_id: recipe.id).first %>
         <% if user_recipe %>
           <div class="cookbook-recipe-card">
             <div class="d-flex p-2 ">

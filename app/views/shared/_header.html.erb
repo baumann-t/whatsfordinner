@@ -46,9 +46,6 @@
   </div>
 <% elsif request.path.starts_with?("/cookbooks/users/") %>
   <div class="banner-profile-user">
-    <div class="back-button-banner">
-      <%= render "shared/buttons/back_button", back: search_path%>
-    </div>
     <% user = User.find(request.path.scan(/\d/).join('')) %>
     <div class="d-flex align-items-center flex-column">
       <%= render 'shared/avatar_user_cookbook', user: user %>

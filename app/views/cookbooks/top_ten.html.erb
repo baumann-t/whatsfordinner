@@ -43,10 +43,10 @@
       <% end %>
 
       <% if i==0 %>
-        <%= render "shared/no_content", excuse: "no recipes in the top ten, wait for upvotes" %>
+        <%= render "shared/no_content", excuse: "no recipes in your top ten, wait for upvotes" %>
       <% end %>
     </div>
   </div>
 <% else %>
-  <%= render "shared/no_content", excuse: "no recipes in the top ten, wait for upvotes" %>
+  <%= render "shared/no_content", excuse: "no recipes in this user's top ten, wait for upvotes" %>
 <% end %>

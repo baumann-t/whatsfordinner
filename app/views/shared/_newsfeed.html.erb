@@ -26,6 +26,37 @@
             </div>
           <% end %>
 
+          <% if item.item_type == "wishlisted" %>
+            <%= "#{user.first_name} added #{recipe_owner.first_name}'s recipe to his wishlist: #{recipe.title}" %>
+          <div class="container mb-3 d-flex newsfeed-item-center">
+            <%# Avatar %>
+            <%= link_to cl_image_tag(user.photo.key, class: "avatar"), user_cookbook_path(user) %>
+            <%#= cl_image_tag(user.photo.key, class: "avatar") %>
+            <%= link_to user.first_name, user_cookbook_path(user), :class => "newsfeed-user" %>
+          </div>
+          <div class="container">
+            <%# Recipe Image %>
+            <%= link_to cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image"), cookbook_recipe_path(user_recipe) %>
+          </div>
+          <div class=" m-3">
+            <%# Feed %>
+            <%= "#{user.first_name} left a comment on #{recipe_owner.first_name}'s recipe: "%> <strong><%=recipe.title %></strong>
+          </div>
+        <% end %>
+
+          <% if item.item_type == "liked" %>
+            <%= "#{user.first_name} liked #{recipe_owner.first_name}'s recipe: #{recipe.title}" %>
+          <% end %>
+
+          <% if item.item_type == "added" %>
+            <%= "#{user.first_name} added #{recipe_owner.first_name}'s recipe to his cookbook: #{recipe.title}" %>
+          <% end %>
+
+          <% if item.item_type == "cooked" %>
+            <%= "#{user.first_name} cooked #{recipe_owner.first_name}'s recipe: #{recipe.title}" %>
+          <% end %>
+
+
           <div class="newsfeed-divider"></div>
           <div class="d-flex justify-content-end newsfeed-minutes-ago">
             <%= index * 3 + 4 %> minutes ago

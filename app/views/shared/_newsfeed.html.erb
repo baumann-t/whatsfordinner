@@ -8,21 +8,22 @@
         <% recipe_owner= User.find(recipe.user_id)%>
         <% user= User.find(item.user_id)%>
         <div class="newsfeed-recipe-card">
+
           <%# COMMENTS %>
           <% if item.item_type == "commented" %>
             <div class="container mb-3 d-flex newsfeed-item-center">
               <%# Avatar %>
               <%= link_to cl_image_tag(user.photo.key, class: "avatar"), user_cookbook_path(user) %>
               <%#= cl_image_tag(user.photo.key, class: "avatar") %>
-              <%= link_to user.first_name, user_cookbook_path(user), :class => "newsfeed-user" %>
+              <%= link_to "#{user.first_name}  #{user.last_name}", user_cookbook_path(user), :class => "newsfeed-user" %>
             </div>
             <div class="container">
               <%# Recipe Image %>
-              <%= link_to cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image"), cookbook_recipe_path(user_recipe) %>
+              <%#= link_to cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image"), cookbook_recipe_path(user_recipe) %>
             </div>
             <div class=" m-3 newsfeed-content">
               <%# Feed %>
-              <%= "#{user.first_name} left a comment on #{recipe_owner.first_name}'s recipe: "%> <strong><%=recipe.title %></strong>
+              <%= "#{user.first_name} left a comment on #{recipe_owner.first_name}'s recipe: "%> <strong><%= link_to recipe.title, cookbook_recipe_path(user_recipe) %></strong>
             </div>
           <% end %>
 
@@ -32,26 +33,26 @@
             <%# Avatar %>
             <%= link_to cl_image_tag(user.photo.key, class: "avatar"), user_cookbook_path(user) %>
             <%#= cl_image_tag(user.photo.key, class: "avatar") %>
-            <%= link_to user.first_name, user_cookbook_path(user), :class => "newsfeed-user" %>
+            <%= link_to "#{user.first_name}  #{user.last_name}", user_cookbook_path(user), :class => "newsfeed-user" %>
           </div>
           <div class="container">
             <%# Recipe Image %>
-            <%= link_to cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image"), cookbook_recipe_path(user_recipe) %>
+            <%#= link_to cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image"), cookbook_recipe_path(user_recipe) %>
           </div>
           <div class=" m-3">
             <%# Feed %>
-            <%= "#{user.first_name} added #{recipe_owner.first_name}'s recipe to his wishlist:" %> <strong><%=recipe.title%></strong>
+            <%= "#{user.first_name} added #{recipe_owner.first_name}'s recipe to his wishlist:" %> <strong><%=link_to recipe.title, cookbook_recipe_path(user_recipe)%></strong>
           </div>
         <% end %>
 
-          <% if item.item_type == "liked" %>
-            <%= "#{user.first_name} liked #{recipe_owner.first_name}'s recipe: #{recipe.title}" %>
 
+          <%# ADDED %>
+          <% if item.item_type == "added" %>
             <div class="container mb-3 d-flex newsfeed-item-center">
               <%# Avatar %>
               <%= link_to cl_image_tag(user.photo.key, class: "avatar"), user_cookbook_path(user) %>
               <%#= cl_image_tag(user.photo.key, class: "avatar") %>
-              <%= link_to user.first_name, user_cookbook_path(user), :class => "newsfeed-user" %>
+              <%= link_to "#{user.first_name}  #{user.last_name}", user_cookbook_path(user), :class => "newsfeed-user" %>
             </div>
             <div class="container">
               <%# Recipe Image %>
@@ -59,17 +60,27 @@
             </div>
             <div class=" m-3">
               <%# Feed %>
-              <%= "#{user.first_name} liked #{recipe_owner.first_name}'s recipe:" %> <strong><%=recipe.title%></strong>
-          </div>
-
+              <%= "#{user.first_name} added #{recipe_owner.first_name}'s recipe to his cookbook:" %> <strong><%=link_to recipe.title, cookbook_recipe_path(user_recipe)%></strong>
+            </div>
           <% end %>
 
-          <% if item.item_type == "added" %>
-            <%= "#{user.first_name} added #{recipe_owner.first_name}'s recipe to his cookbook: #{recipe.title}" %>
-          <% end %>
 
+          <%# COOKED %>
           <% if item.item_type == "cooked" %>
-            <%= "#{user.first_name} cooked #{recipe_owner.first_name}'s recipe: #{recipe.title}" %>
+              <div class="container mb-3 d-flex newsfeed-item-center">
+                <%# Avatar %>
+                <%= link_to cl_image_tag(user.photo.key, class: "avatar"), user_cookbook_path(user) %>
+                <%#= cl_image_tag(user.photo.key, class: "avatar") %>
+                <%= link_to "#{user.first_name}  #{user.last_name}", user_cookbook_path(user), :class => "newsfeed-user" %>
+              </div>
+              <div class="container">
+                <%# Recipe Image %>
+                <%#= link_to cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image"), cookbook_recipe_path(user_recipe) %>
+              </div>
+              <div class=" m-3">
+                <%# Feed %>
+                <%= "#{user.first_name} cooked #{recipe_owner.first_name}'s recipe:" %> <strong><%=link_to recipe.title, cookbook_recipe_path(user_recipe)%></strong>
+            </div>
           <% end %>
 
 

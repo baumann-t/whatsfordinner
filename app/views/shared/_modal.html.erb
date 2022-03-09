@@ -6,12 +6,12 @@
         <%= cl_image_tag(@recipe.photo.key, class: "modal-recipe-image") %>
 
         <div class="back-button-banner-right">
-          <%= render "shared/buttons/close_window_button", back: search_path %>
+          <%= render "shared/buttons/close_window_button", back: search_path(params[:query]) %>
         </div>
 
       </div>
       <div class="modal-body">
-        <p><%= @recipe.description %></p>
+        <p><%= @recipe.description[0, 50] %></p>
       </div>
       <div class="modal-footer d-flex justify-content-center align-items-end">
         <a class="btn btn-wishlist" href="/cookbook/<%= user_recipe.id %>">SHOW MORE</a>

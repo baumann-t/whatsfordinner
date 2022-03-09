@@ -2,23 +2,13 @@
   <div class="container container-bg-white">
     <div class="cookbook-card-container">
       <% @wishlist.each do |user_recipe| %>
-      <% recipe = user_recipe.recipe %>
+        <% recipe = user_recipe.recipe %>
         <div class="cookbook-recipe-card">
           <%= link_to my_wishlist_recipe_path(user_recipe) do%>
-            <h3><%= recipe.title %></h3>
+            <%= render "shared/recipe_card", recipe: recipe, user_recipe: user_recipe %>
           <% end %>
-            <%= cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image") %>
-            <%#= cl_image_tag recipe.photo.key, height: 100, width: 200, crop: :lfill if recipe.photo.attached? %>
-            <p> Prep time: <%= recipe.prep_time %></p>
-            <div class="container d-flex">
-              <% user_recipe.recipe.categories.each do |cat| %>
-                <div class="btn-category">
-                  <%= cat %>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 <% else %>

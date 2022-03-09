@@ -1,0 +1,21 @@
+<h3><%= recipe.title %></h3>
+<%= cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image") %>
+<div class="recipe-card-info d-flex justify-content-around">
+  <div class="recipe-prep">
+    <%= image_tag "chef_icon.svg", class: "recipe-icon" %> <%= recipe.prep_time %>
+  </div>
+  <div class="recipe-cooking">
+    <%= image_tag "pot-svgrepo-com.svg", class: "recipe-icon" %> <%= recipe.cooking_time %>
+  </div>
+  <div class="recipe-servings">
+    <%= image_tag "utensils_icon.svg", class: "recipe-icon" %>  <%= recipe.serving_size %>
+  </div>
+</div>
+
+<div class="container d-flex">
+  <% user_recipe.recipe.categories.each do |cat| %>
+    <div class="btn-category">
+      <%= cat %>
+    </div>
+  <% end %>
+</div>

@@ -32,10 +32,26 @@
   align-self: flex-end;
 }
 
+.banner-my-newsfeed {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('cilantro.jpeg');
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+}
+
+.banner-my-newsfeed > .login {
+  align-self: flex-end;
+}
+
 .banner-my-cookbook {
   background-size: cover;
   background-position: center;
-  height: 150px;
+  height: 180px;
   background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('lime.jpeg');
   display: flex;
   flex-direction: column-reverse;
@@ -47,7 +63,7 @@
 .banner-user {
   background-size: cover;
   background-position: center;
-  height: 150px;
+  height: 180px;
   background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('herbs.jpeg');
   display: flex;
   flex-direction: column-reverse;
@@ -59,7 +75,7 @@
 .banner-profile-user {
   background-size: cover;
   background-position: center;
-  height: 200px;
+  height: 180px;
   background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('herbs.jpeg');
   display: flex;
   justify-content: center;
@@ -78,8 +94,8 @@
 .banner-search {
   background-size: cover;
   background-position: center;
-  height: 150px;
-  background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('lime.jpeg');
+  height: 180px;
+  background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('herbs2.jpeg');
   display: flex;
   flex-direction: column-reverse;
   justify-content: flex-end;
@@ -94,7 +110,7 @@
 .banner-profile {
   background-size: cover;
   background-position: center;
-  height: 100px;
+  height: 180px;
   background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('lime.jpeg');
   display: flex;
   align-items: center;

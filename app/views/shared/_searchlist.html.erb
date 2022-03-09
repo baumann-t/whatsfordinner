@@ -4,29 +4,7 @@
       <% @recipe = user_recipe.recipe %>
       <%= render 'shared/modal', user_recipe: user_recipe %>
       <div class="cookbook-recipe-card" data-toggle="modal" data-target="#modal-<%= @recipe.id %>">
-        <h3><%= @recipe.title%></h3>
-        <%= cl_image_tag(@recipe.photo.key, class: "newsfeed-recipe-image") %>
-        <%#= cl_image_tag @recipe.photo.key, height: 100, width: 200, crop: :lfill  %>
-
-        <div class="recipe-card-info d-flex justify-content-around">
-          <div class="recipe-prep">
-            <%= image_tag "chef_icon.svg", class: "recipe-icon" %> <%= @recipe.prep_time %>
-          </div>
-          <div class="recipe-cooking">
-            <%= image_tag "pot-svgrepo-com.svg", class: "recipe-icon" %> 15 min
-          </div>
-          <div class="recipe-servings">
-            <%= image_tag "utensils_icon.svg", class: "recipe-icon" %>  4
-          </div>
-        </div>
-
-        <div class="container d-flex">
-          <% user_recipe.recipe.categories.each do |cat| %>
-            <div class="btn-category">
-              <%= cat %>
-            </div>
-            <% end %>
-        </div>
+        <%= render "shared/recipe_card", recipe: @recipe, user_recipe: user_recipe %>
       </div>
     <% end %>
   </div>

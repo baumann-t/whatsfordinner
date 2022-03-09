@@ -1,10 +1,7 @@
-
 <%# meta tags %>
 <% content_for :meta_title, "#{@recipe.name} is on #{DEFAULT_META["meta_product_name"]}" %>
 <% content_for :meta_description, @recipe.description %>
 <% content_for :meta_image, cl_image_path(@recipe.photo.path) %>
-
-
 
 <div class="recipe-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(@recipe.photo.key) %>)">
   <%= render "shared/buttons/back_button", back: user_cookbook_path(@cookbook_user) %>
@@ -96,7 +93,7 @@
   <div data-controller="hide"  >
     <div data-hide-target="view" data-action="click->hide#show">
       <div class="d-flex justify-content-center mb-3" >
-        <a class="btn-top-10">VIEW <%= @recipe.comments.count%> COMMENT</a>
+        <a class="btn-top-10" data-hide-target="text" >VIEW <%= (pluralize @recipe.comments.count, "comment").upcase%></a>
       </div>
     </div>
     <div style="display:none" data-hide-target="hide" data-action="click->hide#hide" >
@@ -105,7 +102,7 @@
       </div>
     </div>
     <div style="display:none" data-hide-target="comments">
-      <div class="main text">
+      <div class="main text" data-hide-target = "list">
         <%= render "shared/comments", user_recipe: @user_recipe %>
       </div>
     </div>

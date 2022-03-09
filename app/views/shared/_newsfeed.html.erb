@@ -19,11 +19,11 @@
             </div>
             <div class="container">
               <%# Recipe Image %>
-              <%#= link_to cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image"), cookbook_recipe_path(user_recipe) %>
+              <%#= link_to cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image"), feed_recipe_path(user_recipe) %>
             </div>
             <div class=" m-3 newsfeed-content">
               <%# Feed %>
-              <%= "#{user.first_name} left a comment on #{recipe_owner.first_name}'s recipe: "%> <strong><%= link_to recipe.title, cookbook_recipe_path(user_recipe) %></strong>
+              <%= "#{user.first_name} left a comment on #{recipe_owner.first_name}'s recipe: "%> <strong><%= link_to recipe.title, feed_recipe_path(user_recipe) %></strong>
             </div>
           <% end %>
 
@@ -37,11 +37,11 @@
           </div>
           <div class="container">
             <%# Recipe Image %>
-            <%#= link_to cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image"), cookbook_recipe_path(user_recipe) %>
+            <%#= link_to cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image"), feed_recipe_path(user_recipe) %>
           </div>
           <div class=" m-3">
             <%# Feed %>
-            <%= "#{user.first_name} added #{recipe_owner.first_name}'s recipe to his wishlist:" %> <strong><%=link_to recipe.title, cookbook_recipe_path(user_recipe)%></strong>
+            <%= "#{user.first_name} added #{recipe_owner.first_name}'s recipe to his wishlist:" %> <strong><%=link_to recipe.title, feed_recipe_path(user_recipe)%></strong>
           </div>
         <% end %>
 
@@ -60,7 +60,7 @@
             </div>
             <div class=" m-3">
               <%# Feed %>
-              <%= "#{user.first_name} added #{recipe_owner.first_name}'s recipe to his cookbook:" %> <strong><%=link_to recipe.title, cookbook_recipe_path(user_recipe)%></strong>
+              <%= "#{user.first_name} added #{recipe_owner.first_name}'s recipe to his cookbook:" %> <strong><%=link_to recipe.title, feed_recipe_path(user_recipe)%></strong>
             </div>
           <% end %>
 
@@ -75,11 +75,11 @@
               </div>
               <div class="container">
                 <%# Recipe Image %>
-                <%#= link_to cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image"), cookbook_recipe_path(user_recipe) %>
+                <%#= link_to cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image"), feed_recipe_path(user_recipe) %>
               </div>
               <div class=" m-3">
                 <%# Feed %>
-                <%= "#{user.first_name} cooked #{recipe_owner.first_name}'s recipe:" %> <strong><%=link_to recipe.title, cookbook_recipe_path(user_recipe)%></strong>
+                <%= "#{user.first_name} cooked #{recipe_owner.first_name}'s recipe:" %> <strong><%=link_to recipe.title, feed_recipe_path(user_recipe)%></strong>
             </div>
           <% end %>
 

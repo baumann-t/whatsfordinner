@@ -8,15 +8,15 @@ The following is a loose outline of each member's specialty during the project, 
 
     - Built the majority of back end functionality, & contributed to javascript interactivity
 
-- Claire Conrardy: UI/UX Designer, Front-End Developer
+- [Claire Conrardy: UI/UX Designer, Front-End Developer](https://github.com/claire-conrardy)
 
     - Figma design, colour palette, component & overall app visual design + CSS
 
-- Huang Shewei: Full-Stack Developer
+- [Huang Shewei: Full-Stack Developer](https://github.com/huhusmemories)
 
     - Front-end design, component & overall app visual design, & bug fixing 
 
-- Kieran Dunch: Product Manager, Full-Stack Developer
+- [Kieran Dunch: Product Manager, Full-Stack Developer](https://github.com/Kieran-Dunch)
 
     - Contributed to javascript interactivity, create recipe form + animations, product management, app bug fixing & optimization
 

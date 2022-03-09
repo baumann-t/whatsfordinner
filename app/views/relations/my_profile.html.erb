@@ -1,8 +1,8 @@
 <div class="container">
-  <div class="row container-bg-whit d-flex justify-content-center pt-5">
+  <div class="row container-bg-whit d-flex justify-content-center pt-3">
     <% if current_user.photo.attached? %>
       <%= cl_image_tag(current_user.photo.key,
-                                    :transformation=>[ {:aspect_ratio=>"1.0", :gravity=>"face", :width=>75, :zoom=>0.5, :crop=>"thumb"}],
+                                    :transformation=>[ {:aspect_ratio=>"1.0", :gravity=>"face", :width=>200, :zoom=>0.5, :crop=>"thumb"}],
                                     class: "avatar-profile",) %>
     <% else %>
       <%= image_tag "https://static.thenounproject.com/png/363640-200.png", class: "avatar-profile" %>

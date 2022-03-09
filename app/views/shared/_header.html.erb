@@ -64,5 +64,8 @@
 <% elsif request.path == "/following" %>
   <div class="banner-profile">
     <h1>PEOPLE YOU FOLLOW</h1>
+    <div class="back-button-banner">
+      <%= render "shared/buttons/back_button", back: my_profile_path%>
+    </div>
   </div>
 <% end %>

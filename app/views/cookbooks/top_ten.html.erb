@@ -9,9 +9,11 @@
         <% user_recipe = UserRecipe.where(user_id: @user.id, recipe_id: recipe.id).first %>
         <% if user_recipe %>
           <div class="cookbook-recipe-card">
-            <div class="d-flex p-2 ">
+            <div class="d-flex p-2 justify-content-between">
               <p><strong><%= i + 1 %>. <%= link_to recipe.title, cookbook_recipe_path(user_recipe) %></strong></p>
-              <p><strong>&nbsp- <%=recipe.upvotes_tracker %></strong></p> <i class="fa-solid fa-heart" style="color: #2B9348"></i>
+              <div class="number-likes d-flex align-items-baseline">
+                <p class="px-1"><%=recipe.upvotes_tracker %></p> <i class="fa-solid fa-heart" style="color: #2B9348"></i>
+              </div>
             </div>
 
             <%= cl_image_tag recipe.photo.key, height: 100, width: 200, crop: :lfill, class: "newsfeed-recipe-image" %>

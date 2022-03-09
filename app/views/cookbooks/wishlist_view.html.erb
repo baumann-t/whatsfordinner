@@ -1,4 +1,5 @@
 <div class="recipe-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(@recipe.photo.key) %>)">
+  <%= render "shared/buttons/back_button", back: my_wishlist_path%>
   <h1><%= @recipe.title.upcase %></h1>
   <% @recipe.categories.each do |cat| %>
     <div class="btn-category"><%= cat %></div>
@@ -13,6 +14,7 @@
 
   <div class="recipe-buttons", style="padding: 20px 0 10px;">
     <%= render "shared/buttons/add_to_cookbook", recipe: @recipe, user: current_user %>
+    <%= render "shared/buttons/remove_wishlist", recipe: @recipe,user_recipe: @user_recipe, user: current_user %>
   </div>
   <hr>
 

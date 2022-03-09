@@ -3,9 +3,12 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalTitle"><%= @recipe.title %></h5>
-        <%#= cl_image_tag @recipe.photo.key, height: 100, width: 200, crop: :lfill, class: "modal-img" %>
-        <%#= cl_image_tag @recipe.photo.key, height: 100, width: 200, crop: :lfill  %>
         <%= cl_image_tag(@recipe.photo.key, class: "modal-recipe-image") %>
+
+        <div class="back-button-banner-right">
+          <%= render "shared/buttons/close_window_button", back: search_path %>
+        </div>
+
       </div>
       <div class="modal-body">
         <p><%= @recipe.description %></p>

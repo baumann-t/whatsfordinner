@@ -98,7 +98,24 @@ class CookbooksController < ApplicationController
 
   def my_wishlist
     @user = current_user
-    @wishlist = @user.user_recipes.where(wishlisted: true)
+    @wishlist = @user.user_recipes.where(wishlisted: true).order(created_at: :desc)
+  end
+
+  def remove_wishlist
+    @user_recipe = UserRecipe.find(params[:user_recipe_id])
+    @user_recipe.wishlisted = false
+
+    if @user_recipe.save
+      redirect_to my_wishlist_path
+    end
+  end
+
+  def newsfeed_view
+    @user_recipe = UserRecipe.find(params[:user_recipe_id])
+    @cookbook_user = @user_recipe.user
+    @current_user = current_user
+    @recipe = @user_recipe.recipe
+    @recipe_author = @recipe.user
   end
 
   private

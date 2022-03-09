@@ -56,7 +56,7 @@
             </div>
             <div class="container">
               <%# Recipe Image %>
-              <%= link_to cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image"), cookbook_recipe_path(user_recipe) %>
+              <%= link_to cl_image_tag(recipe.photo.key, class: "newsfeed-recipe-image"), feed_recipe_path(user_recipe) %>
             </div>
             <div class=" m-3">
               <%# Feed %>

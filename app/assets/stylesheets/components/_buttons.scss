@@ -9,11 +9,15 @@
   box-shadow: 0px 4px 4px 0px #00000040;
   text-decoration: none;
   border: 2px solid $primary;
+  text-shadow: none;
+}
+
+.a-top a {
+  text-decoration: none;
 }
 
 .btn-top-10-inactive {
   background-color: #fefefa;
-  opacity: 0.8;
   font-size: 16px;
   border-radius: 4px;
   color: $primary;
@@ -21,24 +25,25 @@
   text-align: center;
   margin-top: 20px;
   box-shadow: 0px 4px 4px 0px #00000040;
-  text-decoration: none;
+  text-decoration: none !important;
   text-shadow: none;
   border: 2px solid transparent;
 }
 
 .btn-top-10-inactive:hover {
   border: 2px solid $primary;
-}
-
-.btn-top-10-inactive > a {
-  color: $primary;
   text-decoration: none;
 }
 
-.btn-top-10-inactive > a:hover {
-  color: $primary;
-  text-decoration: none;
-}
+// .btn-top-10-inactive > a {
+//   color: $primary;
+//   text-decoration: none;
+// }
+
+// .btn-top-10-inactive > a:hover {
+//   color: $primary;
+//   text-decoration: none;
+// }
 
 .btn-top-10 > a{
   color: #fefefa;

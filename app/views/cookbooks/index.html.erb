@@ -1,2 +1,6 @@
-<%= render "shared/buttons/create-topten-history" %>
+<% if @user.id == current_user.id %>
+  <%= render "shared/buttons/create-topten-history" %>
+<% else %>
+  <%= render "shared/buttons/create-topten-follow" %>
+<% end %>
 <%= render "shared/cookbook", user: @user, user_recipes: @user_recipes %>

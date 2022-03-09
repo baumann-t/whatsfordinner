@@ -27,7 +27,6 @@
           <% end %>
 
           <% if item.item_type == "wishlisted" %>
-            <%= "#{user.first_name} added #{recipe_owner.first_name}'s recipe to his wishlist: #{recipe.title}" %>
           <div class="container mb-3 d-flex newsfeed-item-center">
             <%# Avatar %>
             <%= link_to cl_image_tag(user.photo.key, class: "avatar"), user_cookbook_path(user) %>
@@ -40,7 +39,7 @@
           </div>
           <div class=" m-3">
             <%# Feed %>
-            <%= "#{user.first_name} left a comment on #{recipe_owner.first_name}'s recipe: "%> <strong><%=recipe.title %></strong>
+            <%= "#{user.first_name} added #{recipe_owner.first_name}'s recipe to his wishlist:" %> <strong><%=recipe.title%></strong>
           </div>
         <% end %>
 

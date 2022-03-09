@@ -50,13 +50,13 @@
   text-decoration: none;
 }
 
-.btn-search {
+.btn-login {
   border-radius: 5px;
   color: #fefefa;
   width: 158px;
   box-shadow: 0px 4px 4px 0px #00000040;
 }
-.btn-search > a{
+.btn-login > a{
   color: #fefefa;
   text-decoration: none;
 }
@@ -111,6 +111,16 @@
   padding: 8px 24px;
   text-align: center;
   margin-top: 20px;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  text-decoration: none;
+}
+
+.btn-search {
+  background-color: #2B9348;
+  font-size: 16px;
+  border-radius: 4px;
+  color: #fefefa;
+  text-align: center;
   box-shadow: 0px 4px 4px 0px #00000040;
   text-decoration: none;
 }

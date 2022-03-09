@@ -1,5 +1,7 @@
 <div class="comment-container" id="<%=comment.id%>-comment">
-  <li class="comment-list" id="comment-list-li"><strong><%= comment.user.first_name %></strong> - <em><%= comment.content %></em></li>
+  <li class="comment-list" id="comment-list-li">
+    <strong><%= comment.user.first_name %></strong> - <em><%= comment.content %></em>
+  </li>
   <% if comment.user_id == current_user.id %>
     <%= link_to delete_comment_recipe_path(@recipe, comment), class:"delete-comment", data: { controller: 'comments', action: 'comments#delete' } do %>
       <i class="fa-solid fa-trash-can" style="color:#2B9348"></i>

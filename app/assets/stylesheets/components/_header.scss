@@ -113,9 +113,14 @@
   height: 180px;
   background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), image-url('lime.jpeg');
   display: flex;
+  flex-direction: column-reverse;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   padding: 10px;
+}
+
+.banner-profile > .login {
+  align-self: flex-end;
 }
 
 .back-button {

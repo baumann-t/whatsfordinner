@@ -1,3 +1,8 @@
+<% if request.fullpath == "/my-cookbook" %>
+  <div class="d-flex justify-content-center">
+    <%= link_to "ADD A RECIPE +", recipes_new_path, class:"add-recipe-button" %>
+  </div>
+<% end %>
 <% if user_recipes.length > 0 %>
   <div class="container container-bg-white">
     <div class="cookbook-card-container">

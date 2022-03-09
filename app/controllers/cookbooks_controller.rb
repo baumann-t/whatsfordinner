@@ -108,7 +108,7 @@ class CookbooksController < ApplicationController
   end
 
   def find_user_recipes(user)
-    @user_recipes = UserRecipe.where(user_id: user.id, wishlisted: [false, nil])
+    @user_recipes = UserRecipe.where(user_id: user.id, wishlisted: [false, nil]).order(created_at: :desc)
   end
 
   def user_recipe_params

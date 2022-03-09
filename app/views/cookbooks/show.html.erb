@@ -18,15 +18,12 @@
 
 <div class="container">
   <div class="recipe-head d-flex flex-row-reverse justify-content-between", style="margin-top: 5px;">
-    <% if @current_user.id == @cookbook_user.id %>
+    <% if  @recipe_author.id != @current_user.id%>
       <%= render "shared/upvotes", recipe: @recipe %>
       <p>Created by: <%= link_to "#{@recipe_author.first_name} #{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></p>
-    <% elsif @current_user.id ==  @cookbook_user.id && @recipe_author.id == @current_user.id %>
-      <p>Created by: you!</p>
+    <% elsif  @recipe_author.id == @current_user.id %>
       <%= render "shared/upvotes", recipe: @recipe %>
-    <% else %>
-      <%= render "shared/upvotes", recipe: @recipe %>
-      <p><strong>Created by:</strong> <%= link_to "#{@recipe_author.first_name} #{@recipe_author.last_name}", user_cookbook_path(@recipe_author) %></p>
+      <p><%= link_to "Your recipe!", my_cookbook_path %></p>
     <% end %>
   </div>
 

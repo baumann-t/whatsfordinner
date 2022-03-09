@@ -4,7 +4,7 @@ It was created from scratch over the course of two weeks in Spring 2022, as the 
 
 The following is a loose outline of each member's specialty during the project, and their personal highlights:
 
-- Thomas Baumann: Back-End Developer
+- [Thomas Baumann: Back-End Developer](https://github.com/thomasbaumann-mtl)
 
     - Built the majority of back end functionality, & contributed to javascript interactivity
 

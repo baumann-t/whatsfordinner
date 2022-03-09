@@ -85,3 +85,27 @@
   text-shadow: 1px 1px 10px black;
   color: white;
 }
+
+.btn-edit-items a{
+    background-color: #2B9348;
+    font-size: 16px;
+    border-radius: 4px;
+    color: #fefefa;
+    padding: 8px 12px;
+    text-align: center;
+    margin-top: 20px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    text-decoration: none;
+}
+
+.btn-view-hide-comments {
+  background-color: #2B9348;
+  font-size: 16px;
+  border-radius: 4px;
+  color: #fefefa;
+  padding: 8px 24px;
+  text-align: center;
+  margin-top: 20px;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  text-decoration: none;
+}

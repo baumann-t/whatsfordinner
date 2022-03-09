@@ -2,7 +2,7 @@
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 24px;
 }
 
 .newsfeed-recipe-card {
@@ -41,6 +41,10 @@
   background-color: #2B9348;
   width: 48px;
   margin: 8px 0 4px auto;
+}
+
+.newsfeed-recipe-card a{
+  text-decoration: none;
 }
 
 // .newsfeed-content {

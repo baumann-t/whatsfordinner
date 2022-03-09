@@ -2,25 +2,37 @@
   <div class="row justify-content-center container-bg-white">
     <div class="col-4">
       <% if request.path == user_cookbook_path(@user) %>
-        <h1 class="btn-top-10"><%=link_to "All recipes", user_cookbook_path(@user)%></h1>
+        <%=link_to user_cookbook_path(@user) do %>
+          <h1 class="btn-top-10">All recipes</h1>
+        <% end %>
       <% else %>
-        <h1 class="btn-top-10-inactive"><%=link_to "All recipes", user_cookbook_path(@user)%></h1>
+        <%=link_to user_cookbook_path(@user) do %>
+          <h1 class="btn-top-10-inactive">All recipes</h1>
+        <% end %>
       <% end %>
     </div>
 
     <div class="col-4">
       <% if request.path == user_top_ten_path(@user) %>
-        <h1 class="btn-top-10"><%=link_to "Top ten", user_top_ten_path(@user)%> </h1>
+        <%=link_to user_top_ten_path(@user) do %>
+          <h1 class="btn-top-10">Top ten</h1>
+        <% end %>
       <% else %>
-        <h1 class="btn-top-10-inactive"><%=link_to "Top ten", user_top_ten_path(@user)%> </h1>
+        <%=link_to user_top_ten_path(@user) do %>
+          <h1 class="btn-top-10-inactive">Top ten</h1>
+        <% end %>
       <% end %>
     </div>
 
     <div class="col-4">
       <% if current_user.follow?(@user) %>
-        <h1 class="btn-top-10-inactive"><%=link_to "Unfollow", unfollow_user_path(@user), method: "delete"%> </h1>
+        <%=link_to unfollow_user_path(@user), method: "delete" do %>
+          <h1 class="btn-top-10-inactive">Unfollow</h1>
+        <% end %>
       <% else %>
-        <h1 class="btn-top-10"><%=link_to "Follow", follow_user_path(@user)%> </h1>
+        <%=link_to follow_user_path(@user) do %>
+          <h1 class="btn-top-10">Follow</h1>
+        <% end %>
       <% end %>
     </div>
   </div>

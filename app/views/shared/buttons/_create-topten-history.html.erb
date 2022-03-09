@@ -1,26 +1,38 @@
 <div class="container mb-2">
-  <div class="row justify-content-center container-bg-white">
+  <div class="row justify-content-center container-bg-white a-top">
     <div class="col-4">
       <% if request.path == "/my-cookbook" %>
-        <h1 class="btn-top-10"><%= link_to "All recipes", my_cookbook_path %> </h1>
+        <%= link_to my_cookbook_path do %>
+          <h1 class="btn-top-10">All recipes</h1>
+        <% end %>
       <% else %>
-        <h1 class="btn-top-10-inactive"><%= link_to "All recipes", my_cookbook_path %> </h1>
+        <%= link_to my_cookbook_path do %>
+          <h1 class="btn-top-10-inactive">All recipes</h1>
+        <% end %>
       <% end %>
     </div>
 
     <div class="col-4">
       <% if request.path == "/my-cookbook/top-ten" %>
-        <h1 class="btn-top-10"><%=link_to "Top ten", my_top_ten_path%> </h1>
+        <%=link_to my_top_ten_path do %>
+          <h1 class="btn-top-10">Top ten</h1>
+        <% end %>
       <% else %>
-        <h1 class="btn-top-10-inactive"><%=link_to "Top ten", my_top_ten_path%> </h1>
+        <%=link_to my_top_ten_path do %>
+          <h1 class="btn-top-10-inactive">Top ten</h1>
+        <% end %>
       <% end %>
     </div>
 
     <div class="col-4">
     <% if request.path == "/my-cookbook/history" %>
-      <h1 class="btn-top-10"><%=link_to "History", my_cookbook_history_path%></h1>
+      <%=link_to my_cookbook_history_path do %>
+        <h1 class="btn-top-10">History</h1>
+      <% end %>
     <% else %>
-      <h1 class="btn-top-10-inactive"><%=link_to "History", my_cookbook_history_path%></h1>
+      <%=link_to my_cookbook_history_path do %>
+        <h1 class="btn-top-10-inactive">History</h1>
+      <% end %>
     <% end %>
     </div>
   </div>

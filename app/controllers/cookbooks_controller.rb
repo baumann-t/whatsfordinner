@@ -98,7 +98,7 @@ class CookbooksController < ApplicationController
 
   def my_wishlist
     @user = current_user
-    @wishlist = @user.user_recipes.where(wishlisted: true)
+    @wishlist = @user.user_recipes.where(wishlisted: true).order(created_at: :desc)
   end
 
   private

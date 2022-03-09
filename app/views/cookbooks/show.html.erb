@@ -1,7 +1,7 @@
 <%# meta tags %>
 <% content_for :meta_title, "#{@recipe.title} is on #{DEFAULT_META["meta_product_name"]}" %>
 <% content_for :meta_description, @recipe.description %>
-<% content_for :meta_image, cl_image_path(@recipe.photo.path) %>
+<% content_for :meta_image, cl_image_path(@recipe.photo.key) %>
 
 <div class="recipe-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(@recipe.photo.key) %>)">
   <%= render "shared/buttons/back_button", back: user_cookbook_path(@cookbook_user) %>

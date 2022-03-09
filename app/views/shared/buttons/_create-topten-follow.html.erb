@@ -1,0 +1,27 @@
+<div class="container mb-2">
+  <div class="row justify-content-center container-bg-white">
+    <div class="col-4">
+      <% if request.path == user_cookbook_path(@user) %>
+        <h1 class="btn-top-10"><%=link_to "All recipes", user_cookbook_path(@user)%></h1>
+      <% else %>
+        <h1 class="btn-top-10-inactive"><%=link_to "All recipes", user_cookbook_path(@user)%></h1>
+      <% end %>
+    </div>
+
+    <div class="col-4">
+      <% if request.path == user_top_ten_path(@user) %>
+        <h1 class="btn-top-10"><%=link_to "Top ten", user_top_ten_path(@user)%> </h1>
+      <% else %>
+        <h1 class="btn-top-10-inactive"><%=link_to "Top ten", user_top_ten_path(@user)%> </h1>
+      <% end %>
+    </div>
+
+    <div class="col-4">
+      <% if current_user.follow?(@user) %>
+        <h1 class="btn-top-10-inactive"><%=link_to "Unfollow", unfollow_user_path(@user), method: "delete"%> </h1>
+      <% else %>
+        <h1 class="btn-top-10"><%=link_to "Follow", follow_user_path(@user)%> </h1>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -8,17 +8,36 @@
   margin-top: 20px;
   box-shadow: 0px 4px 4px 0px #00000040;
   text-decoration: none;
+  border: 2px solid $primary;
 }
 
 .btn-top-10-inactive {
-  background-color: #FAFAFA;
+  background-color: #fefefa;
+  opacity: 0.8;
   font-size: 16px;
   border-radius: 4px;
-  color: #333234;
+  color: $primary;
   padding: 6px 3px;
   text-align: center;
   margin-top: 20px;
   box-shadow: 0px 4px 4px 0px #00000040;
+  text-decoration: none;
+  text-shadow: none;
+  border: 2px solid transparent;
+}
+
+.btn-top-10-inactive:hover {
+  border: 2px solid $primary;
+}
+
+.btn-top-10-inactive > a {
+  color: $primary;
+  text-decoration: none;
+}
+
+.btn-top-10-inactive > a:hover {
+  color: $primary;
+  text-decoration: none;
 }
 
 .btn-top-10 > a{

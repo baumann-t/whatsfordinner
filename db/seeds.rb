@@ -446,3 +446,4 @@ end
 Upvote.create(user_id: huang.id, recipe_id: 4)
 Upvote.create(user_id: thomas.id, recipe_id: 5)
 Upvote.create(user_id: lea.id, recipe_id: 5)
+#

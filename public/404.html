@@ -28,7 +28,7 @@
       border: 2px solid #2B9348;
       border-radius: 9px;
       background-color: #fefefa;
-      padding: 7px 12% 0;
+      padding: 7px 12% 24px;
       box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
     }
 
@@ -52,6 +52,14 @@
     color: #2B9348;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+  .error-button{
+    background-color: #2b9348;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+  }
   </style>
 </head>
 
@@ -61,8 +69,10 @@
     <div>
       <h1>We're sorry, you must have gotten lost. The page you were looking for doesn't exist!</h1>
       <img src="/images/chef.svg" alt="A restaurant chef standing alone.">
-      <p>Check the address again, if you're looking for a recipe, it may have been deleted.</p>
+      <p style="margin-bottom: 24px;">Check the address again, if you're looking for a recipe, it may have been deleted.</p>
+      <a class="error-button" href="/">Home</a>
     </div>
+
   </div>
 </body>
 </html>

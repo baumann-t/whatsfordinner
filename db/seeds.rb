@@ -409,7 +409,7 @@ puts "creating upvotes and comments"
   end
 end
 
-comment = Comment.new(content: "This shrimp pasta is delicious, the lemon really bring the flavour together !!!!")
+comment = Comment.new(content: "This baked salmon is delicious!!!!")
 comment.user = User.third
 comment.recipe = baked_salmon
 comment.user_recipe = user_recipe

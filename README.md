@@ -20,6 +20,7 @@ The following is a loose outline of each member's specialty during the project, 
 
     - Contributed to javascript interactivity, create recipe form + animations, product management, app bug fixing & optimization
 
+
 Many thanks to the LeWagon Team for providing a strong teaching foundation, and to @Stephlaf, our Batch owner and lead teacher.
 
 Thomas 'Back-End' Baumann, Claire 'CSS' Conrardy, Kieran 'Rubber Ducky' Dunch, and "Heroku" Huang Shuwei

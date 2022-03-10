@@ -77,13 +77,23 @@
   top: 16px;
   position: absolute;
   right: 16px;
+  font-size:24px;
+  font-weight: bold;
+  color: $primary;
+}
+
+.fa-xmark {
+  padding: 1px 6px;
+  border-radius: 50px;
+  background-color: #fefefa;
+  box-shadow: 0px 4px 4px 0px #00000040;
 }
 
 .back-button-banner-right a{
   text-decoration: none;
   font-size: 24px;
-  text-shadow: 1px 1px 10px black;
-  color: white;
+  text-shadow: 1px 1px 10px #333234;
+  color: #fefefa;
 }
 
 .btn-edit-items a{

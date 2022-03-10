@@ -16,7 +16,7 @@
               <% if user.photo.attached? %>
                 <%= link_to cl_image_tag(user.photo.key, class: "avatar"), user_cookbook_path(user) %>
               <% else %>
-                <%= image_tag "https://static.thenounproject.com/png/363640-200.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <%= image_tag "https://static.thenounproject.com/png/363640-200.png", class: "avatar"%>
               <% end %>
               <%= link_to "#{user.first_name}  #{user.last_name}", user_cookbook_path(user), :class => "newsfeed-user" %>
             </div>
@@ -34,7 +34,7 @@
             <% if user.photo.attached? %>
               <%= link_to cl_image_tag(user.photo.key, class: "avatar"), user_cookbook_path(user) %>
             <% else %>
-              <%= image_tag "https://static.thenounproject.com/png/363640-200.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <%= image_tag "https://static.thenounproject.com/png/363640-200.png", class: "avatar"%>
             <% end %>
             <%= link_to "#{user.first_name}  #{user.last_name}", user_cookbook_path(user), :class => "newsfeed-user" %>
           </div>
@@ -53,7 +53,7 @@
               <% if user.photo.attached? %>
                 <%= link_to cl_image_tag(user.photo.key, class: "avatar"), user_cookbook_path(user) %>
               <% else %>
-                <%= image_tag "https://static.thenounproject.com/png/363640-200.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <%= image_tag "https://static.thenounproject.com/png/363640-200.png", class: "avatar"%>
               <% end %>
               <%= link_to "#{user.first_name}  #{user.last_name}", user_cookbook_path(user), :class => "newsfeed-user" %>
             </div>
@@ -75,7 +75,7 @@
               <% if user.photo.attached? %>
                 <%= link_to cl_image_tag(user.photo.key, class: "avatar"), user_cookbook_path(user) %>
               <% else %>
-                <%= image_tag "https://static.thenounproject.com/png/363640-200.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <%= image_tag "https://static.thenounproject.com/png/363640-200.png", class: "avatar"%>
               <% end %>
                 <%= link_to "#{user.first_name}  #{user.last_name}", user_cookbook_path(user), :class => "newsfeed-user" %>
               </div>

@@ -52,6 +52,14 @@ class CookbooksController < ApplicationController
     @recipe_author = @recipe.user
   end
 
+  def show_search
+    @user_recipe = UserRecipe.find(params[:user_recipe_id])
+    @cookbook_user = @user_recipe.user
+    @current_user = current_user
+    @recipe = @user_recipe.recipe
+    @recipe_author = @recipe.user
+  end
+
   def destroy
     @user_recipe = find_user_recipe
     if UserRecipe.destroy(@user_recipe.id)

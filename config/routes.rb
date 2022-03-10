@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/my-cookbook/:user_recipe_id', to: 'cookbooks#show', as: "my_cookbook_recipe"
   get '/users', to: 'cookbooks#user_search'
   get '/cookbook/:user_recipe_id', to: 'cookbooks#show', as: "cookbook_recipe"
+  get '/cookbook/search/:user_recipe_id', to: 'cookbooks#show_search', as: "cookbook_recipe_search"
   delete '/my-cookbook/:recipe_id', to: 'cookbooks#destroy', as: "cookbook-delete"
   get '/cookbooks/users/:user_id', to: 'cookbooks#user_cookbook', as: "user_cookbook"
   get '/cookbooks/users/:user_id/top-ten', to: 'cookbooks#top_ten', as: "user_top_ten"

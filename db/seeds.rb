@@ -438,11 +438,10 @@ comment.user_recipe = user_recipe
 comment.save!
 FeedItem.create!(item_type: "added", user_recipe_id: user_recipe.id, user_id: thomas.id)
 
-
 [thomas, kieran, seb, huang].each do |test|
-  Upvote.create(user_id: test.id, recipe_id: 2)
+  Upvote.create(user_id: test.id, recipe_id: baked_salmon.id)
 end
 
-Upvote.create(user_id: huang.id, recipe_id: 4)
-Upvote.create(user_id: thomas.id, recipe_id: 5)
-Upvote.create(user_id: lea.id, recipe_id: 5)
+Upvote.create(user_id: huang.id, recipe_id: tomato_pasta.id)
+Upvote.create(user_id: thomas.id, recipe_id: garlic_butter_steak.id)
+Upvote.create(user_id: lea.id, recipe_id: garlic_butter_steak.id)

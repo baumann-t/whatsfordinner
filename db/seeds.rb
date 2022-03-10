@@ -220,6 +220,12 @@ user_recipe = UserRecipe.new(
 user_recipe.save!
 puts egg_sandwich.title
 
+user_recipe = UserRecipe.new(
+  user: kieran, recipe: egg_sandwich, cooked: true, date_cooked:  Date.today.last_week.beginning_of_week
+)
+user_recipe.save!
+puts egg_sandwich.title
+
 # need to associate recipe id with my cookbook and mark as cooked
 
 # comment = Comment.new(content: "This is the worst crap I've ever tasted!")

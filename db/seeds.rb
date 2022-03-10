@@ -51,18 +51,6 @@ image_file = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_fa
 thomas.photo.attach(io: image_file, filename: "Thomas's Avatar", content_type: 'image/png')
 thomas.save!
 
-puts "Creating Lea"
-lea = User.new(
-  email: "lea@test.com",
-  password: 123456,
-  first_name: "Lea",
-  last_name: "Pontet",
-  location: "London"
-)
-image_file = URI.open('https://avatars.githubusercontent.com/u/49417360?v=4')
-lea.photo.attach(io: image_file, filename: "Lea's Avatar", content_type: 'image/png')
-lea.save!
-puts lea.first_name
 
 
 puts "Creating users"
@@ -90,9 +78,22 @@ image_file = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_fa
 huang.photo.attach(io: image_file, filename: "Huang's Avatar", content_type: 'image/png')
 huang.save!
 
+puts "Creating Lea"
+lea = User.new(
+  email: "lea@test.com",
+  password: 123456,
+  first_name: "Lea",
+  last_name: "Pontet",
+  location: "London"
+)
+image_file = URI.open('https://avatars.githubusercontent.com/u/49417360?v=4')
+lea.photo.attach(io: image_file, filename: "Lea's Avatar", content_type: 'image/png')
+lea.save!
+puts lea.first_name
+
+
 # Create relationships
 kieran.follow(thomas)
-kieran.follow(huang)
 kieran.follow(lea)
 kieran.follow(seb)
 
@@ -119,7 +120,7 @@ shrimp_pasta = Recipe.new(
                 Serve with lemon wedges.",],
   categories: ["Italian", "Citrus"],
   serving_size: "4",
-  upvotes_tracker: 10
+  upvotes_tracker: 2
 )
 
 # Image of the recipe
@@ -140,12 +141,6 @@ user_recipe.save!
 puts shrimp_pasta.title
 
 # Comments
-# comment = Comment.new(content: "This shrimp pasta is delicious, the lemon really bring the flavour together !!!!")
-# comment.user = User.third
-# comment.recipe = shrimp_pasta
-# comment.user_recipe = user_recipe
-# comment.save!
-# FeedItem.create!(item_type: "commented", user_recipe_id: user_recipe.id, user_id: User.third.id)
 
 
 # ------ Another recipe
@@ -171,7 +166,7 @@ baked_salmon = Recipe.new(
                 "Cut into four equal portions for serving."],
   categories: ["American", "Fish"],
   serving_size: "4",
-  upvotes_tracker: 52
+  upvotes_tracker: 4
 )
 
 image_file = URI.open('https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/12/20/0/FNK_Baked-Salmon_H_s4x3.jpg.rend.hgtvcom.826.620.suffix/1576855635102.jpeg')
@@ -253,7 +248,7 @@ tomato_pasta = Recipe.new(
                 combine.", "Add the basil, toss once more, and serve immediately with grated cheese."],
   categories: ["Italian", "Spicy"],
   serving_size: "4",
-  upvotes_tracker: 11
+  upvotes_tracker: 1
 )
 image_file = URI.open('https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fill,g_center,w_1460,h_1825/k%2Farchive%2F0eb929bc2c007ebf6009316a327b1e37587045a4')
 tomato_pasta.photo.attach(io: image_file, filename: tomato_pasta.title, content_type: 'image/png')
@@ -296,12 +291,13 @@ garlic_butter_steak = Recipe.new(
                 which may not be desirable.", "Slice the steak into ½ -inch (1 cm) strips, then fan out the slices and serve."],
   categories: ["American", "Comfort Food"],
   serving_size: "2",
-  upvotes_tracker: 4
+  upvotes_tracker: 2
 )
 image_file = URI.open('https://www.eatwell101.com/wp-content/uploads/2020/10/Garlic-Butter-Steak-recipe-roasted-in-Oven.jpg')
 garlic_butter_steak.photo.attach(io: image_file, filename: garlic_butter_steak, content_type: 'image/png')
 garlic_butter_steak.user = huang
 garlic_butter_steak.save!
+
 
 user_recipe = UserRecipe.new(
   user_id: huang.id, recipe_id: garlic_butter_steak.id
@@ -309,25 +305,86 @@ user_recipe = UserRecipe.new(
 user_recipe.save!
 p user_recipe.recipe.id
 p user_recipe.user.id
-# puts garlic_butter_steak.title
 
+pad_thai = Recipe.new(
+  title: "Shrimp Pad Thai",
+  description: "Easy shrimp pad thai, super popular",
+  ingredients: ["1/3 cup of water", "4 teaspoon of tamarind paste", "1/3 cup of palm sugar",
+                "2/3 cup Asian fish sauce", "1/4 teaspoon salt", "1 1/2 cup of mung bean sprouts", "2 limes",
+                "1/4 cup of peanuts", "1/3 cup of sugar", "1/3 cup of red pepper", "12 ounces dried flat rice noodles",
+                "4 garlic cloves", "2 shallots", "12 ounces shrimp", "3 eggs", "2 bunches scallions",
+                "5 tablespoons vegetable oil"],
+  prep_time: "20 min",
+  cooking_time: "20 min",
+  instructions: ["In a medium bowl, combine the water, tamarind paste, palm or dark brown sugar, fish sauce, and salt and stir until the sugar is dissolved.",
+                "Place the bean sprouts, limes, and peanuts each in their own small bowl and arrange near the stove.
+                Place the fish sauce, granulated sugar, and crushed red pepper each in their own small bowl and arrange
+                on the dining table.", "Bring a 5-quart saucepan of water to a full, rolling boil. Remove it from the
+                heat and immediately add the rice noodles, making sure they are fully submerged in the water. Let the
+                noodles soak for exactly 3 minutes (use a timer), occasionally lifting them up and pulling them apart as
+                necessary with tongs or a long fork to keep the noodles separate and help them soften evenly. Drain the
+                noodles in a large colander and rinse them under cold running water. (If the noodles become sticky and
+                clumped together while standing, rinse them briefly under cold water just before cooking, so that they
+                return to their slippery, firm, toss-able state.)", "In a small bowl combine the garlic and shallots.
+                Place the shrimp, beaten eggs, bean sprouts, scallion greens, and peanuts each in their own bowl and arrange near
+                the stove. Have ready 1 clean medium bowl for the cooked shrimp and eggs, and arrange a platter for
+                serving near the stove.", "Heat a large wok over high heat until hot but not smoking. Add 2 tablespoons
+                of the vegetable oil and swirl to coat the pan. (If at any point during cooking the oil starts smoking,
+                lower the heat.) When the oil is hot, scatter in the shrimp. Cook undisturbed until the shrimp begin to
+                change color and firm up, about 30 seconds. Toss well then continue to cook, stirring frequently,
+                until the shrimp are pink, firm and just cooked through, about 30 seconds longer. Using a slotted spoon,
+                transfer the shrimp to the clean bowl.", "Add the eggs and swirl the pan to spread them into a thin layer.
+                Cook the eggs, lifting the sides and tilting the pan to allow the uncooked eggs to pour underneath as
+                you do when making an omelet, until the eggs are mostly set, 1 to 1 1/2 minutes. Remove the pan from the
+                heat and use the slotted spoon to quickly cut the eggs into bite-size pieces then add them to the bowl of shrimp.",
+                "Place the wok over high heat and add the remaining 2 tablespoons of vegetable oil, and swirl to coat the pan.
+                Add the garlic and shallots and stir-fry until fragrant, about 5 seconds. Scatter in the softened rice
+                noodles, and using tongs, evenly spread the noodles out across the pan, like a net. Let them cook
+                undisturbed for 15 seconds then scoop them in toward the center. Toss the noodles gently then spread them
+                out again. Pour about 1/3 of the seasoning sauce around the edges of the pan, and continue stir-frying the
+                noodles in the same manner, spreading them out and letting them cook undisturbed occasionally, until most of
+                the sauce is absorbed, about 30 seconds more.", "Add another third of the sauce and continue to stir-fry
+                in the same manner until most of the sauce is absorbed and the noodles are just tender but not mushy,
+                about 30 seconds. Test a noodle or two: If they are too firm, add 2 to 4 tablespoons of water around the
+                edge of the pan, and continue stir-frying until they are just tender and evenly coated with the sauce.",
+                "Return the shrimp and eggs to the pan, along with any juices collected in the bottom of the bowl, and
+                toss to incorporate them into the noodles. Add the remaining third of the seasoning sauce, along with the bean sprouts,
+                scallion greens, and chopped peanuts, and cook, tossing, until they are mixed in and barely heated, about 30 seconds."],
+  categories: "Thai",
+  serving_size: "4",
+  upvotes_tracker: 0
+)
+image_file = URI.open('https://assets.epicurious.com/photos/54ad371619925f464b3b0a03/master/w_1280,c_limit/51206860_shrimp-pad-thai-four_1x1.jpg')
+pad_thai.photo.attach(io: image_file, filename: pad_thai, content_type: 'image/png')
+pad_thai.user = thomas
+pad_thai.save!
+
+user_recipe = UserRecipe.new(
+  user_id: thomas.id, recipe_id: pad_thai.id
+)
+user_recipe.save!
+p user_recipe.recipe.id
+p user_recipe.user.id
+
+# puts garlic_butter_steak.title
 # need to associate recipe id with my cookbook and mark as cooked
 
-comment = Comment.new(content: "This is so delicious! I cook it every day")
-comment.user = lea
-comment.recipe = garlic_butter_steak
-comment.user_recipe = user_recipe
-comment.save!
-FeedItem.create!(item_type: "commented", user_recipe_id: user_recipe.id, user_id: lea.id)
+
+# comment = Comment.new(content: "This is so delicious! I cook it every day")
+# comment.user = huang
+# comment.recipe = shrimp_pasta
+# comment.user_recipe = user_recipe
+# comment.save!
+# FeedItem.create!(item_type: "added", user_recipe_id: user_recipe.id, user_id: thomas.id)
 
 puts "creating upvotes and comments"
-[garlic_butter_steak, shrimp_pasta, baked_salmon, egg_sandwich, tomato_pasta].each_with_index do |recipe, index|
-  user = [seb, thomas, lea, kieran, huang][index]
+[garlic_butter_steak, shrimp_pasta, egg_sandwich, baked_salmon].each_with_index do |recipe, index|
+  user = [seb, thomas, kieran, huang][index]
   # guard clause
   # Check if there's already an upvote from this user to that recipe
   unless recipe.upvotes.pluck(:user_id).include?(user.id)
     # Comment section
-    content = ["So nice!", "I'll try that next week!", "Added to my cookbook right away!", "Is there a vegetarian option for it?", "I cook it every week, it is delicious", "You should go to Top Chef!"].sample
+    content = ["So nice!", "I'll try that next week!", "Added to my cookbook right away!", "I cook it every week, it is delicious", "You should go to Top Chef!", "You are an amazing cook", "I am learning so much from you"].sample
     comment = Comment.new(content: content)
     comment.user = user
     comment.recipe = recipe
@@ -335,6 +392,7 @@ puts "creating upvotes and comments"
     comment.user_recipe = user_recipe
     comment.save!
     FeedItem.create!(item_type: "commented", user_recipe_id: user_recipe.id, user_id: user.id)
+
 
     # # Upvote section
     # upvote = Upvote.new
@@ -344,3 +402,41 @@ puts "creating upvotes and comments"
     # FeedItem.create!(item_type: "liked", user_recipe_id: user_recipe.id, user_id: user.id)
   end
 end
+
+comment = Comment.new(content: "This shrimp pasta is delicious, the lemon really bring the flavour together !!!!")
+comment.user = User.third
+comment.recipe = baked_salmon
+comment.user_recipe = user_recipe
+comment.save!
+FeedItem.create!(item_type: "commented", user_recipe_id: user_recipe.id, user_id: User.third.id)
+
+comment = Comment.new(content: "Amazing, can't wait to try it")
+comment.user = User.fourth
+comment.recipe = baked_salmon
+comment.user_recipe = user_recipe
+comment.save!
+FeedItem.create!(item_type: "commented", user_recipe_id: user_recipe.id, user_id: User.fourth.id)
+
+comment = Comment.new(content: "This is wonderful")
+comment.user = User.fifth
+comment.recipe = baked_salmon
+comment.user_recipe = user_recipe
+comment.save!
+FeedItem.create!(item_type: "commented", user_recipe_id: user_recipe.id, user_id: User.fifth.id)
+
+
+comment = Comment.new(content: "This is so delicious! I cook it every day")
+comment.user = huang
+comment.recipe = shrimp_pasta
+comment.user_recipe = user_recipe
+comment.save!
+FeedItem.create!(item_type: "added", user_recipe_id: user_recipe.id, user_id: thomas.id)
+
+
+[thomas, kieran, seb, huang].each do |test|
+  Upvote.create(user_id: test.id, recipe_id: 2)
+end
+
+Upvote.create(user_id: huang.id, recipe_id: 4)
+Upvote.create(user_id: thomas.id, recipe_id: 5)
+Upvote.create(user_id: lea.id, recipe_id: 5)

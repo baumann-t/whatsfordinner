@@ -17,8 +17,10 @@
   width: 150px;
 }
 
-.info-card > p {
+.info-card p {
   text-align: center;
+  font-size: 16px;
+  padding: 0 8px;
 }
 .info-card > h4 {
   font-size: 20px;
@@ -26,6 +28,6 @@
   text-align: center;
 }
 
-.info-card > p {
-  font-size: 16px;
-}
+// .info-card > p {
+//   font-size: 16px;
+// }

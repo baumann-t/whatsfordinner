@@ -13,7 +13,11 @@
           <% if item.item_type == "commented" %>
             <div class="container mb-3 d-flex newsfeed-item-center">
               <%# Avatar %>
-              <%= link_to cl_image_tag(user.photo.key, class: "avatar"), user_cookbook_path(user) %>
+              <% if user.photo.attached? %>
+                <%= link_to cl_image_tag(user.photo.key, class: "avatar"), user_cookbook_path(user) %>
+              <% else %>
+                <%= image_tag "https://static.thenounproject.com/png/363640-200.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% end %>
               <%#= cl_image_tag(user.photo.key, class: "avatar") %>
               <%= link_to "#{user.first_name}  #{user.last_name}", user_cookbook_path(user), :class => "newsfeed-user" %>
             </div>
@@ -31,8 +35,11 @@
           <% if item.item_type == "wishlisted" %>
           <div class="container mb-3 d-flex newsfeed-item-center">
             <%# Avatar %>
-            <%= link_to cl_image_tag(user.photo.key, class: "avatar"), user_cookbook_path(user) %>
-            <%#= cl_image_tag(user.photo.key, class: "avatar") %>
+            <% if user.photo.attached? %>
+              <%= link_to cl_image_tag(user.photo.key, class: "avatar"), user_cookbook_path(user) %>
+            <% else %>
+              <%= image_tag "https://static.thenounproject.com/png/363640-200.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
             <%= link_to "#{user.first_name}  #{user.last_name}", user_cookbook_path(user), :class => "newsfeed-user" %>
           </div>
           <div class="container">
@@ -50,8 +57,11 @@
           <% if item.item_type == "added" %>
             <div class="container mb-3 d-flex newsfeed-item-center">
               <%# Avatar %>
-              <%= link_to cl_image_tag(user.photo.key, class: "avatar"), user_cookbook_path(user) %>
-              <%#= cl_image_tag(user.photo.key, class: "avatar") %>
+              <% if user.photo.attached? %>
+                <%= link_to cl_image_tag(user.photo.key, class: "avatar"), user_cookbook_path(user) %>
+              <% else %>
+                <%= image_tag "https://static.thenounproject.com/png/363640-200.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% end %>
               <%= link_to "#{user.first_name}  #{user.last_name}", user_cookbook_path(user), :class => "newsfeed-user" %>
             </div>
             <div class="container">
@@ -69,8 +79,11 @@
           <% if item.item_type == "cooked" %>
               <div class="container mb-3 d-flex newsfeed-item-center">
                 <%# Avatar %>
+              <% if user.photo.attached? %>
                 <%= link_to cl_image_tag(user.photo.key, class: "avatar"), user_cookbook_path(user) %>
-                <%#= cl_image_tag(user.photo.key, class: "avatar") %>
+              <% else %>
+                <%= image_tag "https://static.thenounproject.com/png/363640-200.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% end %>
                 <%= link_to "#{user.first_name}  #{user.last_name}", user_cookbook_path(user), :class => "newsfeed-user" %>
               </div>
               <div class="container">

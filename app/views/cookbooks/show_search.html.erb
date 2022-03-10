@@ -4,11 +4,7 @@
 <% content_for :meta_image, cl_image_path(@recipe.photo.key) %>
 
 <div class="recipe-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(@recipe.photo.key) %>)">
-  <% if request.path.starts_with?("/my-cookbook") %>
-    <%= render "shared/buttons/back_button", back: my_cookbook_path%>
-  <% elsif request.path.starts_with?("/cookbook")%>
-    <%= render "shared/buttons/back_button", back: user_cookbook_path(@cookbook_user)%>
-  <% end %>
+    <%= render "shared/buttons/back_button", back: search_path%>
 
   <h1><%= @recipe.title.upcase %></h1>
   <% @recipe.categories.each do |cat| %>

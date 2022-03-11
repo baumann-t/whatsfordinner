@@ -384,7 +384,7 @@ p user_recipe.user.id
 # FeedItem.create!(item_type: "added", user_recipe_id: user_recipe.id, user_id: thomas.id)
 
 puts "creating upvotes and comments"
-[garlic_butter_steak, shrimp_pasta, egg_sandwich, tomato_pasta].each_with_index do |recipe, index|
+[garlic_butter_steak, shrimp_pasta, tomato_pasta].each_with_index do |recipe, index|
   user = [seb, thomas, kieran, huang][index]
   # guard clause
   # Check if there's already an upvote from this user to that recipe

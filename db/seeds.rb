@@ -356,7 +356,7 @@ pad_thai = Recipe.new(
                 "Return the shrimp and eggs to the pan, along with any juices collected in the bottom of the bowl, and
                 toss to incorporate them into the noodles. Add the remaining third of the seasoning sauce, along with the bean sprouts,
                 scallion greens, and chopped peanuts, and cook, tossing, until they are mixed in and barely heated, about 30 seconds."],
-  categories: "Thai",
+  categories: ["Thai"],
   serving_size: "4",
   upvotes_tracker: 0
 )

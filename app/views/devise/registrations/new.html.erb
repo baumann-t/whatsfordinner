@@ -1,6 +1,7 @@
 <div class="container">
-
   <div class="login-card">
+    <h2 class="text-center", style="color: #2B9348">Sign up</h2>
+
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
 
@@ -25,11 +26,15 @@
         <%= f.input :photo %>
       </div>
 
-      <div class="form-actions">
-        <%= f.button :submit, "Sign up" %>
+      <div class="text-center">
+        <div class="form-actions">
+          <%= f.button :submit, "SIGN UP", class: "btn-submit" %>
+        </div>
+
+        <%= render "devise/shared/links" %>
       </div>
     <% end %>
 
-    <%= render "devise/shared/links" %>
+
   </div>
 </div>

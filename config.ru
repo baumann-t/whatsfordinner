@@ -4,3 +4,4 @@ require_relative "config/environment"
 
 run Rails.application
 Rails.application.load_server
+Rails.application.config.hosts << "rails-production-6e9b.up.railway.app"

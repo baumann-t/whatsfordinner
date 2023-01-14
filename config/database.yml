@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: whatsfordinner_production
   username: whatsfordinner
   password: <%= ENV['WHATSFORDINNER_DATABASE_PASSWORD'] %>

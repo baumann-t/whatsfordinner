@@ -1,0 +1,18 @@
+databases:
+  - name: whats-for-dinner
+    databaseName: whats-for-dinner
+    user: whats-for-dinner
+
+services:
+  - type: web
+    name: whats-for-dinner
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: whats-for-dinner
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
